@@ -1,0 +1,743 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Demystifying Regex &#8212; Beyond the Classroom</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'regular/regex/chapter';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="1. Reading the Man Pages" href="../../man/page/read.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../dev-book_intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Beyond the Classroom - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Beyond the Classroom - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../dev-book_intro.html">
+                    Everything You Didn’t Learn In School: A Guide to Software Development Outside of the Classroom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading Man Pages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">1. Reading the Man Pages</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regular Expressions or Regex</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Demystifying Regex</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/meeram/welcome&urlpath=lab/tree/welcome/content/regular/regex/chapter.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome/edit/main/content/regular/regex/chapter.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome/issues/new?title=Issue%20on%20page%20%2Fregular/regex/chapter.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/regular/regex/chapter.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Demystifying Regex</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="demystifying-regex">
+<h1><span class="section-number">2. </span>Demystifying Regex<a class="headerlink" href="#demystifying-regex" title="Link to this heading">#</a></h1>
+<p>Regular expressions, often also refered to as regex or regexp, are tools many progrmmers use for pattern matching and text manipulation. They provide a concise and flexible syntax for describing complex patterns within strings of text. They can be scary to look at first, but once you understand them, they can be a powerful tool. They’re ofen used for things like email validation or to search for particular things with tools like grep.
+Here’s an example with how emails can be constructed with regex.</p>
+<p><img alt="image.png" src="regular/regex/attachment:image.png" /></p>
+<ol class="arabic">
+<li><p><strong>Literal Characters</strong>: Regular expressions can contain literal characters, which match themselves in the text. For example, the regular expression <code class="docutils literal notranslate"><span class="pre">cat</span></code> matches the characters “cat” in a string.</p></li>
+<li><p><strong>Metacharacters</strong>: Metacharacters are special characters with predefined meanings in regular expressions. Some common metacharacters include:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.</span></code> (dot/period): Matches any single character except newline - these are often referred to as wildcards</p></li>
+<li><p>An example would be:</p>
+<p> k.n could match with kitten</p>
+<p> c.t could match with cat or can’t or ct</p>
+<p> Because any character would match with the period</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Here’s how that would look in python after importing the built-in package, re:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">extract_emails</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="c1"># Define the regex pattern for matching email addresses</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;</span>
+
+    <span class="c1"># Find all matches of the pattern in the text</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">matches</span>
+
+<span class="c1"># Sample text containing email addresses</span>
+<span class="n">sample_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Hello, my email address is john.doe@example.com.</span>
+<span class="s2">You can also reach me at jane@example.co.uk.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Extract email addresses from the sample text</span>
+<span class="n">emails</span> <span class="o">=</span> <span class="n">extract_emails</span><span class="p">(</span><span class="n">sample_text</span><span class="p">)</span>
+
+<span class="c1"># Print the extracted email addresses</span>
+<span class="k">for</span> <span class="n">email</span> <span class="ow">in</span> <span class="n">emails</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>john.doe@example.com
+jane@example.co.uk
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s how it would look in JavaScript:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">extractEmails</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Define</span> <span class="n">the</span> <span class="n">regex</span> <span class="n">pattern</span> <span class="k">for</span> <span class="n">matching</span> <span class="n">email</span> <span class="n">addresses</span>
+    <span class="n">var</span> <span class="n">pattern</span> <span class="o">=</span> <span class="o">/</span>\<span class="n">b</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mf">9.</span><span class="n">_</span><span class="o">%+-</span><span class="p">]</span><span class="o">+@</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mf">9.</span><span class="o">-</span><span class="p">]</span><span class="o">+</span>\<span class="o">.</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z</span><span class="p">]{</span><span class="mi">2</span><span class="p">,}</span>\<span class="n">b</span><span class="o">/</span><span class="n">g</span><span class="p">;</span>
+
+    <span class="o">//</span> <span class="n">Find</span> <span class="nb">all</span> <span class="n">matches</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">text</span>
+    <span class="n">var</span> <span class="n">matches</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">matches</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">Sample</span> <span class="n">text</span> <span class="n">containing</span> <span class="n">email</span> <span class="n">addresses</span>
+<span class="n">var</span> <span class="n">sampleText</span> <span class="o">=</span> <span class="s1">&#39;</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">my</span> <span class="n">email</span> <span class="n">address</span> <span class="ow">is</span> <span class="n">john</span><span class="o">.</span><span class="n">doe</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">reach</span> <span class="n">me</span> <span class="n">at</span> <span class="n">jane</span><span class="nd">@example</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">uk</span><span class="o">.</span>
+<span class="s1">&#39;;</span>
+
+<span class="o">//</span> <span class="n">Extract</span> <span class="n">email</span> <span class="n">addresses</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">sample</span> <span class="n">text</span>
+<span class="n">var</span> <span class="n">emails</span> <span class="o">=</span> <span class="n">extractEmails</span><span class="p">(</span><span class="n">sampleText</span><span class="p">);</span>
+
+<span class="o">//</span> <span class="n">Print</span> <span class="n">the</span> <span class="n">extracted</span> <span class="n">email</span> <span class="n">addresses</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">emails</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">emails</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">function</span> <span class="n">extractEmails</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+                                 <span class="o">^</span>
+<span class="ne">SyntaxError</span>: &#39;{&#39; was never closed
+</pre></div>
+</div>
+</div>
+</div>
+<p>… and in Perl:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">use</span> <span class="n">strict</span><span class="p">;</span>
+<span class="n">use</span> <span class="n">warnings</span><span class="p">;</span>
+
+<span class="n">sub</span> <span class="n">extract_emails</span> <span class="p">{</span>
+    <span class="n">my</span> <span class="p">(</span><span class="err">$</span><span class="n">text</span><span class="p">)</span> <span class="o">=</span> <span class="nd">@_</span><span class="p">;</span>
+
+    <span class="c1"># Define the regex pattern for matching email addresses</span>
+    <span class="n">my</span> <span class="err">$</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">qr</span><span class="o">/</span>\<span class="n">b</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mf">9.</span><span class="n">_</span><span class="o">%+-</span><span class="p">]</span><span class="o">+@</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mf">9.</span><span class="o">-</span><span class="p">]</span><span class="o">+</span>\<span class="o">.</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z</span><span class="p">]{</span><span class="mi">2</span><span class="p">,}</span>\<span class="n">b</span><span class="o">/</span><span class="p">;</span>
+
+    <span class="c1"># Find all matches of the pattern in the text</span>
+    <span class="n">my</span> <span class="nd">@matches</span> <span class="o">=</span> <span class="err">$</span><span class="n">text</span> <span class="o">=~</span> <span class="o">/</span><span class="err">$</span><span class="n">pattern</span><span class="o">/</span><span class="n">g</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="nd">@matches</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># Sample text containing email addresses</span>
+<span class="n">my</span> <span class="err">$</span><span class="n">sample_text</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="s1">&#39;END_TEXT&#39;</span><span class="p">;</span>
+<span class="n">Hello</span><span class="p">,</span> <span class="n">my</span> <span class="n">email</span> <span class="n">address</span> <span class="ow">is</span> <span class="n">john</span><span class="o">.</span><span class="n">doe</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">reach</span> <span class="n">me</span> <span class="n">at</span> <span class="n">jane</span><span class="nd">@example</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">uk</span><span class="o">.</span>
+<span class="n">END_TEXT</span>
+
+<span class="c1"># Extract email addresses from the sample text</span>
+<span class="n">my</span> <span class="nd">@emails</span> <span class="o">=</span> <span class="n">extract_emails</span><span class="p">(</span><span class="err">$</span><span class="n">sample_text</span><span class="p">);</span>
+
+<span class="c1"># Print the extracted email addresses</span>
+<span class="n">foreach</span> <span class="n">my</span> <span class="err">$</span><span class="n">email</span> <span class="p">(</span><span class="nd">@emails</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span> <span class="err">$</span><span class="n">email</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we know what regex looks like within the context of programming, let’s go through each character and what it means, so you can use regular expressions in your own software!</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: Matches zero or more occurrences of the preceding character or group.</p></li>
+</ul>
+<p>An example would be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  `cof*ee` could match with coffee, cofffee, coffffffffee
+</pre></div>
+</div>
+<ul>
+<li><p>Another example would be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ca*t</span></code> could match ct</p>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>: Matches one or more occurrences of the preceding character or group.</p></li>
+<li><p>An example would be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">go+gle</span></code> could match with gogle, google, gooogle, goooogle</p>
+</li>
+<li><p>But it would NOT match with ggle beacuse it has to match at least one character, so if you wanted it to match, you would use the * regex metacharacter</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code>: Matches zero or one occurrence of the preceding character or group.</p></li>
+</ul>
+<p>An example would be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">?g</span></code> could match with hiking (matching with zero occurances) or it could match with Kellogg</p></li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code>: Let’s the computer know that the match has to begin at the start of the line</p>
+<p>An example would be:</p>
+</li>
+</ul>
+<p>Where d is a metacharacter for any digit from 1-9</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">^\d{3}</span></code> will match with patterns like “973” in “973-333-7039”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code>: Let’s the computer know the match has to begin at the end of the line</p></li>
+</ul>
+<p>An example would be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">^\d{4}</span></code> will match with patterns like “7039” in “973-333-7039”</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>: Defines a character class, matching any single character within the brackets.</p></li>
+</ul>
+<p>An example would be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[aeiou]</span></code> matches any vowel, and <code class="docutils literal notranslate"><span class="pre">[0-9]</span></code> matches any digit</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code>: Acts as a logical OR, allowing alternatives within a pattern.</p></li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic simple" start="3">
+<li><p><strong>Quantifiers</strong>: Quantifiers specify how many occurrences of a character or group should be matched. They can be used with both literal characters and metacharacters. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: Matches zero or more occurrences.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>: Matches one or more occurrences.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code>: Matches zero or one occurrence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{n}</span></code>: Matches exactly n occurrences.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{n,}</span></code>: Matches n or more occurrences.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{n,m}</span></code>: Matches between n and m occurrences.</p></li>
+</ul>
+</li>
+</ol>
+<p>Here are some bracketing examples:</p>
+<p>a{3}	would match with {aaa}
+z{3,6} would match with {zzz, zzzz, zzzzz, zzzzzz}
+c{3,}	would match with {ccc, cccc, cccccc, …}</p>
+<ol class="arabic simple" start="6">
+<li><p><strong>Grouping and Capturing</strong>: Parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> are used to group characters or subpatterns together. Groups can be quantified as a whole and can be referred to later in the regular expression or during text replacement operations.</p></li>
+<li><p><strong>Escaping</strong>: Some characters have special meanings in regular expressions and need to be escaped if you want to match them literally. For example, if you want to match a literal dot <code class="docutils literal notranslate"><span class="pre">.</span></code>, you need to escape it as <code class="docutils literal notranslate"><span class="pre">\.</span></code>.</p></li>
+</ol>
+<p>Want some more example regexes? Check these out:
+<a class="reference external" href="https://support.google.com/a/answer/1371417?hl=en">https://support.google.com/a/answer/1371417?hl=en</a>
+<a class="reference external" href="https://regexr.com/">https://regexr.com/</a></p>
+<p>Want to build and test your regex? Here are some great places to do so:
+<a class="reference external" href="https://regex101.com/">https://regex101.com/</a>
+<a class="reference external" href="https://regexr.com/">https://regexr.com/</a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./regular/regex"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../man/page/read.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Reading the Man Pages</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Meera Malhotra
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
