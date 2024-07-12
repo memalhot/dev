@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Beyond the Classroom: A Practical Guide to Software Engineering &#8212; Beyond the Classroom</title>
+    <title>4. Using a .gitignore &#8212; Beyond the Classroom</title>
   
   
   
@@ -58,11 +58,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/intro/chapter';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'git/ignore/chapter2';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Adventures in the Command Line" href="../../cmd/line/chapter1.html" />
-    <link rel="prev" title="Everything You Didn’t Learn In School: A Guide to Software Development Outside of the Classroom" href="../../dev-book_intro.html" />
+    <link rel="next" title="5. Welcome" href="../../clean/code/chapter.html" />
+    <link rel="prev" title="3. Let’s Git Started" href="chapter1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,17 +178,17 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Adventures in the Command Line</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../cmd/line/chapter1.html">2. Adventures in the Command Line</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">A Guide to Git</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter1.html">3. Let’s Git Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter2.html">4. Using a .gitignore</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chapter1.html">3. Let’s Git Started</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Using a .gitignore</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
@@ -260,7 +260,7 @@
       
       
       
-      <li><a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/meeram/welcome&urlpath=lab/tree/welcome/content/introduction/intro/chapter.ipynb&branch=main" target="_blank"
+      <li><a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/meeram/welcome&urlpath=lab/tree/welcome/content/git/ignore/chapter2.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onJupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +308,7 @@
       
       
       
-      <li><a href="https://github.com/meeram/welcome/edit/main/content/introduction/intro/chapter.ipynb" target="_blank"
+      <li><a href="https://github.com/meeram/welcome/edit/main/content/git/ignore/chapter2.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -325,7 +325,7 @@
       
       
       
-      <li><a href="https://github.com/meeram/welcome/issues/new?title=Issue%20on%20page%20%2Fintroduction/intro/chapter.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/meeram/welcome/issues/new?title=Issue%20on%20page%20%2Fgit/ignore/chapter2.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -355,7 +355,7 @@
       
       
       
-      <li><a href="../../_sources/introduction/intro/chapter.ipynb" target="_blank"
+      <li><a href="../../_sources/git/ignore/chapter2.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -439,7 +439,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Beyond the Classroom: A Practical Guide to Software Engineering</h1>
+    <h1>Using a .gitignore</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -449,7 +449,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1. Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignores-with-api-keys">4.2. Using .gitignores with API keys</a></li>
 </ul>
             </nav>
         </div>
@@ -461,14 +462,144 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="beyond-the-classroom-a-practical-guide-to-software-engineering">
-<h1><span class="section-number">1. </span>Beyond the Classroom: A Practical Guide to Software Engineering<a class="headerlink" href="#beyond-the-classroom-a-practical-guide-to-software-engineering" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2><span class="section-number">1.1. </span>Introduction:<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Welcome to Beyond the Classroom: A Practical Guide to Software Engineering! In the dynamic world of software development, learning important skills beyond the realms of algorithms and data structures is crucial. This book is for graduates or students who have some background programming, but may have a skill gap between the theory they learned in school and some areas of professional development. This book’s goal is to help close that skill gap.</p>
-<p>This book is designed to empower you with practical knowledge and real-world wisdom. From mastering the command line to writing clean and secure code, we embark on a journey that transcends the boundaries of conventional education.</p>
-<p>Each chapter is covers a different area of knowledge that prepares you for a professional development environment. Through case studies and interviews with seasoned software engineers, you’ll gain invaluable perspectives and learn from their experiences in the field. This blend of theory and practice equips you with the tools and mindset needed to thrive in today’s fast-paced software development landscape.</p>
-<p>So, whether you’re deciphering manpages, optimizing your workflow with Git, or harnessing the power of APIs, Beyond the Classroom is your companion in learning the skills you need to bridge the gap!</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-a-gitignore">
+<h1><span class="section-number">4. </span>Using a .gitignore<a class="headerlink" href="#using-a-gitignore" title="Link to this heading">#</a></h1>
+<p>What is a .gitignore, and why do you use one?</p>
+<section id="overview">
+<h2><span class="section-number">4.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>A .gitignore is a file, title .gitignore, put in the main directory of your project to ignore certain files and not include them in your final repositories. These can be compiled object files like .o files, whole directories, or .env files that can’t be pushed for security reasons.</p>
+<p>Here’s an example .gitignore from <a class="github reference external" href="https://github.com/github/gitignore/tree/main">github/gitignore</a> for java programs:</p>
+<div class="highlight-# notranslate"><div class="highlight"><pre><span></span>*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*```
+</pre></div>
+</div>
+<p>…and here’s another one from the same repo for python programs that’s been slightly edited for conciseness</p>
+<div class="highlight-# notranslate"><div class="highlight"><pre><span></span>__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+#   For a library or package, you might want to ignore these files since the code is
+#   intended to run in multiple environments; otherwise, check them in:
+# .python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+</pre></div>
+</div>
+<p>Based on the code you’re building and running, you may include different things in your code. Python is a language that often uses different libraries, so using the lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Environments</span>
+<span class="n">env</span><span class="o">/</span>
+<span class="n">venv</span><span class="o">/</span>
+<span class="n">ENV</span><span class="o">/</span>
+<span class="n">env</span><span class="o">.</span><span class="n">bak</span><span class="o">/</span>
+<span class="n">venv</span><span class="o">.</span><span class="n">bak</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Would make more sense than adding it to a .gitignore for a project done entirely in Java, because you’d be far more likely to be using a virtual environment running python code rather than java code.</p>
+<p>Depending on your needs, what you’re running, what it produces, and how it builds, you can customize your .gitignore to make sure you’re not commiting anything you don’t want to be, which ensures a clean, easy-to-navigate repository.</p>
+</section>
+<section id="using-gitignores-with-api-keys">
+<h2><span class="section-number">4.2. </span>Using .gitignores with API keys<a class="headerlink" href="#using-gitignores-with-api-keys" title="Link to this heading">#</a></h2>
+<p>API keys should not be published to public repositories, so they are often stored in .env files. These .env files can be stored in a .gitignore by using a single line that just looks like</p>
 </section>
 </section>
 
@@ -485,7 +616,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./introduction/intro"
+            path: "./git/ignore"
         },
         predefinedOutput: true
     }
@@ -503,20 +634,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../dev-book_intro.html"
+       href="chapter1.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Everything You Didn’t Learn In School: A Guide to Software Development Outside of the Classroom</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Let’s Git Started</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../cmd/line/chapter1.html"
+       href="../../clean/code/chapter.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Adventures in the Command Line</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Welcome</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -536,7 +667,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.1. Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignores-with-api-keys">4.2. Using .gitignores with API keys</a></li>
 </ul>
   </nav></div>
 

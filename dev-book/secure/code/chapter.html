@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. Writing Secure Code - Best Security Practices &#8212; Beyond the Classroom</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'secure/code/chapter';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8. Demystifying Regex" href="../../regular/regex/chapter.html" />
+    <link rel="prev" title="5. Welcome" href="../../clean/code/chapter.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../dev-book_intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Beyond the Classroom - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Beyond the Classroom - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../dev-book_intro.html">
+                    Everything You Didn’t Learn In School: A Guide to Software Development Outside of the Classroom
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Adventures in the Command Line</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cmd/line/chapter1.html">2. Adventures in the Command Line</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A Guide to Git</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter1.html">3. Let’s Git Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter2.html">4. Using a .gitignore</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Welcome</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing Secure Code</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Writing Secure Code - Best Security Practices</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">8. Demystifying Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Manpages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">9. Reading the Man Pages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/meeram/welcome&urlpath=lab/tree/welcome/content/secure/code/chapter.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome/edit/main/content/secure/code/chapter.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome/issues/new?title=Issue%20on%20page%20%2Fsecure/code/chapter.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/secure/code/chapter.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Writing Secure Code - Best Security Practices</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-coding-principles">7.1. Secure Coding Principles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-least-privilege">7.1.1. Principle of Least Privilege</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defense-in-depth">7.1.2. Defense in Depth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fail-securely">7.1.3. Fail Securely</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-validation">7.2. Input Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-all-inputs">7.2.1. Validate All Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterized-queries">7.2.2. Parameterized Queries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-authorization">7.3. Authentication and Authorization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-authentication">7.3.1. Strong Authentication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-based-access-control-rbac">7.3.2. Role-Based Access Control (RBAC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-data-handling">7.4. Secure Data Handling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encryption">7.4.1. Encryption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-storage">7.4.2. Secure Storage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.5. Error Handling and Logging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-error-messages">7.5.1. Minimal Error Messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-logging">7.5.2. Secure Logging</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-communication">7.6. Secure Communication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#https">7.6.1. HTTPS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-security">7.6.2. API Security</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-testing">7.7. Code Review and Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-reviews">7.7.1. Code Reviews</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security-testing">7.7.2. Security Testing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-dependencies-secure">7.8. Keeping Dependencies Secure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-management">7.8.1. Dependency Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vendor-security">7.8.2. Vendor Security</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.9. Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-secure-code-best-security-practices">
+<h1><span class="section-number">7. </span>Writing Secure Code - Best Security Practices<a class="headerlink" href="#writing-secure-code-best-security-practices" title="Link to this heading">#</a></h1>
+<p>Introduction</p>
+<p>In today’s digital landscape, writing secure code is paramount. Cyber threats are ever-evolving, and vulnerabilities in your code can lead to serious consequences. This chapter will guide you through best practices for writing secure code, helping you protect your applications from malicious attacks and data breaches.</p>
+<section id="secure-coding-principles">
+<h2><span class="section-number">7.1. </span>Secure Coding Principles<a class="headerlink" href="#secure-coding-principles" title="Link to this heading">#</a></h2>
+<section id="principle-of-least-privilege">
+<h3><span class="section-number">7.1.1. </span>Principle of Least Privilege<a class="headerlink" href="#principle-of-least-privilege" title="Link to this heading">#</a></h3>
+<p>Grant only the minimum necessary permissions to users, processes, and systems. By limiting access, you reduce the potential damage from exploitation. Ensure that code execution, database queries, and file system interactions adhere to this principle.</p>
+</section>
+<section id="defense-in-depth">
+<h3><span class="section-number">7.1.2. </span>Defense in Depth<a class="headerlink" href="#defense-in-depth" title="Link to this heading">#</a></h3>
+<p>Implement multiple layers of security controls to protect your systems. Even if one layer is breached, additional layers can prevent or mitigate the attack. Use a combination of firewalls, intrusion detection systems, encryption, and secure coding practices to create a robust defense.</p>
+</section>
+<section id="fail-securely">
+<h3><span class="section-number">7.1.3. </span>Fail Securely<a class="headerlink" href="#fail-securely" title="Link to this heading">#</a></h3>
+<p>When errors occur, ensure your system fails securely. Avoid revealing sensitive information through error messages and ensure that security controls remain intact. One example of failing securely that you may have seen before is when a user authentication fails, and the site you’re on does not disclose whether it was due to an incorrect username or password.</p>
+</section>
+</section>
+<section id="input-validation">
+<h2><span class="section-number">7.2. </span>Input Validation<a class="headerlink" href="#input-validation" title="Link to this heading">#</a></h2>
+<section id="validate-all-inputs">
+<h3><span class="section-number">7.2.1. </span>Validate All Inputs<a class="headerlink" href="#validate-all-inputs" title="Link to this heading">#</a></h3>
+<p>Validate and sanitize all inputs from users, APIs, and external systems. A good rule of thumb is to never trust input data, as you can never know whether it is malicious. Use whitelisting techniques to allow only known good data, and apply appropriate data validation rules to prevent attacks such as SQL injection and cross-site scripting (XSS).</p>
+<p>Real-Life Example: MySpace Samy Worm
+In 2005, a user named Samy Kamkar created a worm that exploited a stored XSS vulnerability in MySpace. The worm added Samy as a friend and displayed a message saying “but most of all, Samy is my hero” on infected profiles. It spread rapidly, affecting over a million users in less than 24 hours. This incident highlighted how quickly XSS can propagate and cause widespread damage.
+This example was funny, but in other cases, can cause a real threat to organizations.</p>
+</section>
+<section id="parameterized-queries">
+<h3><span class="section-number">7.2.2. </span>Parameterized Queries<a class="headerlink" href="#parameterized-queries" title="Link to this heading">#</a></h3>
+<p>Use parameterized queries or prepared statements to interact with databases. This practice helps prevent SQL injection attacks by separating SQL code from data. Avoid constructing SQL queries with string concatenation, as it can expose your application to injection vulnerabilities.</p>
+<p>Here’s an example of parameterized queries in python:</p>
+</section>
+</section>
+<section id="authentication-and-authorization">
+<h2><span class="section-number">7.3. </span>Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Link to this heading">#</a></h2>
+<section id="strong-authentication">
+<h3><span class="section-number">7.3.1. </span>Strong Authentication<a class="headerlink" href="#strong-authentication" title="Link to this heading">#</a></h3>
+<p>Implement strong authentication mechanisms. Use multi-factor authentication (MFA) to add an extra layer of security beyond passwords. Ensure passwords are stored securely using hashing algorithms like bcrypt, and enforce password complexity requirements.</p>
+</section>
+<section id="role-based-access-control-rbac">
+<h3><span class="section-number">7.3.2. </span>Role-Based Access Control (RBAC)<a class="headerlink" href="#role-based-access-control-rbac" title="Link to this heading">#</a></h3>
+<p>Use role-based access control to manage user permissions. Assign roles to users based on their responsibilities and restrict access to sensitive functions and data accordingly. Regularly review and update roles and permissions to ensure they align with current security policies.</p>
+</section>
+</section>
+<section id="secure-data-handling">
+<h2><span class="section-number">7.4. </span>Secure Data Handling<a class="headerlink" href="#secure-data-handling" title="Link to this heading">#</a></h2>
+<section id="encryption">
+<h3><span class="section-number">7.4.1. </span>Encryption<a class="headerlink" href="#encryption" title="Link to this heading">#</a></h3>
+<p>Encrypt sensitive data both at rest and in transit. Use strong encryption standards such as AES-256 for data storage and TLS for data transmission. Encryption protects data from unauthorized access and tampering.</p>
+</section>
+<section id="secure-storage">
+<h3><span class="section-number">7.4.2. </span>Secure Storage<a class="headerlink" href="#secure-storage" title="Link to this heading">#</a></h3>
+<p>Avoid storing sensitive information such as passwords, encryption keys, and API keys in plaintext or in code repositories. Use secure storage solutions like key management systems (KMS) to handle sensitive data or ensure they’re saved in local environment variables. Regularly rotate keys and credentials to enhance security.</p>
+</section>
+</section>
+<section id="error-handling-and-logging">
+<h2><span class="section-number">7.5. </span>Error Handling and Logging<a class="headerlink" href="#error-handling-and-logging" title="Link to this heading">#</a></h2>
+<section id="minimal-error-messages">
+<h3><span class="section-number">7.5.1. </span>Minimal Error Messages<a class="headerlink" href="#minimal-error-messages" title="Link to this heading">#</a></h3>
+<p>Provide minimal information in error messages to avoid revealing system details. Attackers can use detailed error messages to gain insights into your system architecture and potential vulnerabilities.</p>
+</section>
+<section id="secure-logging">
+<h3><span class="section-number">7.5.2. </span>Secure Logging<a class="headerlink" href="#secure-logging" title="Link to this heading">#</a></h3>
+<p>Log security-related events for auditing and monitoring purposes. Ensure logs do not contain sensitive information such as passwords or personal data. Use centralized logging systems to detect and respond to security incidents promptly.</p>
+</section>
+</section>
+<section id="secure-communication">
+<h2><span class="section-number">7.6. </span>Secure Communication<a class="headerlink" href="#secure-communication" title="Link to this heading">#</a></h2>
+<section id="https">
+<h3><span class="section-number">7.6.1. </span>HTTPS<a class="headerlink" href="#https" title="Link to this heading">#</a></h3>
+<p>Use HTTPS to secure communication between clients and servers. HTTPS encrypts data in transit, protecting it from interception and tampering. Obtain SSL/TLS certificates from reputable certificate authorities and configure your servers to enforce HTTPS.</p>
+</section>
+<section id="api-security">
+<h3><span class="section-number">7.6.2. </span>API Security<a class="headerlink" href="#api-security" title="Link to this heading">#</a></h3>
+<p>Secure your APIs by implementing authentication, authorization, and input validation. Use API gateways to manage and monitor API traffic, and ensure that APIs only expose necessary endpoints and data.</p>
+</section>
+</section>
+<section id="code-review-and-testing">
+<h2><span class="section-number">7.7. </span>Code Review and Testing<a class="headerlink" href="#code-review-and-testing" title="Link to this heading">#</a></h2>
+<section id="code-reviews">
+<h3><span class="section-number">7.7.1. </span>Code Reviews<a class="headerlink" href="#code-reviews" title="Link to this heading">#</a></h3>
+<p>Conduct regular code reviews to identify and address security vulnerabilities. Peer reviews help catch issues that automated tools might miss. Use static analysis tools to automate security checks and enforce coding standards.</p>
+</section>
+<section id="security-testing">
+<h3><span class="section-number">7.7.2. </span>Security Testing<a class="headerlink" href="#security-testing" title="Link to this heading">#</a></h3>
+<p>Perform security testing as part of your development lifecycle. Use tools like static application security testing (SAST), dynamic application security testing (DAST), and penetration testing to identify and fix vulnerabilities. Regularly update your testing methodologies to stay ahead of emerging threats.</p>
+</section>
+</section>
+<section id="keeping-dependencies-secure">
+<h2><span class="section-number">7.8. </span>Keeping Dependencies Secure<a class="headerlink" href="#keeping-dependencies-secure" title="Link to this heading">#</a></h2>
+<section id="dependency-management">
+<h3><span class="section-number">7.8.1. </span>Dependency Management<a class="headerlink" href="#dependency-management" title="Link to this heading">#</a></h3>
+<p>Regularly update your dependencies to their latest secure versions. Use tools to monitor and manage dependencies, and be aware of any known vulnerabilities in third-party libraries. Avoid using untrusted or outdated libraries in your projects.</p>
+</section>
+<section id="vendor-security">
+<h3><span class="section-number">7.8.2. </span>Vendor Security<a class="headerlink" href="#vendor-security" title="Link to this heading">#</a></h3>
+<p>Evaluate the security practices of third-party vendors and service providers. Ensure they follow industry best practices for security and compliance. Establish contracts that include security requirements and regular assessments.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">7.9. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Writing secure code is an ongoing commitment. By adhering to these best practices, you can significantly reduce the risk of security breaches and protect your applications and data. Prioritize security in every stage of development, from design to deployment, and stay informed about the latest threats and mitigation techniques. Your efforts will contribute to building more secure and resilient software systems.</p>
+<p>If you want to know more about secure coding practices, checkout:
+<a class="reference external" href="https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/">https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/</a></p>
+<p>If you want to explore some more interesting hacks or data leaks (and why they happen), you can check out these sites:
+<a class="reference external" href="https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/">https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/</a></p>
+<p><a class="reference external" href="https://www.indusface.com/blog/notorious-hacks-history/">https://www.indusface.com/blog/notorious-hacks-history/</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./secure/code"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../clean/code/chapter.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Welcome</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../regular/regex/chapter.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Demystifying Regex</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-coding-principles">7.1. Secure Coding Principles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-least-privilege">7.1.1. Principle of Least Privilege</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defense-in-depth">7.1.2. Defense in Depth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fail-securely">7.1.3. Fail Securely</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-validation">7.2. Input Validation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-all-inputs">7.2.1. Validate All Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterized-queries">7.2.2. Parameterized Queries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-authorization">7.3. Authentication and Authorization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-authentication">7.3.1. Strong Authentication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-based-access-control-rbac">7.3.2. Role-Based Access Control (RBAC)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-data-handling">7.4. Secure Data Handling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encryption">7.4.1. Encryption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-storage">7.4.2. Secure Storage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.5. Error Handling and Logging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-error-messages">7.5.1. Minimal Error Messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-logging">7.5.2. Secure Logging</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-communication">7.6. Secure Communication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#https">7.6.1. HTTPS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-security">7.6.2. API Security</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-testing">7.7. Code Review and Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-reviews">7.7.1. Code Reviews</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security-testing">7.7.2. Security Testing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-dependencies-secure">7.8. Keeping Dependencies Secure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-management">7.8.1. Dependency Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vendor-security">7.8.2. Vendor Security</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.9. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Meera Malhotra
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

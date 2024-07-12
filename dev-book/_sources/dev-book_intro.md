@@ -9,7 +9,6 @@ The book will also hae case studies and interviews from real software engineers-
 It assumes you have some level of experience programming.
 
 Topics covered:
-How to read a manpage
 Writing clean code
 How to use the command line
 Managing dependencies
