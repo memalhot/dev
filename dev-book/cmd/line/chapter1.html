@@ -173,7 +173,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../dev-book_intro.html">
-                    Everything You Didn’t Learn In School: A Guide to Software Development Outside of the Classroom
+                    Beyond the Classroom: A Practical Guide to Software Engineering
                 </a>
             </li>
         </ul>
@@ -192,20 +192,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Welcome</a></li>
-
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing Secure Code</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">7. Writing Secure Code - Best Security Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Clean Code - The Secret to Happy Coding</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">8. Demystifying Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">6. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Manpages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">9. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">7. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -449,7 +444,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">2.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-ides">2.1. An Introduction to IDEs</a></li>
 </ul>
             </nav>
         </div>
@@ -463,10 +458,29 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="adventures-in-the-command-line">
 <h1><span class="section-number">2. </span>Adventures in the Command Line<a class="headerlink" href="#adventures-in-the-command-line" title="Link to this heading">#</a></h1>
-<section id="overview">
-<h2><span class="section-number">2.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>When most people start programming, they do it on an integrated development environment or IDE. An example of an IDE would be VSCode or IntelliJ. You may see a little</p>
-<p>The command line shell or terminal j</p>
+<section id="an-introduction-to-ides">
+<h2><span class="section-number">2.1. </span>An Introduction to IDEs<a class="headerlink" href="#an-introduction-to-ides" title="Link to this heading">#</a></h2>
+<p>When most people start programming, they do it on an integrated development environment or IDE. An example of an IDE you may have used is VSCode, IntelliJ, Spyder. An IDE is a collection of software that integrates essential tools for software development into a unified interface. It usually includes things like a source code editor with features like syntax highlighting, local build automation tools for compiling, a terminal, and a debugger for identifying and fixing bugs in the code. By combining these functionalities within a single interface, IDEs make it really easy to develop code and build applications. You can run and build code with a button, you don’t need to think about compiling your code, and you can save code without having to use a version control system like Git (more on that later). But as the scale of development gets bigger, you might need more than an IDE.</p>
+<p>And that’s where the command line comes in!</p>
+<p>Here’s an example of an IDE, VSCode</p>
+<p><img alt="vscodepicture" src="cmd/line/images/src/vscode.png" /></p>
+<p>Source: <a class="reference external" href="https://code.visualstudio.com/updates/v1_58">https://code.visualstudio.com/updates/v1_58</a></p>
+<p>The command line, or terminal is a way to interact with your computer. It’s often called a command-line interface (CLI) or shell. Let’s go through a break</p>
+<ol class="arabic simple">
+<li><p><strong>Text Interface</strong>: Unlike graphical user interfaces (GUIs), which use windows, icons, and menus, terminals operate purely through text input and output. Users  can interact with the system by typing commands and reading text responses.</p></li>
+<li><p><strong>Shell</strong>: The shell is a program that interprets commands entered by the user and executes them. Popular shells include Bash (Bourne Again Shell), Zsh (Z Shell), and PowerShell (for Windows).</p></li>
+<li><p><strong>Commands</strong>: Users type commands into the terminal to perform various tasks such as navigating the file system, managing files, running programs, and configuring system settings.</p></li>
+<li><p><strong>File System Navigation</strong>: Users can navigate through directories and manipulate files using commands like <code class="docutils literal notranslate"><span class="pre">cd</span></code> (change directory), <code class="docutils literal notranslate"><span class="pre">ls</span></code> (list directory contents), <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> (make directory), <code class="docutils literal notranslate"><span class="pre">rm</span></code> (remove files or directories), etc. You don’t need to open up things manually with your command line, you can just navigate through typing - no need for your mouse! Many experienced programmers pride themselves on their ability to navigate their development environments without having to lift their fingers for aything but typing, increasing their programming efficiency.</p></li>
+<li><p><strong>Scripting and Automation</strong>: Terminals are powerful for automation and scripting tasks. Users can write scripts (sequences of commands) to perform repetitive tasks, manage system configurations, or automate software deployment. You can customize your system, especially with operating systems like Linux, to make your computer system work for you!</p></li>
+<li><p><strong>Remote Access</strong>: Terminals are commonly used for remote access to servers and computers. Secure Shell (SSH) is a protocol that allows users to log in to a remote system securely via a terminal. This can also be useful when you want to access other code bases, (when we get into our git chapter, we can look at how to access other people’s code bases with ssh). This is important for the collaboration needed in large scale projects!</p></li>
+<li><p><strong>System Administration</strong>: System administrators frequently use terminals for managing servers and performing administrative tasks efficiently, especially in headless (no graphical interface) server environments.</p></li>
+<li><p><strong>Customization</strong>: Users can customize their terminal environment with different colors, fonts, and shortcuts to enhance usability and productivity. Or just make things pretty :wink:</p></li>
+</ol>
+<p>Terminals provide a really flexible and powerful way to interact with a computer system, especially for tasks that require precise control, automation, and text-based interaction. So let’s go through some of the ways you can interact with your terminal!</p>
+<p><img alt="image.png" src="cmd/line/images/src/redhatterminal.png" /></p>
+<p>Here’s a stylized version of a terminal</p>
+<p>Source: <a class="reference external" href="https://www.unixsysadmin.com/rhel-9-resources/">https://www.unixsysadmin.com/rhel-9-resources/</a></p>
+<p>First open up a terminal. This is done differently on different computer systems, but most have an app to access your terminal!</p>
 </section>
 </section>
 
@@ -534,7 +548,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">2.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-ides">2.1. An Introduction to IDEs</a></li>
 </ul>
   </nav></div>
 
