@@ -173,7 +173,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../dev-book_intro.html">
-                    <no title>
+                    Beyond the Classroom: A Practical Guide to Software Engineering
                 </a>
             </li>
         </ul>
@@ -462,7 +462,7 @@ document.write(`
 <p>What is a .gitignore, and why do you use one?</p>
 <section id="overview">
 <h2><span class="section-number">4.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>A .gitignore is a file, title .gitignore, put in the main directory of your project to ignore certain files and not include them in your final repositories. These can be compiled object files like .o files, whole directories, or .env files that can’t be pushed for security reasons.</p>
+<p>A .gitignore is a file, title .gitignore, put in the main directory of your project to ignore certain files and not include them in your final repositories. These can be compiled object files like .o files, whole directories, or .env files that can’t be pushed for security reasons. Or because they contain data that may not need to be stored. For instance, it’s best practice to not commit the outputs of your programs, only the source code. This is why .gitignores can come in handy!</p>
 <p>Here’s an example .gitignore from <a class="github reference external" href="https://github.com/github/gitignore/tree/main">github/gitignore</a> for java programs:</p>
 <div class="highlight-# notranslate"><div class="highlight"><pre><span></span>*.class
 
@@ -503,15 +503,6 @@ build/
 develop-eggs/
 dist/
 downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
