@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Writing Secure Code - Best Security Practices &#8212; Beyond the Classroom</title>
+    <title>6. Secure Coding Practices &#8212; Beyond the Classroom</title>
   
   
   
@@ -61,8 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'secure/code/chapter';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8. Demystifying Regex" href="../../regular/regex/chapter.html" />
-    <link rel="prev" title="5. Welcome" href="../../clean/code/chapter.html" />
+    <link rel="next" title="7. Demystifying Regex" href="../../regular/regex/chapter.html" />
+    <link rel="prev" title="5. Writing Squeaky Clean Code" href="../../clean/code/chapter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,15 +173,15 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../dev-book_intro.html">
-                    Everything You Didn’t Learn In School: A Guide to Software Development Outside of the Classroom
+                    Beyond the Classroom: A Practical Guide to Software Engineering
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: An Introduction</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Adventures in the Command Line</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using the Command Line</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../cmd/line/chapter1.html">2. Adventures in the Command Line</a></li>
 </ul>
@@ -192,20 +192,19 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Welcome</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Writing Squeaky Clean Code</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Writing Secure Code</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Writing Secure Code - Best Security Practices</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Secure Coding Practices</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">8. Demystifying Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">7. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Manpages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">9. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">8. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -439,7 +438,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Writing Secure Code - Best Security Practices</h1>
+    <h1>Secure Coding Practices</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -449,48 +448,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-coding-principles">7.1. Secure Coding Principles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-least-privilege">7.1.1. Principle of Least Privilege</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defense-in-depth">7.1.2. Defense in Depth</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fail-securely">7.1.3. Fail Securely</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-validation">7.2. Input Validation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-all-inputs">7.2.1. Validate All Inputs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterized-queries">7.2.2. Parameterized Queries</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-authorization">7.3. Authentication and Authorization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-authentication">7.3.1. Strong Authentication</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-based-access-control-rbac">7.3.2. Role-Based Access Control (RBAC)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-data-handling">7.4. Secure Data Handling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encryption">7.4.1. Encryption</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-storage">7.4.2. Secure Storage</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.5. Error Handling and Logging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-error-messages">7.5.1. Minimal Error Messages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-logging">7.5.2. Secure Logging</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-communication">7.6. Secure Communication</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#https">7.6.1. HTTPS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-security">7.6.2. API Security</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-testing">7.7. Code Review and Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-reviews">7.7.1. Code Reviews</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security-testing">7.7.2. Security Testing</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-dependencies-secure">7.8. Keeping Dependencies Secure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-management">7.8.1. Dependency Management</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vendor-security">7.8.2. Vendor Security</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.9. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">6.1. Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-even-are-secure-coding-practices">6.2. So what even are secure coding practices?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-by-design">6.3. Security By Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-validation-and-output-encoding">6.4. Input Validation and Output Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passwords-and-authentication">6.5. Passwords and Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-management">6.6. Session Management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-control">6.7. Access Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptographic-practices">6.8. Cryptographic Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">6.9. Error Handling and Logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-protection">6.10. Data protection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-security">6.11. Communication security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-configuration">6.12. System Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-security">6.13. Database security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">6.14. File management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">6.15. Memory management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finale-wrapping-up-and-other-resources">6.16. The Finale (Wrapping Up and Other Resources)</a></li>
 </ul>
             </nav>
         </div>
@@ -502,114 +475,98 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="writing-secure-code-best-security-practices">
-<h1><span class="section-number">7. </span>Writing Secure Code - Best Security Practices<a class="headerlink" href="#writing-secure-code-best-security-practices" title="Link to this heading">#</a></h1>
-<p>Introduction</p>
-<p>In today’s digital landscape, writing secure code is paramount. Cyber threats are ever-evolving, and vulnerabilities in your code can lead to serious consequences. This chapter will guide you through best practices for writing secure code, helping you protect your applications from malicious attacks and data breaches.</p>
-<section id="secure-coding-principles">
-<h2><span class="section-number">7.1. </span>Secure Coding Principles<a class="headerlink" href="#secure-coding-principles" title="Link to this heading">#</a></h2>
-<section id="principle-of-least-privilege">
-<h3><span class="section-number">7.1.1. </span>Principle of Least Privilege<a class="headerlink" href="#principle-of-least-privilege" title="Link to this heading">#</a></h3>
-<p>Grant only the minimum necessary permissions to users, processes, and systems. By limiting access, you reduce the potential damage from exploitation. Ensure that code execution, database queries, and file system interactions adhere to this principle.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="secure-coding-practices">
+<h1><span class="section-number">6. </span>Secure Coding Practices<a class="headerlink" href="#secure-coding-practices" title="Link to this heading">#</a></h1>
+<section id="getting-started">
+<h2><span class="section-number">6.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<p>Code can’t happen in a vacuum. More often than not, in the real world, you’ll be developing software that interacts with other applications, packages, and, importantly, human users. These interactions present inherent vulnerabilities, particularly if the code handles sensitive data. Take, for example, a payment app that collects customer credit card information. If the app leaves that information exposed to unknown third parties—some of whom could be bad actors, such as hackers—the customers could quickly become victims of theft or even fraud. Understandably, then, users anticipate and desire security when interacting with software. While it’s, ahem, foolhardy for a software developer to assume their code is impenetrable, they can follow secure coding practices throughout their development process to reduce the ways bad actors could misuse the program.</p>
 </section>
-<section id="defense-in-depth">
-<h3><span class="section-number">7.1.2. </span>Defense in Depth<a class="headerlink" href="#defense-in-depth" title="Link to this heading">#</a></h3>
-<p>Implement multiple layers of security controls to protect your systems. Even if one layer is breached, additional layers can prevent or mitigate the attack. Use a combination of firewalls, intrusion detection systems, encryption, and secure coding practices to create a robust defense.</p>
+<section id="so-what-even-are-secure-coding-practices">
+<h2><span class="section-number">6.2. </span>So what even are secure coding practices?<a class="headerlink" href="#so-what-even-are-secure-coding-practices" title="Link to this heading">#</a></h2>
+<p>Secure coding practices are methods, protocols, and decisions that you can use to minimize security vulnerabilities while building software. Think of all the different ways you can develop a program while still maintaining the same purpose. Secure coding practices guide you to develop the program in the most defensive manner possible at any given moment during the process. Let’s take a look at the 14 secure coding practices outlined by OWASP, an open-source nonprofit project dedicated to improving the security of software. These practices are a popular international standard.</p>
 </section>
-<section id="fail-securely">
-<h3><span class="section-number">7.1.3. </span>Fail Securely<a class="headerlink" href="#fail-securely" title="Link to this heading">#</a></h3>
-<p>When errors occur, ensure your system fails securely. Avoid revealing sensitive information through error messages and ensure that security controls remain intact. One example of failing securely that you may have seen before is when a user authentication fails, and the site you’re on does not disclose whether it was due to an incorrect username or password.</p>
+<section id="security-by-design">
+<h2><span class="section-number">6.3. </span>Security By Design<a class="headerlink" href="#security-by-design" title="Link to this heading">#</a></h2>
+<p>This first one might seem obvious, or even like—uh oh—circular logic: “Secure your code by securing its design! Make good choices by choosing good choices! Boil water by boiling water!” But as we noted before, prioritizing security throughout the entirety of the design process is integral to minimizing security vulnerabilities. Moreover, security is usually not the only priority for developers, especially in commercial settings. Short-term priorities like speed, efficiency, and scalability are sometimes at odds with and can eclipse security. However, time and time again, we see that “security by design” pays off in the long run with fewer risks of exploitation and damage by bad actors. So as you develop your software, analyze your source code and create proper security automation to detect cyberthreats.</p>
 </section>
+<section id="input-validation-and-output-encoding">
+<h2><span class="section-number">6.4. </span>Input Validation and Output Encoding<a class="headerlink" href="#input-validation-and-output-encoding" title="Link to this heading">#</a></h2>
+<p>We’re combining these two practices, which basically say the same thing: know thy data. On a trusted system (this means server side), identify everything you can about the program’s input data and sources through a centralized process, and when in doubt, validate it! Classify all input sources as trusted or untrusted, and validate untrusted sources. Likewise, validate the range, length, and character sets (ex: UTF-8) of input data, and add additional security protocols and discrete checks for the suspicious stuff, a.k.a. unidentifiable data. Lastly, canonicalization can be a helpful tool for addressing obfuscation attacks.</p>
+<p>Now, for the output side. Once again, through a trusted system (server side), encode your output using standard, tested routines using specified character sets, and sanitize all untrusted data for queries and operating system commands.</p>
 </section>
-<section id="input-validation">
-<h2><span class="section-number">7.2. </span>Input Validation<a class="headerlink" href="#input-validation" title="Link to this heading">#</a></h2>
-<section id="validate-all-inputs">
-<h3><span class="section-number">7.2.1. </span>Validate All Inputs<a class="headerlink" href="#validate-all-inputs" title="Link to this heading">#</a></h3>
-<p>Validate and sanitize all inputs from users, APIs, and external systems. A good rule of thumb is to never trust input data, as you can never know whether it is malicious. Use whitelisting techniques to allow only known good data, and apply appropriate data validation rules to prevent attacks such as SQL injection and cross-site scripting (XSS).</p>
-<p>Real-Life Example: MySpace Samy Worm
-In 2005, a user named Samy Kamkar created a worm that exploited a stored XSS vulnerability in MySpace. The worm added Samy as a friend and displayed a message saying “but most of all, Samy is my hero” on infected profiles. It spread rapidly, affecting over a million users in less than 24 hours. This incident highlighted how quickly XSS can propagate and cause widespread damage.
-This example was funny, but in other cases, can cause a real threat to organizations.</p>
+<section id="passwords-and-authentication">
+<h2><span class="section-number">6.5. </span>Passwords and Authentication<a class="headerlink" href="#passwords-and-authentication" title="Link to this heading">#</a></h2>
+<p>Ya know, ***********
+Passwords and authentication. We’ve all been there. You know, when you’re making an online account for something, and you have to create a password with at least eight characters, including a number, and a capital letter, and a special character, and the secret to the universe (the answer is 42). And then you have to re-enter the password to prove that you have dextrous thumbs and a better memory than a goldfish, but at least one of those two facts is false about you, so you have to erase and retype your password because you don’t know where you messed up because all you can see are asterisks or those weird dots . And this process steals only about two minutes, if that, from your precious life, but you still can’t help but think: remember the good old days of passwords when ‘password’ would suffice? Or better yet, 1234?</p>
+<p>Ah, yes. Well. Security practices improve. Life goes on. C’est la vie.</p>
+<p>But in all seriousness, password protection and authentication are a large component of secure coding practices. We love passwords and authentication here. In fact… give me a P! Give me an A! Give me an S—no, we’re not doing that? Yeah, okay. Fair enough. I’m surprised you let me get that far. Anywho, here’s a rundown of the tips and tricks you need for securely designed password management and authentication controls:</p>
+<p>When in doubt, use a standardized and tested authentication protocol—like a password—for users to access a web page unless that page is meant to be fully accessible to the public, and develop that protocol on a trusted (read: server side) system.</p>
+<p>For passwords, set adequate standards of complexity and length (hint: 1234 isn’t good enough). Obscure the password for users as they type it, and, yes, have users confirm their password. Use proper hashing and cryptography—strong, one-way salted hashes—when storing password information server side, and make sure authentication information is securely stored. Moreover, don’t let users reuse the same password particularly if they are doing a password reset, and if they reset their password, alert the user of that reset. Also, set a standard threshold for the number of attempts a user can enter an incorrect password before disabling the account. Don’t let users change their password for at least one day after they create their account. And if you send new users temporary passwords, ensure the password has a short expiration time, and force users to change the password during their first login. If a user must perform a critical operation in their account, have them re-authenticate themselves by password or some other means. Lastly, passwords are not enough for highly sensitive or transactional accounts. Use multi-factor authentication for returning users.</p>
 </section>
-<section id="parameterized-queries">
-<h3><span class="section-number">7.2.2. </span>Parameterized Queries<a class="headerlink" href="#parameterized-queries" title="Link to this heading">#</a></h3>
-<p>Use parameterized queries or prepared statements to interact with databases. This practice helps prevent SQL injection attacks by separating SQL code from data. Avoid constructing SQL queries with string concatenation, as it can expose your application to injection vulnerabilities.</p>
-<p>Here’s an example of parameterized queries in python:</p>
+<section id="session-management">
+<h2><span class="section-number">6.6. </span>Session Management<a class="headerlink" href="#session-management" title="Link to this heading">#</a></h2>
+<p>Any time a user logs into their account, they have begun a “session.” Developers must manage their software’s session controls, or chaos shall reign. A few guidelines:</p>
+<p>Firstly, manage and identify these sessions on your own server or framework, and if a user tries to begin a session outside of that framework, treat their session as invalid. Use a randomized algorithm to control sessions and manage users. Establish at least one new session with each login, and maintain HTTPS connection (as opposed to HTTP) throughout the session. Do not allow the same user to log in concurrently. And when a user logs out, the session should completely terminate.</p>
 </section>
+<section id="access-control">
+<h2><span class="section-number">6.7. </span>Access Control<a class="headerlink" href="#access-control" title="Link to this heading">#</a></h2>
+<p>Two words: default deny. When in doubt, assume that whatever information a user is trying to access is, ahem, above their pay grade, and limit their access as such. Only allow authenticated users to access any non-public information. And if the application cannot access its secure configuration information, do not allow any users to access the application. Finally, ensure the application’s access controls comply with all business rules and flows while still protecting against potential attacks.</p>
 </section>
-<section id="authentication-and-authorization">
-<h2><span class="section-number">7.3. </span>Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Link to this heading">#</a></h2>
-<section id="strong-authentication">
-<h3><span class="section-number">7.3.1. </span>Strong Authentication<a class="headerlink" href="#strong-authentication" title="Link to this heading">#</a></h3>
-<p>Implement strong authentication mechanisms. Use multi-factor authentication (MFA) to add an extra layer of security beyond passwords. Ensure passwords are stored securely using hashing algorithms like bcrypt, and enforce password complexity requirements.</p>
-</section>
-<section id="role-based-access-control-rbac">
-<h3><span class="section-number">7.3.2. </span>Role-Based Access Control (RBAC)<a class="headerlink" href="#role-based-access-control-rbac" title="Link to this heading">#</a></h3>
-<p>Use role-based access control to manage user permissions. Assign roles to users based on their responsibilities and restrict access to sensitive functions and data accordingly. Regularly review and update roles and permissions to ensure they align with current security policies.</p>
-</section>
-</section>
-<section id="secure-data-handling">
-<h2><span class="section-number">7.4. </span>Secure Data Handling<a class="headerlink" href="#secure-data-handling" title="Link to this heading">#</a></h2>
-<section id="encryption">
-<h3><span class="section-number">7.4.1. </span>Encryption<a class="headerlink" href="#encryption" title="Link to this heading">#</a></h3>
-<p>Encrypt sensitive data both at rest and in transit. Use strong encryption standards such as AES-256 for data storage and TLS for data transmission. Encryption protects data from unauthorized access and tampering.</p>
-</section>
-<section id="secure-storage">
-<h3><span class="section-number">7.4.2. </span>Secure Storage<a class="headerlink" href="#secure-storage" title="Link to this heading">#</a></h3>
-<p>Avoid storing sensitive information such as passwords, encryption keys, and API keys in plaintext or in code repositories. Use secure storage solutions like key management systems (KMS) to handle sensitive data or ensure they’re saved in local environment variables. Regularly rotate keys and credentials to enhance security.</p>
-</section>
+<section id="cryptographic-practices">
+<h2><span class="section-number">6.8. </span>Cryptographic Practices<a class="headerlink" href="#cryptographic-practices" title="Link to this heading">#</a></h2>
+<p>Cryptography, you know, the funky symbols you see when a hacker gets into the mainframe in any tv show/movie since 1982 (that year is purely a guess). Essentially, use cryptography to protect any sensitive information from users, and implement all cryptographic practice on a trusted system. Use cryptographically-based randomized number generators to generate random numbers and strings. And manage your cryptographic keys under a secure, standardized process and policies.</p>
 </section>
 <section id="error-handling-and-logging">
-<h2><span class="section-number">7.5. </span>Error Handling and Logging<a class="headerlink" href="#error-handling-and-logging" title="Link to this heading">#</a></h2>
-<section id="minimal-error-messages">
-<h3><span class="section-number">7.5.1. </span>Minimal Error Messages<a class="headerlink" href="#minimal-error-messages" title="Link to this heading">#</a></h3>
-<p>Provide minimal information in error messages to avoid revealing system details. Attackers can use detailed error messages to gain insights into your system architecture and potential vulnerabilities.</p>
+<h2><span class="section-number">6.9. </span>Error Handling and Logging<a class="headerlink" href="#error-handling-and-logging" title="Link to this heading">#</a></h2>
+<p>Errors. They’re inevitable in life, especially in software development, the most life-y-ist life activity of them all. As you might have heard before, the best way to deal with software errors is to handle and log them. But error handling and logging can introduce new vulnerabilities in addition to any bugs that might already exist in the code. So we must—you guessed it—handle and log errors securely. How do we securely handle and log errors? Well, I’m so glad you asked!</p>
+<p>Firstly, when in doubt, log it. Log all errors, exceptions, failures, and potential tampering events. And write and manage these through cryptographic hashing. When responding to errors, do so through a trusted system, and do not reveal or store any sensitive information, including session details, identifiers, account information, and debugging and stack-trace information. Lastly, when there is an error, free all allocated memory from that error.</p>
 </section>
-<section id="secure-logging">
-<h3><span class="section-number">7.5.2. </span>Secure Logging<a class="headerlink" href="#secure-logging" title="Link to this heading">#</a></h3>
-<p>Log security-related events for auditing and monitoring purposes. Ensure logs do not contain sensitive information such as passwords or personal data. Use centralized logging systems to detect and respond to security incidents promptly.</p>
+<section id="data-protection">
+<h2><span class="section-number">6.10. </span>Data protection<a class="headerlink" href="#data-protection" title="Link to this heading">#</a></h2>
+<p>Similarly to default deny, use least privilege! Keep users from seeing any data or information unessential to their usage or functioning. Store all sensitive data and information with cryptographic practices, and remove all sensitive data and information when you no longer need it. And remember, access controls are your friend!</p>
 </section>
+<section id="communication-security">
+<h2><span class="section-number">6.11. </span>Communication security<a class="headerlink" href="#communication-security" title="Link to this heading">#</a></h2>
+<p>Transmit all sensitive information via encryption, especially Transport Layer Security, or TLS. TLS acts as a protective layer for transported information and should protect information as such. Use TLS for all sensitive content and external system communications. If TLS fails, ensure the backup connection is also secure.</p>
 </section>
-<section id="secure-communication">
-<h2><span class="section-number">7.6. </span>Secure Communication<a class="headerlink" href="#secure-communication" title="Link to this heading">#</a></h2>
-<section id="https">
-<h3><span class="section-number">7.6.1. </span>HTTPS<a class="headerlink" href="#https" title="Link to this heading">#</a></h3>
-<p>Use HTTPS to secure communication between clients and servers. HTTPS encrypts data in transit, protecting it from interception and tampering. Obtain SSL/TLS certificates from reputable certificate authorities and configure your servers to enforce HTTPS.</p>
+<section id="system-configuration">
+<h2><span class="section-number">6.12. </span>System Configuration<a class="headerlink" href="#system-configuration" title="Link to this heading">#</a></h2>
+<p>System configurations. The nuts and bolts of a system. Figuratively, or should I say, configuratively. But in all seriousness, we’re talking about software here, not hardware. Can you imagine handling an actual bolt? It boggles the mind!</p>
+<p>Moving on.</p>
+<p>For all software systems, make sure the servers, frameworks, and other components of the system are running on their latest approved versions, and be sure to patch up any vulnerabilities and bugs you can find in these versions. Remove all unnecessary functionality and files, including test code. Define the HTTP methods the system will use (GET or POST) and how the system will use them, and keep the usage of and transference of sensitive information via HTTP to a minimum. Lastly, manage all components and record any changes made to the system configurations.</p>
 </section>
-<section id="api-security">
-<h3><span class="section-number">7.6.2. </span>API Security<a class="headerlink" href="#api-security" title="Link to this heading">#</a></h3>
-<p>Secure your APIs by implementing authentication, authorization, and input validation. Use API gateways to manage and monitor API traffic, and ensure that APIs only expose necessary endpoints and data.</p>
+<section id="database-security">
+<h2><span class="section-number">6.13. </span>Database security<a class="headerlink" href="#database-security" title="Link to this heading">#</a></h2>
+<p>Chances are, if your software system is storing enough data, you’re going to need a database. Follow these tips and tricks to keep your database secure!</p>
+<p>Firstly, consider the database to hold sensitive information. Handle access and the information stored in the database as you would with other sensitive information. That is, create authentication procedures, use secure credentials for database access, and make sure your application operates at the lowest level of privilege when accessing the database. Additionally, strongly type all parameterized queries and variables. That is, be specific with the types of data the queries and variables are holding. Use encryption when handling connection strings. Disable and change any initial default database information provided, and turn off and remove all unnecessary database functionality and default content. Lastly, maintain different connection credentials for different levels of user trust distinctions (ex: read-only user vs. user vs. guest).</p>
 </section>
+<section id="file-management">
+<h2><span class="section-number">6.14. </span>File management<a class="headerlink" href="#file-management" title="Link to this heading">#</a></h2>
+<p>Sometimes, you’ll need files from users. When that happens, there are some ways to manage those files securely. Firstly, limit the amount of files necessary for upload, as well as the types of files allowed for upload (for example: PDF). Use file headers to validate those uploaded files. Turn off execution privileges in the directories where you store uploaded files, and never reveal the absolute file paths of those uploaded files to users. And of course, scan all uploaded files for viruses and malware.</p>
 </section>
-<section id="code-review-and-testing">
-<h2><span class="section-number">7.7. </span>Code Review and Testing<a class="headerlink" href="#code-review-and-testing" title="Link to this heading">#</a></h2>
-<section id="code-reviews">
-<h3><span class="section-number">7.7.1. </span>Code Reviews<a class="headerlink" href="#code-reviews" title="Link to this heading">#</a></h3>
-<p>Conduct regular code reviews to identify and address security vulnerabilities. Peer reviews help catch issues that automated tools might miss. Use static analysis tools to automate security checks and enforce coding standards.</p>
+<section id="memory-management">
+<h2><span class="section-number">6.15. </span>Memory management<a class="headerlink" href="#memory-management" title="Link to this heading">#</a></h2>
+<p>Ah, memories! Well, memory in this case. This is our last secure coding practice of the hour. Poetic, isn’t it?</p>
+<p>Follow these tips and tricks to handle memory with care! Keep buffering controlled. Don’t use functions that are known to be vulnerable. Be sure to close all resources yourself—garbage collection is snazzy, but don’t rely on it for everything. Lastly, properly free all allocated memory, and overwrite any sensitive information that allocated memory may contain at all exit points in a given function.</p>
 </section>
-<section id="security-testing">
-<h3><span class="section-number">7.7.2. </span>Security Testing<a class="headerlink" href="#security-testing" title="Link to this heading">#</a></h3>
-<p>Perform security testing as part of your development lifecycle. Use tools like static application security testing (SAST), dynamic application security testing (DAST), and penetration testing to identify and fix vulnerabilities. Regularly update your testing methodologies to stay ahead of emerging threats.</p>
-</section>
-</section>
-<section id="keeping-dependencies-secure">
-<h2><span class="section-number">7.8. </span>Keeping Dependencies Secure<a class="headerlink" href="#keeping-dependencies-secure" title="Link to this heading">#</a></h2>
-<section id="dependency-management">
-<h3><span class="section-number">7.8.1. </span>Dependency Management<a class="headerlink" href="#dependency-management" title="Link to this heading">#</a></h3>
-<p>Regularly update your dependencies to their latest secure versions. Use tools to monitor and manage dependencies, and be aware of any known vulnerabilities in third-party libraries. Avoid using untrusted or outdated libraries in your projects.</p>
-</section>
-<section id="vendor-security">
-<h3><span class="section-number">7.8.2. </span>Vendor Security<a class="headerlink" href="#vendor-security" title="Link to this heading">#</a></h3>
-<p>Evaluate the security practices of third-party vendors and service providers. Ensure they follow industry best practices for security and compliance. Establish contracts that include security requirements and regular assessments.</p>
-</section>
-</section>
-<section id="conclusion">
-<h2><span class="section-number">7.9. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>Writing secure code is an ongoing commitment. By adhering to these best practices, you can significantly reduce the risk of security breaches and protect your applications and data. Prioritize security in every stage of development, from design to deployment, and stay informed about the latest threats and mitigation techniques. Your efforts will contribute to building more secure and resilient software systems.</p>
-<p>If you want to know more about secure coding practices, checkout:
-<a class="reference external" href="https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/">https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/</a></p>
-<p>If you want to explore some more interesting hacks or data leaks (and why they happen), you can check out these sites:
-<a class="reference external" href="https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/">https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/https://brightsec.com/blog/the-top-10-notorious-hacks-of-all-time/</a></p>
-<p><a class="reference external" href="https://www.indusface.com/blog/notorious-hacks-history/">https://www.indusface.com/blog/notorious-hacks-history/</a></p>
+<section id="the-finale-wrapping-up-and-other-resources">
+<h2><span class="section-number">6.16. </span>The Finale (Wrapping Up and Other Resources)<a class="headerlink" href="#the-finale-wrapping-up-and-other-resources" title="Link to this heading">#</a></h2>
+<p>All right, folks. That’s a wrap! We’ve covered 13 points of secure coding practices to help you protect your software:
+Security by design
+Input validation and output encoding
+Passwords and authentication
+Session management
+Access control
+Cryptographic practices
+Error handling and logging
+Data protection
+Communication security
+System configuration
+Database security
+File management
+Memory management</p>
+<p>While this is a start, there is still so much more to the wonderful world of secure coding practices! This article was based off of OWASP’s Secure Coding Checklist, which can give you more detailed information on these thirteen practices. Additionally, check out the OWASP Developer Guide for an even more complete look at security and coding.</p>
+<p>Happy coding, and stay snazzy!</p>
 </section>
 </section>
 
@@ -649,7 +606,7 @@ This example was funny, but in other cases, can cause a real threat to organizat
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Welcome</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Writing Squeaky Clean Code</p>
       </div>
     </a>
     <a class="right-next"
@@ -657,7 +614,7 @@ This example was funny, but in other cases, can cause a real threat to organizat
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Demystifying Regex</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Demystifying Regex</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -677,48 +634,22 @@ This example was funny, but in other cases, can cause a real threat to organizat
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-coding-principles">7.1. Secure Coding Principles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-of-least-privilege">7.1.1. Principle of Least Privilege</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defense-in-depth">7.1.2. Defense in Depth</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fail-securely">7.1.3. Fail Securely</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-validation">7.2. Input Validation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validate-all-inputs">7.2.1. Validate All Inputs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterized-queries">7.2.2. Parameterized Queries</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication-and-authorization">7.3. Authentication and Authorization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-authentication">7.3.1. Strong Authentication</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-based-access-control-rbac">7.3.2. Role-Based Access Control (RBAC)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-data-handling">7.4. Secure Data Handling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encryption">7.4.1. Encryption</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-storage">7.4.2. Secure Storage</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.5. Error Handling and Logging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimal-error-messages">7.5.1. Minimal Error Messages</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-logging">7.5.2. Secure Logging</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#secure-communication">7.6. Secure Communication</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#https">7.6.1. HTTPS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-security">7.6.2. API Security</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-review-and-testing">7.7. Code Review and Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-reviews">7.7.1. Code Reviews</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#security-testing">7.7.2. Security Testing</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keeping-dependencies-secure">7.8. Keeping Dependencies Secure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-management">7.8.1. Dependency Management</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vendor-security">7.8.2. Vendor Security</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.9. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">6.1. Getting Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-even-are-secure-coding-practices">6.2. So what even are secure coding practices?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security-by-design">6.3. Security By Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-validation-and-output-encoding">6.4. Input Validation and Output Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#passwords-and-authentication">6.5. Passwords and Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-management">6.6. Session Management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-control">6.7. Access Control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cryptographic-practices">6.8. Cryptographic Practices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">6.9. Error Handling and Logging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-protection">6.10. Data protection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-security">6.11. Communication security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-configuration">6.12. System Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-security">6.13. Database security</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">6.14. File management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">6.15. Memory management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finale-wrapping-up-and-other-resources">6.16. The Finale (Wrapping Up and Other Resources)</a></li>
 </ul>
   </nav></div>
 

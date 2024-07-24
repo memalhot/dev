@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3. Let’s Git Started" href="../../git/ignore/chapter1.html" />
-    <link rel="prev" title="1. Beyond the Classroom: A Practical Guide to Software Engineering" href="../../introduction/intro/chapter.html" />
+    <link rel="prev" title="1. Beyond the Classroom: An Introduction" href="../../introduction/intro/chapter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,7 +179,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: An Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using the Command Line</span></p>
 <ul class="current nav bd-sidenav">
@@ -194,13 +194,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Writing Squeaky Clean Code</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">6. Secure Coding Practices</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">6. Demystifying Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">7. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Manpages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">7. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">8. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -467,7 +471,7 @@ document.write(`
 <p>When most people start programming, they do it on an integrated development environment or IDE. An example of an IDE you may have used is VSCode, IntelliJ, Spyder. An IDE is a collection of software that integrates essential tools for software development into a unified interface. It usually includes things like a source code editor with features like syntax highlighting, local build automation tools for compiling, a terminal, and a debugger for identifying and fixing bugs in the code. By combining these functionalities within a single interface, IDEs make it really easy to develop code and build applications. You can run and build code with a button, you don’t need to think about compiling your code, and you can save code without having to use a version control system like Git (more on that later). But as the scale of development gets bigger, you might need more than an IDE.</p>
 <p>And that’s where the command line comes in!</p>
 <p>Here’s an example of an IDE, VSCode</p>
-<p><img alt="vscodepicture" src="cmd/line/images/src/vscode.png" /></p>
+<p><img alt="vscodepicture" src="../../_images/vscode.png" /></p>
 <p>Source: <a class="reference external" href="https://code.visualstudio.com/updates/v1_58">https://code.visualstudio.com/updates/v1_58</a></p>
 <p>The command line, or terminal is a way to interact with your computer. It’s often called a command-line interface (CLI) or shell. Let’s go through a break</p>
 <ol class="arabic simple">
@@ -481,7 +485,7 @@ document.write(`
 <li><p><strong>Customization</strong>: Users can customize their terminal environment with different colors, fonts, and shortcuts to enhance usability and productivity. Or just make things pretty :wink:</p></li>
 </ol>
 <p>Terminals provide a really flexible and powerful way to interact with a computer system, especially for tasks that require precise control, automation, and text-based interaction. So let’s go through some of the ways you can interact with your terminal!</p>
-<p><img alt="image.png" src="cmd/line/images/src/redhatterminal.png" /></p>
+<p><img alt="image.png" src="../../_images/redhatterminal.png" /></p>
 <p>Here’s a stylized version of a terminal</p>
 <p>Source: <a class="reference external" href="https://www.unixsysadmin.com/rhel-9-resources/">https://www.unixsysadmin.com/rhel-9-resources/</a></p>
 <section id="exercise">
@@ -511,7 +515,7 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 <ol class="arabic simple">
 <li><p><strong>ls</strong></p>
 <ul class="simple">
-<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">[options]</span> <span class="pre">[directory]</span></code></p></li>
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">[directory]</span></code></p></li>
 <li><p>Description: Lists directory contents</p></li>
 </ul>
 </li>
@@ -536,20 +540,20 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 </li>
 <li><p><strong>rm</strong></p>
 <ul class="simple">
-<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">[options]</span> <span class="pre">[file(s)]</span></code></p></li>
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">[file(s)]</span></code></p></li>
 <li><p>Description: Removes (deletes) files or directories.</p></li>
 </ul>
 </li>
 <li><p><strong>cp</strong></p>
 <ul class="simple">
-<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">[options]</span> <span class="pre">[source]</span> <span class="pre">[destination]</span></code></p></li>
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">[source]</span> <span class="pre">[destination]</span></code></p></li>
 <li><p>Description: Copies files or directories.</p></li>
 <li><p>Example: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">file.txt</span> <span class="pre">new_location/</span></code> (copies “file.txt” to “new_location/”), <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">directory1</span> <span class="pre">directory2</span></code> (copies “directory1” and its contents recursively to “directory2”).</p></li>
 </ul>
 </li>
 <li><p><strong>mv</strong></p>
 <ul class="simple">
-<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">[options]</span> <span class="pre">[source]</span> <span class="pre">[destination]</span></code></p></li>
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">[source]</span> <span class="pre">[destination]</span></code></p></li>
 <li><p>Description: Moves (or renames) files or directories.</p></li>
 <li><p>Example: <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">file.txt</span> <span class="pre">new_location/</span></code> (moves “file.txt” to “new_location/”), <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">old_name.txt</span> <span class="pre">new_name.txt</span></code> (renames “old_name.txt” to “new_name.txt”)</p></li>
 </ul>
@@ -562,7 +566,7 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 </li>
 <li><p><strong>echo</strong></p>
 <ul class="simple">
-<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">[options]</span> <span class="pre">[text]</span></code></p></li>
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">[text]</span></code></p></li>
 <li><p>Description: Prints text or variables to the terminal</p></li>
 </ul>
 </li>
@@ -574,8 +578,8 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 </ul>
 </li>
 </ol>
-<p>These are some of the fundamental shell commands used in Unix-like systems. But there are many more for you to try out and explore. Understanding the file system and paths are super important in computing, so try playing around with commands! If you want some more information about commands, or you just forget what a command does, you can type <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">&lt;command&gt;</span></code>. This will give you a manual page, hence it’s name the man pages. The man pages are a great way to learn about unix commands, and you don’t have to navigate out of the terminal to use them. We have a whole chapter on how to read them if you find them confusing- so check out how to use the man pages!</p>
-<p>Redirection in shell commands allows you to manage input and output streams, which lets you to control where the input comes from and where the output goes. Here are some common redirection operators and their typical usages:</p>
+<p>These are some of the fundamental shell commands used in Unix-like systems. But there are many more for you to try out and explore. Understanding the file system and paths are super important in computing, so try playing around with commands! If you want some more information about commands, or you just forget what a command does, you can type <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">&lt;command&gt;</span></code>. This will give you a manual page, hence it’s name the man pages. The man pages are a great way to learn about unix commands, and you don’t have to navigate out of the terminal to use them. We have a whole chapter on how to read them if you find them confusing- so check out how to use the man pages! The man pages can often give you information about the commands options, that tell you how alter the behavior of these commands, but for simplicity, they aren’t included here.</p>
+<p>Another important concept to understand in the command line is redirection! Redirection commands allows you to manage input and output streams, which lets you to control where the input comes from and where the output goes. Here are some common redirection operators and their typical usages:</p>
 <ol class="arabic simple">
 <li><p><strong>Standard Output (stdout) Redirection (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>)</strong></p>
 <ul class="simple">
@@ -612,15 +616,10 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 <li><p>Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/not_a_real_directory</span> <span class="pre">2&gt;</span> <span class="pre">error.log</span></code> (redirects error output to <code class="docutils literal notranslate"><span class="pre">error.log</span></code>)</p></li>
 </ul>
 </li>
-<li><p><strong>Redirect Standard Output and Standard Error (<code class="docutils literal notranslate"><span class="pre">&amp;&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;&amp;</span></code>)</strong></p>
-<ul class="simple">
-<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&amp;&gt;</span> <span class="pre">output_and_error_file</span></code> or <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&gt;</span> <span class="pre">output_file</span> <span class="pre">2&gt;&amp;1</span></code></p></li>
-<li><p>Description: Redirects both standard output and standard error to a file.</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&amp;&gt;</span> <span class="pre">output_and_error.log</span></code> or <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/nonexistent_directory</span> <span class="pre">&gt;</span> <span class="pre">output_and_error.log</span> <span class="pre">2&gt;&amp;1</span></code></p></li>
-</ul>
-</li>
 </ol>
 <p>These redirection operators are powerful tools for manipulating input and output streams in shell scripts and commands. They allow you to capture output, suppress output, and manage errors effectively.</p>
+<p>Now that you have an overview of the how to use the commmand line, try it out yourself! Try exploring your file system, and navigating your computer by just typing some commands! If you need any help- remember, you can always check out the man pages.</p>
+<p>Happy Exploring!</p>
 </section>
 </section>
 
@@ -660,7 +659,7 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Beyond the Classroom: A Practical Guide to Software Engineering</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Beyond the Classroom: An Introduction</p>
       </div>
     </a>
     <a class="right-next"

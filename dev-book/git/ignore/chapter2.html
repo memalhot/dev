@@ -179,7 +179,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: An Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using the Command Line</span></p>
 <ul class="nav bd-sidenav">
@@ -194,13 +194,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Writing Squeaky Clean Code</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">6. Secure Coding Practices</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">6. Demystifying Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">7. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Manpages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">7. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">8. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -500,13 +504,6 @@ replay_pid*```
 # Distribution / packaging
 .Python
 build/
-develop-eggs/
-dist/
-downloads/
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
@@ -523,19 +520,6 @@ db.sqlite3-journal
 # Flask stuff:
 instance/
 .webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -568,6 +552,8 @@ venv/
 <section id="using-gitignores-with-api-keys">
 <h2><span class="section-number">4.2. </span>Using .gitignores with API keys<a class="headerlink" href="#using-gitignores-with-api-keys" title="Link to this heading">#</a></h2>
 <p>API keys should not be published to public repositories, so they are often stored in .env files. These .env files can be stored in a .gitignore by using a single line that just looks like</p>
+<p><code class="docutils literal notranslate"><span class="pre">.env</span></code></p>
+<p>This keeps you from commiting secret keys to the public, which is really important to not leak important information to public repositories!</p>
 </section>
 </section>
 
