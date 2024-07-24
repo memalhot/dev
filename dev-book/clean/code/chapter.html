@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Clean Code - The Secret to Happy Coding &#8212; Beyond the Classroom</title>
+    <title>5. Writing Squeaky Clean Code &#8212; Beyond the Classroom</title>
   
   
   
@@ -181,7 +181,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Adventures in the Command Line</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using the Command Line</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../cmd/line/chapter1.html">2. Adventures in the Command Line</a></li>
 </ul>
@@ -192,7 +192,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Clean Code - The Secret to Happy Coding</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Writing Squeaky Clean Code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
@@ -434,7 +434,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Clean Code - The Secret to Happy Coding</h1>
+    <h1>Writing Squeaky Clean Code</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -476,17 +476,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-numbers">5.7.3. Magic Numbers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refactoring">5.8. Refactoring</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-refactoring">5.8.1. Regular Refactoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">5.8. Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">5.8.1. Importance of Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-focus">5.8.2. Test Focus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-coverage">5.8.3. Test Coverage</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">5.9. Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">5.9.1. Importance of Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-focus">5.9.2. Test Focus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-coverage">5.9.3. Test Coverage</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.10. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.9. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -498,8 +494,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="clean-code-the-secret-to-happy-coding">
-<h1><span class="section-number">5. </span>Clean Code - The Secret to Happy Coding<a class="headerlink" href="#clean-code-the-secret-to-happy-coding" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="writing-squeaky-clean-code">
+<h1><span class="section-number">5. </span>Writing Squeaky Clean Code<a class="headerlink" href="#writing-squeaky-clean-code" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2><span class="section-number">5.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Welcome to the essential guide to clean coding standards. Writing clean code is not just about making your code work; it’s about making it understandable, maintainable, and efficient. This chapter will cover the core principles and practices that will help you write clean and professional code. New programmers are often exposed to the new skill of reading and debugging code that isn’t their own, and writing cleaner code helps developers work better together.</p>
@@ -555,20 +551,22 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">breed</span> <span class="o">=</span> <span class="n">breed</span>
     
     <span class="k">def</span> <span class="nf">introduce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">. I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old, and I am a </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">breed</span><span class="si">}</span><span class="s2">.&quot;</span> <span class="c1">#return a string</span>
+        <span class="c1">#return a string</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">. I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old, and I am a </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">breed</span><span class="si">}</span><span class="s2">.&quot;</span>
 
     <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1">#add one to age</span>
+        <span class="c1">#add one to age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span>
 
-<span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Whiskers&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;English Shorthair&quot;</span><span class="p">)</span>
+<span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Luna&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;English Shorthair&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">my_cat</span><span class="o">.</span><span class="n">introduce</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My name is Whiskers. I am 3 years old, and I am a English Shorthair.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My name is Luna. I am 3 years old, and I am a English Shorthair.
 </pre></div>
 </div>
 </div>
@@ -584,20 +582,20 @@ document.write(`
     
     <span class="c1">#introduce cat object so user knows the name of cat</span>
     <span class="k">def</span> <span class="nf">introduce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">. I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old, and I am a </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">breed</span><span class="si">}</span><span class="s2">.&quot;</span> <span class="c1">#return a string</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;My name is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">. I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old, and I am a </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">breed</span><span class="si">}</span><span class="s2">.&quot;</span>
 
-    <span class="c1">#age up the cat object by a year to show year change</span>
+    <span class="c1">#age up the cat object by a year to show birthday has passed</span>
     <span class="k">def</span> <span class="nf">age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">+</span> <span class="mi">1</span>
 
-<span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Whiskers&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Tabby&quot;</span><span class="p">)</span>
+<span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s2">&quot;Cookie&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Tabby&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">my_cat</span><span class="o">.</span><span class="n">introduce</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My name is Whiskers. I am 3 years old, and I am a Tabby.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>My name is Cookie. I am 3 years old, and I am a Tabby.
 </pre></div>
 </div>
 </div>
@@ -638,25 +636,18 @@ document.write(`
 <p>Source: <a class="reference external" href="https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/">https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/</a></p>
 </section>
 </section>
-<section id="refactoring">
-<h2><span class="section-number">5.8. </span>Refactoring<a class="headerlink" href="#refactoring" title="Link to this heading">#</a></h2>
-<section id="regular-refactoring">
-<h3><span class="section-number">5.8.1. </span>Regular Refactoring<a class="headerlink" href="#regular-refactoring" title="Link to this heading">#</a></h3>
-<p>Refactoring involves improving the structure and readability of your code without changing its behavior. Regularly refactor your code to remove redundancies, improve clarity, and optimize performance. This practice helps keep your codebase clean and maintainable over time.</p>
-</section>
-</section>
 <section id="testing">
-<h2><span class="section-number">5.9. </span>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8. </span>Testing<a class="headerlink" href="#testing" title="Link to this heading">#</a></h2>
 <section id="importance-of-testing">
-<h3><span class="section-number">5.9.1. </span>Importance of Testing<a class="headerlink" href="#importance-of-testing" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.8.1. </span>Importance of Testing<a class="headerlink" href="#importance-of-testing" title="Link to this heading">#</a></h3>
 <p>Testing is crucial for ensuring code reliability. Write unit tests to verify individual functions and integration tests to ensure that different parts of your system work together correctly. Automated tests can catch errors early, reducing the risk of bugs in production.</p>
 </section>
 <section id="test-focus">
-<h3><span class="section-number">5.9.2. </span>Test Focus<a class="headerlink" href="#test-focus" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.8.2. </span>Test Focus<a class="headerlink" href="#test-focus" title="Link to this heading">#</a></h3>
 <p>Some things to focus on when testing when dealing with inputs and outputs could be if data is  empty or null, invalid inputs, or outputs that are too large, too small, or have special characters. Try thinking like a user who often makes mistakes! Does double clicking on a button duplicate an entry in a database? If you do actions on your product not in the order they’re usually done, does it change the outcome? Try to break your code when you test!</p>
 </section>
 <section id="test-coverage">
-<h3><span class="section-number">5.9.3. </span>Test Coverage<a class="headerlink" href="#test-coverage" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.8.3. </span>Test Coverage<a class="headerlink" href="#test-coverage" title="Link to this heading">#</a></h3>
 <p>Aim for high test coverage, but prioritize critical paths and core functionalities. Comprehensive testing increases confidence in your code and simplifies future changes and refactoring.</p>
 <p>Here are some example tests for a Java class called BigInt, who’s job is to find the biggest integer in a list:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span> <span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
@@ -679,7 +670,7 @@ document.write(`
        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Test 4: should throw an IllegalArgumentException&quot;</span><span class="p">);</span> 
        <span class="k">try</span> <span class="p">{</span>
             <span class="nb">int</span><span class="p">[]</span> <span class="n">a3</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">}</span>
-           <span class="n">BigInt</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BigInt</span><span class="p">(</span><span class="n">a3</span><span class="p">);</span>
+            <span class="n">BigInt</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BigInt</span><span class="p">(</span><span class="n">a3</span><span class="p">);</span>
             <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Test failed.&quot;</span><span class="p">);</span>
        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IllegalArgumentException</span> <span class="n">e</span><span class="p">)</span> 
                    <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Test passed.&quot;</span><span class="p">);</span>
@@ -691,11 +682,13 @@ document.write(`
 </pre></div>
 </div>
 <p>You can see this tests focus on edge cases, yes your code’s main functionality should work, but what if the user inputs something that they aren’t supposed to? What if they input really large numbers, or really small numbers? What if they input the wrong data type? The tests above are only a short amount of tests that you might want to explore. Ensure the the tests have a large number of cases, and try to break your code! The best approach is to think like a user, or for an even better approach- a monkey with no idea what it’s doing. The best kind of code can be used by anyone!</p>
-<p>Pro Tip: Unit tests can also serve as documentation in some ways, looking at unit tests can help you understand what code is doing, and should evolve with</p>
+<div class="highlight-{Pro notranslate"><div class="highlight"><pre><span></span>Unit tests can also serve as documentation in some ways, looking at unit tests can help you understand what code someone else is doing, and should evolve with your code!
+</pre></div>
+</div>
 </section>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">5.10. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.9. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Clean code is the foundation of effective software development. By following these best practices and standards, you can write code that is not only functional but also readable, maintainable, and robust. Embrace these principles to improve your coding skills, and contribute to higher-quality software projects. Happy Coding!</p>
 </section>
 </section>
@@ -796,17 +789,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-numbers">5.7.3. Magic Numbers</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#refactoring">5.8. Refactoring</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-refactoring">5.8.1. Regular Refactoring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">5.8. Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">5.8.1. Importance of Testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-focus">5.8.2. Test Focus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-coverage">5.8.3. Test Coverage</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">5.9. Testing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">5.9.1. Importance of Testing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-focus">5.9.2. Test Focus</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-coverage">5.9.3. Test Coverage</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.10. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.9. Conclusion</a></li>
 </ul>
   </nav></div>
 

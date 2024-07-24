@@ -181,7 +181,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: A Practical Guide to Software Engineering</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Adventures in the Command Line</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using the Command Line</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Adventures in the Command Line</a></li>
 </ul>
@@ -192,7 +192,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Clean Code - The Secret to Happy Coding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Writing Squeaky Clean Code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
@@ -503,10 +503,124 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 <p>Type out <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">something.py</span></code>. The output ‘hello world’ should be on your terminal.</p>
 <p>We were able to write and execute a whole program on just our terminal! But it was a pretty simple program- what if we wanted to write something much bigger? There are a lot of text editors that can integrate with the terminal, like emacs and vim! Even IDEs like VsCode are integrated within the terminal.</p>
 <p>Let’s delete out work now.</p>
+<p>Type out <code class="docutils literal notranslate"><span class="pre">cd</span></code> and then <code class="docutils literal notranslate"><span class="pre">rmdir</span> <span class="pre">-r</span> <span class="pre">project</span></code>. The <code class="docutils literal notranslate"><span class="pre">rmdir</span> <span class="pre">-r</span></code>, rmdir stands for remove directory, and the -r stands for recursive, because rmdir usually acts on empty dictionaries. The -r flag allows things to be recursively deleted. Similarly, <code class="docutils literal notranslate"><span class="pre">rm</span></code> deletes files.</p>
 </section>
 </section>
 <section id="shell-command-basics">
 <h2><span class="section-number">2.2. </span>Shell Command Basics<a class="headerlink" href="#shell-command-basics" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>ls</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">[options]</span> <span class="pre">[directory]</span></code></p></li>
+<li><p>Description: Lists directory contents</p></li>
+</ul>
+</li>
+<li><p><strong>cd</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">[directory]</span></code></p></li>
+<li><p>Description: Changes the current directory</p></li>
+</ul>
+</li>
+<li><p><strong>pwd</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">pwd</span></code></p></li>
+<li><p>Description: Prints the current working directory</p></li>
+</ul>
+</li>
+<li><p><strong>mkdir</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[directory_name]</span></code></p></li>
+<li><p>Description: Creates a new directory.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">my_folder</span></code> (creates a directory named “my_folder”).</p></li>
+</ul>
+</li>
+<li><p><strong>rm</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">[options]</span> <span class="pre">[file(s)]</span></code></p></li>
+<li><p>Description: Removes (deletes) files or directories.</p></li>
+</ul>
+</li>
+<li><p><strong>cp</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">[options]</span> <span class="pre">[source]</span> <span class="pre">[destination]</span></code></p></li>
+<li><p>Description: Copies files or directories.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">file.txt</span> <span class="pre">new_location/</span></code> (copies “file.txt” to “new_location/”), <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">directory1</span> <span class="pre">directory2</span></code> (copies “directory1” and its contents recursively to “directory2”).</p></li>
+</ul>
+</li>
+<li><p><strong>mv</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">[options]</span> <span class="pre">[source]</span> <span class="pre">[destination]</span></code></p></li>
+<li><p>Description: Moves (or renames) files or directories.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">file.txt</span> <span class="pre">new_location/</span></code> (moves “file.txt” to “new_location/”), <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">old_name.txt</span> <span class="pre">new_name.txt</span></code> (renames “old_name.txt” to “new_name.txt”)</p></li>
+</ul>
+</li>
+<li><p><strong>touch</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">[file(s)]</span></code></p></li>
+<li><p>Description: Creates an empty file or updates the timestamp of an existing file</p></li>
+</ul>
+</li>
+<li><p><strong>echo</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">[options]</span> <span class="pre">[text]</span></code></p></li>
+<li><p>Description: Prints text or variables to the terminal</p></li>
+</ul>
+</li>
+<li><p><strong>cat</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">[file(s)]</span></code></p></li>
+<li><p>Description: Concatenates files and prints them to the standard output</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">file.txt</span></code> (displays the contents of “file.txt” in the terminal)</p></li>
+</ul>
+</li>
+</ol>
+<p>These are some of the fundamental shell commands used in Unix-like systems. But there are many more for you to try out and explore. Understanding the file system and paths are super important in computing, so try playing around with commands! If you want some more information about commands, or you just forget what a command does, you can type <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">&lt;command&gt;</span></code>. This will give you a manual page, hence it’s name the man pages. The man pages are a great way to learn about unix commands, and you don’t have to navigate out of the terminal to use them. We have a whole chapter on how to read them if you find them confusing- so check out how to use the man pages!</p>
+<p>Redirection in shell commands allows you to manage input and output streams, which lets you to control where the input comes from and where the output goes. Here are some common redirection operators and their typical usages:</p>
+<ol class="arabic simple">
+<li><p><strong>Standard Output (stdout) Redirection (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>)</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&gt;</span> <span class="pre">output_file</span></code></p></li>
+<li><p>Description: Redirects the standard output of a command to a file. If the file already exists, it will be overwritten.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">&gt;</span> <span class="pre">listing.txt</span></code> (redirects the output of <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span></code> command to a file named <code class="docutils literal notranslate"><span class="pre">listing.txt</span></code>)</p></li>
+</ul>
+</li>
+<li><p><strong>Append Output (<code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>)</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&gt;&gt;</span> <span class="pre">output_file</span></code></p></li>
+<li><p>Description: Appends the standard output of a command to a file. If the file does not exist, it will be created.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;Additional</span> <span class="pre">text&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">file.txt</span></code> (appends “Additional text” to <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>)</p></li>
+</ul>
+</li>
+<li><p><strong>Standard Input (stdin) Redirection (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>)</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&lt;</span> <span class="pre">input_file</span></code></p></li>
+<li><p>Description: Redirects the standard input of a command from a file instead of the keyboard.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">wc</span> <span class="pre">-l</span> <span class="pre">&lt;</span> <span class="pre">file.txt</span></code> (counts the number of lines in <code class="docutils literal notranslate"><span class="pre">file.txt</span></code>)</p></li>
+</ul>
+</li>
+<li><p><strong>Pipe (<code class="docutils literal notranslate"><span class="pre">|</span></code>)</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">command1</span> <span class="pre">|</span> <span class="pre">command2</span></code></p></li>
+<li><p>Description: Redirects the output of <code class="docutils literal notranslate"><span class="pre">command1</span></code> as input to <code class="docutils literal notranslate"><span class="pre">command2</span></code>.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">file.txt</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">&quot;pattern&quot;</span></code> (uses <code class="docutils literal notranslate"><span class="pre">cat</span></code> to output <code class="docutils literal notranslate"><span class="pre">file.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">grep</span></code> to search for “pattern” in the output)</p></li>
+</ul>
+</li>
+<li><p><strong>Redirect Standard Error (<code class="docutils literal notranslate"><span class="pre">2&gt;</span></code>)</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">2&gt;</span> <span class="pre">error_file</span></code></p></li>
+<li><p>Description: Redirects the standard error output of a command to a file.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/not_a_real_directory</span> <span class="pre">2&gt;</span> <span class="pre">error.log</span></code> (redirects error output to <code class="docutils literal notranslate"><span class="pre">error.log</span></code>)</p></li>
+</ul>
+</li>
+<li><p><strong>Redirect Standard Output and Standard Error (<code class="docutils literal notranslate"><span class="pre">&amp;&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&gt;&amp;</span></code>)</strong></p>
+<ul class="simple">
+<li><p>Usage: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&amp;&gt;</span> <span class="pre">output_and_error_file</span></code> or <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&gt;</span> <span class="pre">output_file</span> <span class="pre">2&gt;&amp;1</span></code></p></li>
+<li><p>Description: Redirects both standard output and standard error to a file.</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">&amp;&gt;</span> <span class="pre">output_and_error.log</span></code> or <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-l</span> <span class="pre">/nonexistent_directory</span> <span class="pre">&gt;</span> <span class="pre">output_and_error.log</span> <span class="pre">2&gt;&amp;1</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p>These redirection operators are powerful tools for manipulating input and output streams in shell scripts and commands. They allow you to capture output, suppress output, and manage errors effectively.</p>
 </section>
 </section>
 
