@@ -479,7 +479,7 @@ document.write(`
 <h1><span class="section-number">6. </span>Secure Coding Practices<a class="headerlink" href="#secure-coding-practices" title="Link to this heading">#</a></h1>
 <section id="getting-started">
 <h2><span class="section-number">6.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<p>Code can’t happen in a vacuum. More often than not, in the real world, you’ll be developing software that interacts with other applications, packages, and, importantly, human users. These interactions present inherent vulnerabilities, particularly if the code handles sensitive data. Take, for example, a payment app that collects customer credit card information. If the app leaves that information exposed to unknown third parties—some of whom could be bad actors, such as hackers—the customers could quickly become victims of theft or even fraud. Understandably, then, users anticipate and desire security when interacting with software. While it’s, ahem, foolhardy for a software developer to assume their code is impenetrable, they can follow secure coding practices throughout their development process to reduce the ways bad actors could misuse the program.</p>
+<p>Code doesn’t happen in a vacuum. In the real world, you’ll be developing software that interacts with other applications, packages, and, importantly, human users. These interactions have inherent vulnerabilities, particularly if the code handles sensitive data. Think about, for example, a payment app that collects customer credit card information. If the app leaves that information exposed to unknown third parties—some of whom could be bad actors, such as hackers—the customers could quickly become victims of theft or even fraud. Understandably, then, users anticipate and desire security when interacting with software. Most code is not impenetrable, but you can follow secure coding practices throughout the development process to reduce the ways bad actors could misuse the program.</p>
 </section>
 <section id="so-what-even-are-secure-coding-practices">
 <h2><span class="section-number">6.2. </span>So what even are secure coding practices?<a class="headerlink" href="#so-what-even-are-secure-coding-practices" title="Link to this heading">#</a></h2>
@@ -487,21 +487,57 @@ document.write(`
 </section>
 <section id="security-by-design">
 <h2><span class="section-number">6.3. </span>Security By Design<a class="headerlink" href="#security-by-design" title="Link to this heading">#</a></h2>
-<p>This first one might seem obvious, or even like—uh oh—circular logic: “Secure your code by securing its design! Make good choices by choosing good choices! Boil water by boiling water!” But as we noted before, prioritizing security throughout the entirety of the design process is integral to minimizing security vulnerabilities. Moreover, security is usually not the only priority for developers, especially in commercial settings. Short-term priorities like speed, efficiency, and scalability are sometimes at odds with and can eclipse security. However, time and time again, we see that “security by design” pays off in the long run with fewer risks of exploitation and damage by bad actors. So as you develop your software, analyze your source code and create proper security automation to detect cyberthreats.</p>
+<p>This first one might seem obvious, or even like—uh oh—circular logic: “Secure your code by securing its design! Make good choices by choosing good choices! Boil water by boiling water!” But as noted before, prioritizing security throughout the entirety of the design process is integral to minimizing security vulnerabilities. This can look like a lot of things: thinking about edge cases in design or santizing inputs is part of secure coding! Though security is usually not the only priority for developers, because it may seem like short-term priorities like speed, efficiency, and scalability are sometimes at odds with security. However, time and time again, we see that “security by design” pays off in the long run with fewer risks of exploitation and damage by bad actors. So as you develop your software, analyze your source code and create proper security automation to detect cyberthreats.</p>
 </section>
 <section id="input-validation-and-output-encoding">
 <h2><span class="section-number">6.4. </span>Input Validation and Output Encoding<a class="headerlink" href="#input-validation-and-output-encoding" title="Link to this heading">#</a></h2>
 <p>We’re combining these two practices, which basically say the same thing: know thy data. On a trusted system (this means server side), identify everything you can about the program’s input data and sources through a centralized process, and when in doubt, validate it! Classify all input sources as trusted or untrusted, and validate untrusted sources. Likewise, validate the range, length, and character sets (ex: UTF-8) of input data, and add additional security protocols and discrete checks for the suspicious stuff, a.k.a. unidentifiable data. Lastly, canonicalization can be a helpful tool for addressing obfuscation attacks.</p>
 <p>Now, for the output side. Once again, through a trusted system (server side), encode your output using standard, tested routines using specified character sets, and sanitize all untrusted data for queries and operating system commands.</p>
+<p>In 2018, Daniel Lemire found a way to validate UTF-8 strings using 5 lines of C++ code, shown below. If you wanna read more about his research, check it out here: <a class="reference external" href="https://lemire.me/blog/2020/10/20/ridiculously-fast-unicode-utf-8-validation/">https://lemire.me/blog/2020/10/20/ridiculously-fast-unicode-utf-8-validation/</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simd8</span> <span class="n">classify</span><span class="p">(</span><span class="n">simd8</span> <span class="nb">input</span><span class="p">,</span> <span class="n">simd8</span> <span class="n">previous_input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">auto</span> <span class="n">prev1</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">prev</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">previous_input</span><span class="p">);</span>
+  <span class="n">auto</span> <span class="n">byte_1_high</span> <span class="o">=</span> <span class="n">prev1</span><span class="o">.</span><span class="n">shift_right</span> <span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">()</span><span class="o">.</span><span class="n">lookup_16</span><span class="p">(</span><span class="n">table1</span><span class="p">);</span>
+  <span class="n">auto</span> <span class="n">byte_1_low</span> <span class="o">=</span> <span class="p">(</span><span class="n">prev1</span> <span class="o">&amp;</span> <span class="mh">0x0F</span><span class="p">)</span><span class="o">.</span><span class="n">lookup_16</span><span class="p">(</span><span class="n">table2</span><span class="p">);</span>
+  <span class="n">auto</span> <span class="n">byte_2_high</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shift_right</span> <span class="o">&lt;</span><span class="mi">4</span><span class="o">&gt;</span><span class="p">()</span><span class="o">.</span><span class="n">lookup_16</span><span class="p">(</span><span class="n">table3</span><span class="p">);</span> 
+  <span class="k">return</span> <span class="p">(</span><span class="n">byte_1_high</span> <span class="o">&amp;</span> <span class="n">byte_1_low</span> <span class="o">&amp;</span> <span class="n">byte_2_high</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
 <section id="passwords-and-authentication">
 <h2><span class="section-number">6.5. </span>Passwords and Authentication<a class="headerlink" href="#passwords-and-authentication" title="Link to this heading">#</a></h2>
 <p>Ya know, ***********
-Passwords and authentication. We’ve all been there. You know, when you’re making an online account for something, and you have to create a password with at least eight characters, including a number, and a capital letter, and a special character, and the secret to the universe (the answer is 42). And then you have to re-enter the password to prove that you have dextrous thumbs and a better memory than a goldfish, but at least one of those two facts is false about you, so you have to erase and retype your password because you don’t know where you messed up because all you can see are asterisks or those weird dots . And this process steals only about two minutes, if that, from your precious life, but you still can’t help but think: remember the good old days of passwords when ‘password’ would suffice? Or better yet, 1234?</p>
+Passwords and authentication. We’ve all been there. You know, when you’re making an online account for something, and you have to create a password with at least eight characters, including a number, and a capital letter, and a special character, and the secret to the universe (the answer is 42). And then you have to re-enter the password to prove that you have dextrous thumbs and a better memory than a goldfish, so you have to erase and retype your password because you don’t know where you messed up because all you can see are asterisks or those weird dots… And this process feels like it takes forever, but you still can’t help but think: remember the good old days of passwords when ‘password’ would suffice? Or better yet, 1234?</p>
 <p>Ah, yes. Well. Security practices improve. Life goes on. C’est la vie.</p>
-<p>But in all seriousness, password protection and authentication are a large component of secure coding practices. We love passwords and authentication here. In fact… give me a P! Give me an A! Give me an S—no, we’re not doing that? Yeah, okay. Fair enough. I’m surprised you let me get that far. Anywho, here’s a rundown of the tips and tricks you need for securely designed password management and authentication controls:</p>
+<p>But in all seriousness, password protection and authentication are a large component of secure coding practices. We love passwords and authentication here. In fact… give me a P! Give me an A! Give me an S—no, we’re not doing that? Yeah, okay. Fair enough. Anywho, here’s a rundown of the tips and tricks you need for securely designed password management and authentication controls:</p>
 <p>When in doubt, use a standardized and tested authentication protocol—like a password—for users to access a web page unless that page is meant to be fully accessible to the public, and develop that protocol on a trusted (read: server side) system.</p>
 <p>For passwords, set adequate standards of complexity and length (hint: 1234 isn’t good enough). Obscure the password for users as they type it, and, yes, have users confirm their password. Use proper hashing and cryptography—strong, one-way salted hashes—when storing password information server side, and make sure authentication information is securely stored. Moreover, don’t let users reuse the same password particularly if they are doing a password reset, and if they reset their password, alert the user of that reset. Also, set a standard threshold for the number of attempts a user can enter an incorrect password before disabling the account. Don’t let users change their password for at least one day after they create their account. And if you send new users temporary passwords, ensure the password has a short expiration time, and force users to change the password during their first login. If a user must perform a critical operation in their account, have them re-authenticate themselves by password or some other means. Lastly, passwords are not enough for highly sensitive or transactional accounts. Use multi-factor authentication for returning users.</p>
+<p>Here’s an example of a code snippet that salts a password in Python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;mysecretpassword&quot;</span>
+<span class="c1"># Generate a random salt</span>
+<span class="n">salt</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="c1"># Create a SHA-256 hash object</span>
+<span class="n">hash_object</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">()</span>
+<span class="c1"># Add the salt to the password and hash it</span>
+<span class="n">hash_object</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">salt</span> <span class="o">+</span> <span class="n">password</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+<span class="c1"># Get the hex digest of the hash</span>
+<span class="n">hash_password</span> <span class="o">=</span> <span class="n">hash_object</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hash_password</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>182dec578506b3f4e0a05f3bdecc06c09c421ba33569a41c7a7dd3a4b6573481
+</pre></div>
+</div>
+</div>
+</div>
+<p>Code source: <a class="reference external" href="https://pagorun.medium.com/password-encryption-in-python-securing-your-data-9e0045e039e1">https://pagorun.medium.com/password-encryption-in-python-securing-your-data-9e0045e039e1</a></p>
 </section>
 <section id="session-management">
 <h2><span class="section-number">6.6. </span>Session Management<a class="headerlink" href="#session-management" title="Link to this heading">#</a></h2>
@@ -514,12 +550,37 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 </section>
 <section id="cryptographic-practices">
 <h2><span class="section-number">6.8. </span>Cryptographic Practices<a class="headerlink" href="#cryptographic-practices" title="Link to this heading">#</a></h2>
-<p>Cryptography, you know, the funky symbols you see when a hacker gets into the mainframe in any tv show/movie since 1982 (that year is purely a guess). Essentially, use cryptography to protect any sensitive information from users, and implement all cryptographic practice on a trusted system. Use cryptographically-based randomized number generators to generate random numbers and strings. And manage your cryptographic keys under a secure, standardized process and policies.</p>
+<p>Cryptography, you know, the funky symbols you see when a hacker gets into the mainframe in any tv show/movie since THE 80s. Essentially, use cryptography to protect any sensitive information from users, and implement all cryptographic practice on a trusted system. Use cryptographically-based randomized number generators to generate random numbers and strings. And manage your cryptographic keys under a secure, standardized process and policies.</p>
+<p>This is an example of encryption in Python:</p>
+<p>Source: <a class="reference external" href="https://cryptography.io/en/latest/">https://cryptography.io/en/latest/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cryptography.fernet</span> <span class="kn">import</span> <span class="n">Fernet</span>
+
+<span class="c1"># Put this somewhere safe! (Not very secure for the security chapter, huh...)</span>
+<span class="n">key</span> <span class="o">=</span> <span class="n">Fernet</span><span class="o">.</span><span class="n">generate_key</span><span class="p">()</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">Fernet</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;A really secret message. Not for prying eyes.&quot;</span><span class="p">)</span>
+<span class="n">token</span>
+<span class="sa">b</span><span class="s1">&#39;...&#39;</span>
+<span class="n">f</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="sa">b</span><span class="s1">&#39;A really secret message. Not for prying eyes.&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;A really secret message. Not for prying eyes.&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="error-handling-and-logging">
 <h2><span class="section-number">6.9. </span>Error Handling and Logging<a class="headerlink" href="#error-handling-and-logging" title="Link to this heading">#</a></h2>
 <p>Errors. They’re inevitable in life, especially in software development, the most life-y-ist life activity of them all. As you might have heard before, the best way to deal with software errors is to handle and log them. But error handling and logging can introduce new vulnerabilities in addition to any bugs that might already exist in the code. So we must—you guessed it—handle and log errors securely. How do we securely handle and log errors? Well, I’m so glad you asked!</p>
 <p>Firstly, when in doubt, log it. Log all errors, exceptions, failures, and potential tampering events. And write and manage these through cryptographic hashing. When responding to errors, do so through a trusted system, and do not reveal or store any sensitive information, including session details, identifiers, account information, and debugging and stack-trace information. Lastly, when there is an error, free all allocated memory from that error.</p>
+<p>Here’s an example of a log file for a web server:</p>
+<p><img alt="image.png" src="../../_images/log.png" /></p>
 </section>
 <section id="data-protection">
 <h2><span class="section-number">6.10. </span>Data protection<a class="headerlink" href="#data-protection" title="Link to this heading">#</a></h2>
@@ -531,8 +592,7 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 </section>
 <section id="system-configuration">
 <h2><span class="section-number">6.12. </span>System Configuration<a class="headerlink" href="#system-configuration" title="Link to this heading">#</a></h2>
-<p>System configurations. The nuts and bolts of a system. Figuratively, or should I say, configuratively. But in all seriousness, we’re talking about software here, not hardware. Can you imagine handling an actual bolt? It boggles the mind!</p>
-<p>Moving on.</p>
+<p>System configurations. The nuts and bolts of a system. Figuratively, or should I say, configuratively. But in all seriousness, we’re talking about software here, not hardware.</p>
 <p>For all software systems, make sure the servers, frameworks, and other components of the system are running on their latest approved versions, and be sure to patch up any vulnerabilities and bugs you can find in these versions. Remove all unnecessary functionality and files, including test code. Define the HTTP methods the system will use (GET or POST) and how the system will use them, and keep the usage of and transference of sensitive information via HTTP to a minimum. Lastly, manage all components and record any changes made to the system configurations.</p>
 </section>
 <section id="database-security">
@@ -543,6 +603,8 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 <section id="file-management">
 <h2><span class="section-number">6.14. </span>File management<a class="headerlink" href="#file-management" title="Link to this heading">#</a></h2>
 <p>Sometimes, you’ll need files from users. When that happens, there are some ways to manage those files securely. Firstly, limit the amount of files necessary for upload, as well as the types of files allowed for upload (for example: PDF). Use file headers to validate those uploaded files. Turn off execution privileges in the directories where you store uploaded files, and never reveal the absolute file paths of those uploaded files to users. And of course, scan all uploaded files for viruses and malware.</p>
+<p><img alt="image.png" src="../../_images/file.png" /></p>
+<p>Source: <a class="reference external" href="https://www.nextlabs.com/blog-the-importance-of-file-security-explained/">https://www.nextlabs.com/blog-the-importance-of-file-security-explained/</a></p>
 </section>
 <section id="memory-management">
 <h2><span class="section-number">6.15. </span>Memory management<a class="headerlink" href="#memory-management" title="Link to this heading">#</a></h2>
@@ -551,21 +613,7 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 </section>
 <section id="the-finale-wrapping-up-and-other-resources">
 <h2><span class="section-number">6.16. </span>The Finale (Wrapping Up and Other Resources)<a class="headerlink" href="#the-finale-wrapping-up-and-other-resources" title="Link to this heading">#</a></h2>
-<p>All right, folks. That’s a wrap! We’ve covered 13 points of secure coding practices to help you protect your software:
-Security by design
-Input validation and output encoding
-Passwords and authentication
-Session management
-Access control
-Cryptographic practices
-Error handling and logging
-Data protection
-Communication security
-System configuration
-Database security
-File management
-Memory management</p>
-<p>While this is a start, there is still so much more to the wonderful world of secure coding practices! This article was based off of OWASP’s Secure Coding Checklist, which can give you more detailed information on these thirteen practices. Additionally, check out the OWASP Developer Guide for an even more complete look at security and coding.</p>
+<p>All right, folks. That’s a wrap! We’ve covered 13 points of secure coding practices to help you protect your software. While this is a start, there is still so much more to the wonderful world of secure coding practices! This article was based off of OWASP’s Secure Coding Checklist, which can give you more detailed information on these thirteen practices. Additionally, check out the OWASP Developer Guide for an even more complete look at security and coding.</p>
 <p>Happy coding, and stay snazzy!</p>
 </section>
 </section>
