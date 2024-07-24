@@ -202,7 +202,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">7. Demystifying Regex</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Manpages</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">8. Reading the Man Pages</a></li>
 </ul>
@@ -526,9 +526,9 @@ First make sure git is downloaded onto your device: <a class="reference external
 <p>Commit messages ues -m to attribute a commit message to each commit, a message that explains how you changed your code and why. These messages are important because they provide a lot of necessary context when looking at development history. Knowing what’s going on at different points of time in your code can be important if you need to revert back to different versions or if you’re collaborating and you want to understand what your team is doing. That’s why it’s important to right commit messages that are clear and descriptive. We will have a chapter on writing good commit messages in another chapter.</p>
 <p><img alt="image.png" src="../../_images/git3.png" /></p>
 <p>Source: <a class="reference external" href="https://cbea.ms/git-commit/">https://cbea.ms/git-commit/</a></p>
-<p>And finally- when you want to move your source code to github, you use the command</p>
 <p>An example of what to avoid ;)
 image credit:</p>
+<p>And finally- when you want to move your source code to github, you use the command</p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p>
 <p>Another important part of github is that it allows you to work collaboratively, which is often done through branching and merging. Git branching is a feature that allows developers to diverge from the main line of development and continue work on parallel tracks. Each branch represents an independent line of development, allowing multiple developers to work on different features simultaneously without interfering with each other’s code. Branches are usually merged into the main branch of development, usually called the main branch. Branches, as mentioned before, can be new features or for bug fixes, and are merged into the main branch.</p>
 <p>To create a branch, you use the command</p>
@@ -541,9 +541,11 @@ image credit:</p>
 <p>To check what branch you’re on, use the command:</p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span></code></p>
 <p>Once you’re done working on your branch, you usually want to merge back into the main branch, or into another branch. To do this run</p>
-<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">bugfix</span>&#160;&#160; <span class="pre">#switching</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">branch</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">bug</span> <span class="pre">fix</span></code>
-<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">main</span>&#160;&#160;&#160;&#160;&#160; <span class="pre">#merge</span> <span class="pre">bugfix</span> <span class="pre">into</span> <span class="pre">main</span></code></p>
-<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="n">bugfix</span>   <span class="c1">#switching to the branch with the bug fix</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">main</span>      <span class="c1">#merge bugfix into main</span>
+</pre></div>
+</div>
+<p>OR</p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">bugfix</span> <span class="pre">main</span></code></p>
 <p>This will merge bugfix into main. Make sure you’re on the right branch when you’re merging! In some cases, you’re merge will happen seamlessly, but what if you are merging two branches that conflict? For example, what if two developers both create a python function that does two of the same thing, implemented in different ways. Another example of what may cause a conflict is if one developer deletes a file that another developer is editing. This conflict that arises during merges called a <strong>merge conflict</strong>. Merge conflicts can be resolved manually by the developer, deciding what implentation they feel is best for the project. Once they are resolved, the developer can commit the merge in the same way they would a code deletion/addition.</p>
 <p>Now that we understand merging and branches, let’s look at some more git commands! Let’s start with git clone.</p>
