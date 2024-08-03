@@ -189,22 +189,23 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter1.html">3. Let’s Git Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter2.html">4. Using a .gitignore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter3.html">5. Writing Commit Messages</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Writing Squeaky Clean Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">6. Writing Squeaky Clean Code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">6. Secure Coding Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">7. Secure Coding Practices</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">7. Demystifying Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">8. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">8. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">9. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -453,6 +454,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-command-basics">2.2. Shell Command Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.3. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -484,7 +486,7 @@ document.write(`
 <li><p><strong>System Administration</strong>: System administrators frequently use terminals for managing servers and performing administrative tasks efficiently, especially in headless (no graphical interface) server environments.</p></li>
 <li><p><strong>Customization</strong>: Users can customize their terminal environment with different colors, fonts, and shortcuts to enhance usability and productivity. Or just make things pretty :wink:</p></li>
 </ol>
-<p>Terminals provide a really flexible and powerful way to interact with a computer system, especially for tasks that require precise control, automation, and text-based interaction. So let’s go through some of the ways you can interact with your terminal!</p>
+<p>Terminals provide a really flexible and powerful way to interact with a computer system, especially for tasks that require precise control or automation. So let’s go through some of the ways you can interact with your terminal!</p>
 <p><img alt="image.png" src="../../_images/redhatterminal.png" /></p>
 <p>Here’s a stylized version of a terminal</p>
 <p>Source: <a class="reference external" href="https://www.unixsysadmin.com/rhel-9-resources/">https://www.unixsysadmin.com/rhel-9-resources/</a></p>
@@ -496,11 +498,11 @@ document.write(`
 But, the <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> command doesn’t take you into the folder, it just creates one.</p>
 <p>To enter the folder type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">project</span></code>. The <code class="docutils literal notranslate"><span class="pre">cd</span></code> command takes you into the the directory you want to be working in, the command is short for change directory. It takes an argument of the folder you want to move into, so if you want to cd into a folder named ‘kittens’, you would write <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">kittens</span></code>.</p>
 <p>To make sure we’re in the right directory, we can type <code class="docutils literal notranslate"><span class="pre">pwd</span></code> which stands for print working directory, which let’s you know what directory you’re working in.</p>
-<p>Now let’s write some code! (This part only works if you have python on your computer)</p>
+<p>Now let’s write some code! (This part only works if you have python downloaded on your local system)</p>
 <p>First we’ll make a file to write our code in, to do this, type <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">exercise.py</span></code>. The <code class="docutils literal notranslate"><span class="pre">touch</span></code> command creates a new file.</p>
-<p>Now to put some code in the file, try this command: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;print('hello</span> <span class="pre">world')&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">exercise.py</span></code></p>
+<p>Now to put some code in the file, try this command: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;#!usr/bin/env</span> <span class="pre">python&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">exercise.py</span></code> <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;print('hello</span> <span class="pre">world')&quot;</span> <span class="pre">&gt;&gt;</span> <span class="pre">exercise.py</span></code></p>
 <ul class="simple">
-<li><p>Let’s break this whole command down, because it’s actually a combination of commands! The first is the echo command. The echo is a command similar to print, that allows users to display lines of text or strings that are passed as arguments. The command after this, what might look like arrows, are called redirection, which has to do with input and output, you can think of the double arrows as moving some data into the file <code class="docutils literal notranslate"><span class="pre">exercise.py</span></code>. We’ll go over more of redirection later!</p></li>
+<li><p>Let’s break these commands down, because it’s actually a combination of commands! The first is the echo command. The echo is a command similar to print, that allows users to display lines of text or strings that are passed as arguments. The <code class="docutils literal notranslate"><span class="pre">usr/bin/env</span> <span class="pre">python</span></code> tells our system where python is in, so you can execute python code. The command after this, what might look like arrows, are called redirection, which has to do with input and output, you can think of the double arrows as moving some data into the file <code class="docutils literal notranslate"><span class="pre">exercise.py</span></code>. We’ll go over more of redirection later!</p></li>
 </ul>
 <p>Our next step is to make it executable, so type <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">exercise.py</span></code>. <code class="docutils literal notranslate"><span class="pre">chmod</span></code> stands for change mode, because every file on your computer has a set of actions users are allowed to do on that file. If someone is developing a tool, they would have very different permissions to someone who’s just trying to read the file, so these permissions can have very important security implications!</p>
 <p>Now let’s execute some code!</p>
@@ -535,7 +537,7 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 <ul class="simple">
 <li><p>Usage: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">[directory_name]</span></code></p></li>
 <li><p>Description: Creates a new directory.</p></li>
-<li><p>Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">my_folder</span></code> (creates a directory named “my_folder”).</p></li>
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">my_folder</span></code> (creates a directory named “my_folder”)</p></li>
 </ul>
 </li>
 <li><p><strong>rm</strong></p>
@@ -618,6 +620,9 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 </li>
 </ol>
 <p>These redirection operators are powerful tools for manipulating input and output streams in shell scripts and commands. They allow you to capture output, suppress output, and manage errors effectively.</p>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">2.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Now that you have an overview of the how to use the commmand line, try it out yourself! Try exploring your file system, and navigating your computer by just typing some commands! If you need any help- remember, you can always check out the man pages.</p>
 <p>Happy Exploring!</p>
 </section>
@@ -692,6 +697,7 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-command-basics">2.2. Shell Command Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.3. Conclusion</a></li>
 </ul>
   </nav></div>
 

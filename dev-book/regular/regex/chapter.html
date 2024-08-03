@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>7. Demystifying Regex &#8212; Beyond the Classroom</title>
+    <title>8. Demystifying Regex &#8212; Beyond the Classroom</title>
   
   
   
@@ -61,8 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'regular/regex/chapter';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8. Reading the Man Pages" href="../../man/page/read.html" />
-    <link rel="prev" title="6. Secure Coding Practices" href="../../secure/code/chapter.html" />
+    <link rel="next" title="9. Reading the Man Pages" href="../../man/page/read.html" />
+    <link rel="prev" title="7. Secure Coding Practices" href="../../secure/code/chapter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,22 +189,23 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter1.html">3. Let’s Git Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter2.html">4. Using a .gitignore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter3.html">5. Writing Commit Messages</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Writing Squeaky Clean Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">6. Writing Squeaky Clean Code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">6. Secure Coding Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">7. Secure Coding Practices</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Demystifying Regex</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">8. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">9. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -448,7 +449,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.1. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.1. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -461,11 +462,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="demystifying-regex">
-<h1><span class="section-number">7. </span>Demystifying Regex<a class="headerlink" href="#demystifying-regex" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Demystifying Regex<a class="headerlink" href="#demystifying-regex" title="Link to this heading">#</a></h1>
 <p>Regular expressions, often also refered to as regex or regexp, are tools many progrmmers use for pattern matching and text manipulation. They provide a concise and flexible syntax for describing complex patterns within strings of text. They can be scary to look at first, but once you understand them, they can be a powerful tool. They’re often used for things like email validation or to search for particular things with tools like grep.
 Here’s an example with how emails can be constructed with regex.</p>
 <p><img alt="image.png" src="../../_images/regex.png" /></p>
 <p>Source: <a class="reference external" href="https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/">https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/</a></p>
+<p>##Code Examples</p>
 <p>Here’s how that would look in python after importing the built-in package, re:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -483,7 +485,7 @@ Here’s an example with how emails can be constructed with regex.</p>
 <span class="c1">#sample text containing email addresses</span>
 <span class="n">sample_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Hello, my email address is john.doe@example.com.</span>
-<span class="s2">You can also reach me at jane@example.co.uk.</span>
+<span class="s2">You can also reach me at janelovescats@example.co.uk.</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="c1">#extract email addresses from the sample text</span>
@@ -497,7 +499,7 @@ Here’s an example with how emails can be constructed with regex.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>john.doe@example.com
-jane@example.co.uk
+janelovescats@example.co.uk
 </pre></div>
 </div>
 </div>
@@ -656,20 +658,28 @@ foreach my $email (@emails) {
 <ol class="arabic simple" start="6">
 <li><p><strong>Grouping and Capturing</strong>: Parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> are used to group characters or subpatterns together. Groups can be quantified as a whole and can be referred to later in the regular expression or during text replacement operations.</p></li>
 </ol>
-<p>INSERT EXAMPLES HERE</p>
+<p>An example would be:</p>
+<ul class="simple">
+<li><p>(dog|cat)lover would match with doglover or catlover</p></li>
+</ul>
 <ol class="arabic simple" start="7">
 <li><p><strong>Escaping</strong>: Some characters have special meanings in regular expressions and need to be escaped if you want to match them literally. For example, if you want to match a literal dot <code class="docutils literal notranslate"><span class="pre">.</span></code>, you need to escape it as <code class="docutils literal notranslate"><span class="pre">\.</span></code>.</p></li>
 </ol>
-<p>INSERT EXAMPLES HERE</p>
+<p>An example would be:</p>
+<ul class="simple">
+<li><p>[A-Z]{3} [\d.,]+|[\d.,]+ [A-Z]{3}</p></li>
+</ul>
+<p>This uses escaping on the d to match a currency and an amount, like USD 800.23</p>
 <section id="conclusion">
-<h2><span class="section-number">7.1. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>You can bu</p>
+<h2><span class="section-number">8.1. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Regex’s versatility ranges from validating input to extracting specific data from large datasets, which can be hugely important in computing, which is a science that is always dealing with data! Here are a couple of sites that you can use to help strengthen your understanding and use of regex!</p>
 <p>Want some more example regexes? Check these out:
 <a class="reference external" href="https://support.google.com/a/answer/1371417?hl=en">https://support.google.com/a/answer/1371417?hl=en</a>
 <a class="reference external" href="https://regexr.com/">https://regexr.com/</a></p>
 <p>Want to build and test your regex? Here are some great places to do so:
 <a class="reference external" href="https://regex101.com/">https://regex101.com/</a>
 <a class="reference external" href="https://regexr.com/">https://regexr.com/</a></p>
+<p>Happy Coding!</p>
 </section>
 </section>
 
@@ -709,7 +719,7 @@ foreach my $email (@emails) {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Secure Coding Practices</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Secure Coding Practices</p>
       </div>
     </a>
     <a class="right-next"
@@ -717,7 +727,7 @@ foreach my $email (@emails) {
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Reading the Man Pages</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Reading the Man Pages</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -737,7 +747,7 @@ foreach my $email (@emails) {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.1. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.1. Conclusion</a></li>
 </ul>
   </nav></div>
 

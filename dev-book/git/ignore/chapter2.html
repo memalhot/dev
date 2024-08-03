@@ -61,7 +61,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'git/ignore/chapter2';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5. Writing Squeaky Clean Code" href="../../clean/code/chapter.html" />
+    <link rel="next" title="5. Writing Commit Messages" href="chapter3.html" />
     <link rel="prev" title="3. Let’s Git Started" href="chapter1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,22 +189,23 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">3. Let’s Git Started</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Using a .gitignore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">5. Writing Commit Messages</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">5. Writing Squeaky Clean Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">6. Writing Squeaky Clean Code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">6. Secure Coding Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">7. Secure Coding Practices</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">7. Demystifying Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">8. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">8. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">9. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -450,6 +451,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignores-with-api-keys">4.2. Using .gitignores with API keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.3. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -553,7 +555,33 @@ venv/
 <h2><span class="section-number">4.2. </span>Using .gitignores with API keys<a class="headerlink" href="#using-gitignores-with-api-keys" title="Link to this heading">#</a></h2>
 <p>API keys should not be published to public repositories, so they are often stored in .env files. These .env files can be stored in a .gitignore by using a single line that just looks like</p>
 <p><code class="docutils literal notranslate"><span class="pre">.env</span></code></p>
-<p>This keeps you from commiting secret keys to the public, which is really important to not leak important information to public repositories!</p>
+<p>This keeps you from commiting secret keys to the public, which is really important to not leak important information to public repositories! Here’s an example to help visualize the process:</p>
+<p>.env file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DATABASE_URL</span><span class="o">=</span><span class="n">postgres</span><span class="p">:</span><span class="o">//</span><span class="n">user</span><span class="p">:</span><span class="n">password</span><span class="nd">@localhost</span><span class="o">/</span><span class="n">dbname</span>
+<span class="n">SECRET_KEY</span><span class="o">=</span><span class="n">mysecretkey</span>
+</pre></div>
+</div>
+<p>And using the python package python-dotenv:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1">#load environment variables from .env file we made</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1">#access environment variables</span>
+<span class="n">database_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DATABASE_URL&#39;</span><span class="p">)</span>
+<span class="n">secret_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;SECRET_KEY&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Database URL: </span><span class="si">{</span><span class="n">database_url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Secret Key: </span><span class="si">{</span><span class="n">secret_key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">4.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Now that you have an idea of how to use a .gitignore, you can ensure safety while using APIs, and keep your github repos clean!</p>
+<p>Happy Coding!</p>
 </section>
 </section>
 
@@ -597,11 +625,11 @@ venv/
       </div>
     </a>
     <a class="right-next"
-       href="../../clean/code/chapter.html"
+       href="chapter3.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Writing Squeaky Clean Code</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Writing Commit Messages</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -623,6 +651,7 @@ venv/
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-gitignores-with-api-keys">4.2. Using .gitignores with API keys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.3. Conclusion</a></li>
 </ul>
   </nav></div>
 
