@@ -461,10 +461,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.10. Error Handling and Logging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-protection">7.11. Data protection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-security">7.12. Communication security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-security">7.13. Database security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">7.14. File management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.15. Memory management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.16. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">7.13. File management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.14. Memory management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.15. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -544,12 +543,12 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 </section>
 <section id="session-management">
 <h2><span class="section-number">7.7. </span>Session Management<a class="headerlink" href="#session-management" title="Link to this heading">#</a></h2>
-<p>Any time a user logs into their account, they have begun a “session.” Developers must manage their software’s session controls, or chaos shall reign. A few guidelines:</p>
-<p>Firstly, manage and identify these sessions on your own server or framework, and if a user tries to begin a session outside of that framework, treat their session as invalid. Use a randomized algorithm to control sessions and manage users. Establish at least one new session with each login, and maintain HTTPS connection (as opposed to HTTP) throughout the session. Do not allow the same user to log in concurrently. And when a user logs out, the session should completely terminate.</p>
+<p>Any time a user logs into their account, they have begun a “session.” Developers must manage their software’s session controls, or it can get a little chaotic. Here are a few guidelines:</p>
+<p>Firstly, manage and identify these sessions on your own server or framework, and if a user tries to begin a session outside of that framework, treat their session as invalid. Use a randomized algorithm to control sessions and manage users. Establish at least one new session with each login, and maintain HTTPS connection (as opposed to HTTP) throughout the session. Do not allow the same user to log in concurrently. And when a user logs out, the session should completely end.</p>
 </section>
 <section id="access-control">
 <h2><span class="section-number">7.8. </span>Access Control<a class="headerlink" href="#access-control" title="Link to this heading">#</a></h2>
-<p>Two words: default deny. When in doubt, assume that whatever information a user is trying to access is, ahem, above their pay grade, and limit their access as such. Only allow authenticated users to access any non-public information. And if the application cannot access its secure configuration information, do not allow any users to access the application. Finally, ensure the application’s access controls comply with all business rules and flows while still protecting against potential attacks.</p>
+<p>Two words: default deny. When in doubt, assume that users are tyring to get information outside of their scope and limit their access when needed. Only allow authenticated users to access any non-public information. And if the application cannot access its secure configuration information, do not allow any users to access the application. Finally, ensure the application’s access controls comply with all business rules and flows while still protecting against potential attacks.</p>
 </section>
 <section id="cryptographic-practices">
 <h2><span class="section-number">7.9. </span>Cryptographic Practices<a class="headerlink" href="#cryptographic-practices" title="Link to this heading">#</a></h2>
@@ -581,7 +580,7 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 <section id="error-handling-and-logging">
 <h2><span class="section-number">7.10. </span>Error Handling and Logging<a class="headerlink" href="#error-handling-and-logging" title="Link to this heading">#</a></h2>
 <p>Errors. They’re inevitable in life, especially in software development. As you might have heard before, the best way to deal with software errors is to handle and log them. But error handling and logging can introduce new vulnerabilities in addition to any bugs that might already exist in the code. So we must—you guessed it—handle and log errors securely. How do we securely handle and log errors? Well, I’m so glad you asked!</p>
-<p>Firstly, when in doubt, log it. Log all errors, exceptions, failures, and potential tampering events. And write and manage these through cryptographic hashing. When responding to errors, do so through a trusted system, and do not reveal or store any sensitive information, including session details, identifiers, account information, and debugging and stack-trace information. Lastly, when there is an error, free all allocated memory from that error.</p>
+<p>Firstly, when in doubt, log it. Log all errors, exceptions, failures, and potential tampering events. And write and manage these through cryptographic hashing. And  when you do deal with errors, free all allocated memory from that error.</p>
 <p>Here’s an example of a log file for a web server:</p>
 <p><img alt="image.png" src="../../_images/log.png" /></p>
 </section>
@@ -593,25 +592,20 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 <h2><span class="section-number">7.12. </span>Communication security<a class="headerlink" href="#communication-security" title="Link to this heading">#</a></h2>
 <p>Transmit all sensitive information via encryption, especially Transport Layer Security, or TLS. TLS acts as a protective layer for transported information and should protect information as such. Use TLS for all sensitive content and external system communications. If TLS fails, ensure the backup connection is also secure.</p>
 </section>
-<section id="database-security">
-<h2><span class="section-number">7.13. </span>Database security<a class="headerlink" href="#database-security" title="Link to this heading">#</a></h2>
-<p>Chances are, if your software system is storing enough data, you’re going to need a database. Follow these tips and tricks to keep your database secure!</p>
-<p>Firstly, consider the database to hold sensitive information. Handle access and the information stored in the database as you would with other sensitive information. That is, create authentication procedures, use secure credentials for database access, and make sure your application operates at the lowest level of privilege when accessing the database. Additionally, strongly type all parameterized queries and variables. That is, be specific with the types of data the queries and variables are holding. Use encryption when handling connection strings. Disable and change any initial default database information provided, and turn off and remove all unnecessary database functionality and default content. Lastly, maintain different connection credentials for different levels of user trust distinctions (ex: read-only user vs. user vs. guest).</p>
-</section>
 <section id="file-management">
-<h2><span class="section-number">7.14. </span>File management<a class="headerlink" href="#file-management" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.13. </span>File management<a class="headerlink" href="#file-management" title="Link to this heading">#</a></h2>
 <p>Sometimes, you’ll need files from users. When that happens, there are some ways to manage those files securely. Firstly, limit the amount of files necessary for upload, as well as the types of files allowed for upload (for example: PDF). Use file headers to validate those uploaded files. Turn off execution privileges in the directories where you store uploaded files, and never reveal the absolute file paths of those uploaded files to users. And of course, scan all uploaded files for viruses and malware.</p>
 <p><img alt="image.png" src="../../_images/file.png" /></p>
 <p>Source: <a class="reference external" href="https://www.nextlabs.com/blog-the-importance-of-file-security-explained/">https://www.nextlabs.com/blog-the-importance-of-file-security-explained/</a></p>
 </section>
 <section id="memory-management">
-<h2><span class="section-number">7.15. </span>Memory management<a class="headerlink" href="#memory-management" title="Link to this heading">#</a></h2>
-<p>Ah, memories! Well, memory in this case. This is our last secure coding practice of the hour. Poetic, isn’t it?</p>
+<h2><span class="section-number">7.14. </span>Memory management<a class="headerlink" href="#memory-management" title="Link to this heading">#</a></h2>
+<p>Ah, memories! Well, memory in this case.</p>
 <p>Follow these tips and tricks to handle memory with care! Keep buffering controlled. Don’t use functions that are known to be vulnerable. Be sure to close all resources yourself—garbage collection is snazzy, but don’t rely on it for everything. Lastly, properly free all allocated memory, and overwrite any sensitive information that allocated memory may contain at all exit points in a given function.</p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">7.16. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>We’ve covered 13 points of secure coding practices to help you protect your software. While this is a start, there is still so much more to the wonderful world of secure coding practices! This article was based off of OWASP’s Secure Coding Checklist, which can give you more detailed information on these thirteen practices. Additionally, check out the OWASP Developer Guide for an even more complete look at security and coding.</p>
+<h2><span class="section-number">7.15. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>We’ve covered some secure coding practices to help you protect your software. While this is a start, there is still so much more to the wonderful world of secure coding practices! This article was based off of OWASP’s Secure Coding Checklist, which can give you more detailed information on these thirteen practices. Additionally, check out the OWASP Developer Guide for an even more complete look at security and coding.</p>
 <p><a class="reference external" href="https://owasp.org/www-project-developer-guide/draft/verification/guides/web_security_testing_guide/">https://owasp.org/www-project-developer-guide/draft/verification/guides/web_security_testing_guide/</a></p>
 <p>Happy coding!</p>
 </section>
@@ -693,10 +687,9 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.10. Error Handling and Logging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-protection">7.11. Data protection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-security">7.12. Communication security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#database-security">7.13. Database security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">7.14. File management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.15. Memory management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.16. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">7.13. File management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.14. Memory management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.15. Conclusion</a></li>
 </ul>
   </nav></div>
 

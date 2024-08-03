@@ -449,7 +449,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.1. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">8.1. Code Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.2. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -467,7 +468,8 @@ document.write(`
 Here’s an example with how emails can be constructed with regex.</p>
 <p><img alt="image.png" src="../../_images/regex.png" /></p>
 <p>Source: <a class="reference external" href="https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/">https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/</a></p>
-<p>##Code Examples</p>
+<section id="code-examples">
+<h2><span class="section-number">8.1. </span>Code Examples<a class="headerlink" href="#code-examples" title="Link to this heading">#</a></h2>
 <p>Here’s how that would look in python after importing the built-in package, re:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -482,13 +484,13 @@ Here’s an example with how emails can be constructed with regex.</p>
 
     <span class="k">return</span> <span class="n">matches</span>
 
-<span class="c1">#sample text containing email addresses</span>
+<span class="c1">#sample text with email addresses</span>
 <span class="n">sample_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">Hello, my email address is john.doe@example.com.</span>
 <span class="s2">You can also reach me at janelovescats@example.co.uk.</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="c1">#extract email addresses from the sample text</span>
+<span class="c1">#find email addresses from the sample text</span>
 <span class="n">emails</span> <span class="o">=</span> <span class="n">extract_emails</span><span class="p">(</span><span class="n">sample_text</span><span class="p">)</span>
 
 <span class="c1">#print the extracted email addresses</span>
@@ -506,24 +508,24 @@ janelovescats@example.co.uk
 </div>
 <p>Here’s how it would look in JavaScript:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">extractEmails</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="p">{</span>
-    <span class="o">//</span> <span class="n">Define</span> <span class="n">the</span> <span class="n">regex</span> <span class="n">pattern</span> <span class="k">for</span> <span class="n">matching</span> <span class="n">email</span> <span class="n">addresses</span>
+    <span class="o">//</span><span class="n">define</span> <span class="n">the</span> <span class="n">regex</span> <span class="n">pattern</span> <span class="k">for</span> <span class="n">matching</span> <span class="n">email</span> <span class="n">addresses</span>
     <span class="n">var</span> <span class="n">pattern</span> <span class="o">=</span> <span class="o">/</span>\<span class="n">b</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mf">9.</span><span class="n">_</span><span class="o">%+-</span><span class="p">]</span><span class="o">+@</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z0</span><span class="o">-</span><span class="mf">9.</span><span class="o">-</span><span class="p">]</span><span class="o">+</span>\<span class="o">.</span><span class="p">[</span><span class="n">A</span><span class="o">-</span><span class="n">Za</span><span class="o">-</span><span class="n">z</span><span class="p">]{</span><span class="mi">2</span><span class="p">,}</span>\<span class="n">b</span><span class="o">/</span><span class="n">g</span><span class="p">;</span>
 
-    <span class="o">//</span> <span class="n">Find</span> <span class="nb">all</span> <span class="n">matches</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">text</span>
+    <span class="o">//</span><span class="n">find</span> <span class="nb">all</span> <span class="n">matches</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">text</span>
     <span class="n">var</span> <span class="n">matches</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">pattern</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="n">matches</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="o">//</span> <span class="n">Sample</span> <span class="n">text</span> <span class="n">containing</span> <span class="n">email</span> <span class="n">addresses</span>
-<span class="n">var</span> <span class="n">sampleText</span> <span class="o">=</span> <span class="s2">&quot;Hello, my email address is john.doe@example.com.</span>
-<span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">reach</span> <span class="n">me</span> <span class="n">at</span> <span class="n">jane</span><span class="nd">@example</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">uk</span><span class="o">.</span>
+<span class="o">//</span><span class="n">text</span> <span class="n">containing</span> <span class="n">email</span> <span class="n">addresses</span>
+<span class="n">var</span> <span class="n">sampleText</span> <span class="o">=</span> <span class="s2">&quot;Hello, my email address is john.doe@regex.com.</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">reach</span> <span class="n">me</span> <span class="n">at</span> <span class="n">janeregex</span><span class="nd">@textbook</span><span class="o">.</span><span class="n">com</span><span class="o">.</span>
 <span class="s2">&quot;;</span>
 
-<span class="o">//</span> <span class="n">Extract</span> <span class="n">email</span> <span class="n">addresses</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">sample</span> <span class="n">text</span>
+<span class="o">//</span><span class="n">find</span> <span class="n">email</span> <span class="n">addresses</span>
 <span class="n">var</span> <span class="n">emails</span> <span class="o">=</span> <span class="n">extractEmails</span><span class="p">(</span><span class="n">sampleText</span><span class="p">);</span>
 
-<span class="o">//</span> <span class="n">Print</span> <span class="n">the</span> <span class="n">extracted</span> <span class="n">email</span> <span class="n">addresses</span>
+<span class="o">//</span><span class="nb">print</span> <span class="n">the</span> <span class="n">extracted</span> <span class="n">email</span> <span class="n">addresses</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">emails</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">emails</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
 <span class="p">}</span>
@@ -536,25 +538,25 @@ use warnings;
 sub extract_emails {
     my ($text) = @_;
 
-    # Define the regex pattern for matching email addresses
+    #define the regex pattern for matching email addresses
     my $pattern = qr/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/;
 
-    # Find all matches of the pattern in the text
+    #find pattern matches
     my @matches = $text =~ /$pattern/g;
 
     return @matches;
 }
 
-# Sample text containing email addresses
+#text containing email addresses
 my $sample_text = &lt;&lt;&#39;END_TEXT&#39;;
-Hello, my email address is john.doe@example.com.
-You can also reach me at jane@example.co.uk.
+Hello, my email address is john.lovescats@example.com.
+You can also reach me at janelovesdogs@gmail.com.
 END_TEXT
 
-# Extract email addresses from the sample text
+#taking emails from text
 my @emails = extract_emails($sample_text);
 
-# Print the extracted email addresses
+#printing each email
 foreach my $email (@emails) {
     print $email . &quot;\n&quot;;
 }
@@ -575,10 +577,10 @@ foreach my $email (@emails) {
 </li>
 </ol>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: Matches zero or more occurrences of the preceding character or group.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: Matches with zero or more occurrences of the preceding character or group.</p></li>
 </ul>
 <p>An example would be:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  `cof*ee` could match with coffee, cofffee, coffffffffee
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  ```cof*ee``` could match with coffee, cofffee, coffffffffee
 </pre></div>
 </div>
 <ul>
@@ -670,8 +672,9 @@ foreach my $email (@emails) {
 <li><p>[A-Z]{3} [\d.,]+|[\d.,]+ [A-Z]{3}</p></li>
 </ul>
 <p>This uses escaping on the d to match a currency and an amount, like USD 800.23</p>
+</section>
 <section id="conclusion">
-<h2><span class="section-number">8.1. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Regex’s versatility ranges from validating input to extracting specific data from large datasets, which can be hugely important in computing, which is a science that is always dealing with data! Here are a couple of sites that you can use to help strengthen your understanding and use of regex!</p>
 <p>Want some more example regexes? Check these out:
 <a class="reference external" href="https://support.google.com/a/answer/1371417?hl=en">https://support.google.com/a/answer/1371417?hl=en</a>
@@ -747,7 +750,8 @@ foreach my $email (@emails) {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.1. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">8.1. Code Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.2. Conclusion</a></li>
 </ul>
   </nav></div>
 

@@ -450,7 +450,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-commit-messages-matter">5.1. Why Commit Messages Matter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-write-a-good-commit-message">5.2. How To Write A Good Commit Message</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-it-brief-but-informative">5.2. Keep It Brief but Informative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-imperative-mood">5.3. Use the Imperative Mood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explain-why-not-just-what">5.4. Explain Why, Not Just What</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-the-summary-and-details">5.5. Separate the Summary and Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-consistent">5.6. Be Consistent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proofread">5.7. Proofread</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -467,10 +473,36 @@ document.write(`
 <p>Okay, so you’ve written some code, and now you want to commit what you’ve done, and it comes time to write that -m message. In a rush, you just write “doing stuff” or leave another cryptic remark. Why do commit messages matter anyway?</p>
 <section id="why-commit-messages-matter">
 <h2><span class="section-number">5.1. </span>Why Commit Messages Matter<a class="headerlink" href="#why-commit-messages-matter" title="Link to this heading">#</a></h2>
-<p>What a grand adventure we have begun.</p>
+<p>When you’re working on a project, whether it’s a personal project or part of a larger team effort, writing good commit messages might not be the first thing on your mind. But trust me, investing a bit of time into crafting clear, concise commit messages pays off big time. Commit messages help you understand the story of your code, and can make debugging or reverting back to a certain version, much easier. They help you understand what might have caused your code to break and offer other people insights to your code bases development processes. Writing good commit messages, like many of the other parts of git we’ve seen, are really important to working in collaborative spaces. So, how do you write a good commit message?</p>
 </section>
-<section id="how-to-write-a-good-commit-message">
-<h2><span class="section-number">5.2. </span>How To Write A Good Commit Message<a class="headerlink" href="#how-to-write-a-good-commit-message" title="Link to this heading">#</a></h2>
+<section id="keep-it-brief-but-informative">
+<h2><span class="section-number">5.2. </span>Keep It Brief but Informative<a class="headerlink" href="#keep-it-brief-but-informative" title="Link to this heading">#</a></h2>
+<p>Your commit message should be like a well-chosen tweet: brief yet informative. Start with what you fixed, and aim for a single line summary of what your commit does. Think of it as a headline for a news article—make sure it’s engaging and to the point. For example, instead of “Fix stuff,” try “Fix login error on user profile page.”</p>
+</section>
+<section id="use-the-imperative-mood">
+<h2><span class="section-number">5.3. </span>Use the Imperative Mood<a class="headerlink" href="#use-the-imperative-mood" title="Link to this heading">#</a></h2>
+<p>Write your commit messages as if you’re issuing a command. This might feel a bit weird at first, but it’s a convention that helps maintain consistency. Instead of “Fixed the bug in user login,” write “Fix bug in user login.” It’s like you’re telling the code what to do: “Add feature” or “Update documentation.”</p>
+</section>
+<section id="explain-why-not-just-what">
+<h2><span class="section-number">5.4. </span>Explain Why, Not Just What<a class="headerlink" href="#explain-why-not-just-what" title="Link to this heading">#</a></h2>
+<p>Sometimes, it’s not just about what changes were made, but why they were necessary. If a commit addresses a bug, explain how it was fixed or why it was important. For example, “Fix null pointer exception when user data is missing in profile view” is more useful than “Fix null pointer”</p>
+</section>
+<section id="separate-the-summary-and-details">
+<h2><span class="section-number">5.5. </span>Separate the Summary and Details<a class="headerlink" href="#separate-the-summary-and-details" title="Link to this heading">#</a></h2>
+<p>If you need to provide more context, separate the summary from the details. Start with a short summary (under 50 characters) followed by a blank line and then a more detailed explanation if necessary.</p>
+</section>
+<section id="be-consistent">
+<h2><span class="section-number">5.6. </span>Be Consistent<a class="headerlink" href="#be-consistent" title="Link to this heading">#</a></h2>
+<p>Consistency is key to good commit messages. Follow the same structure and style throughout your project. If everyone on your team adheres to the same conventions, it makes it easier to understand the history of changes.</p>
+</section>
+<section id="proofread">
+<h2><span class="section-number">5.7. </span>Proofread<a class="headerlink" href="#proofread" title="Link to this heading">#</a></h2>
+<p>Before hitting that commit button, take a moment to review your message. Typos and unclear language can make it harder for others (or even future you) to understand the purpose of the commit. A little proofreading goes a long way.</p>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">5.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Great commit messages aren’t just for show—they’re a vital part of project documentation that can save time and reduce confusion. By keeping your messages brief, using the imperative mood, explaining the why, separating summary from details, being consistent, and proofreading, you’ll make your commits more useful for everyone involved.</p>
+<p>Happy coding!</p>
 </section>
 </section>
 
@@ -539,7 +571,13 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-commit-messages-matter">5.1. Why Commit Messages Matter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-write-a-good-commit-message">5.2. How To Write A Good Commit Message</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-it-brief-but-informative">5.2. Keep It Brief but Informative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-imperative-mood">5.3. Use the Imperative Mood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explain-why-not-just-what">5.4. Explain Why, Not Just What</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-the-summary-and-details">5.5. Separate the Summary and Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-consistent">5.6. Be Consistent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proofread">5.7. Proofread</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
 </ul>
   </nav></div>
 
