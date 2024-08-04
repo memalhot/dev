@@ -461,9 +461,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.10. Error Handling and Logging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-protection">7.11. Data protection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-security">7.12. Communication security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">7.13. File management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.14. Memory management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.15. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.13. Memory management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.14. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -483,16 +482,15 @@ document.write(`
 </section>
 <section id="so-what-even-are-secure-coding-practices">
 <h2><span class="section-number">7.2. </span>So what even are secure coding practices?<a class="headerlink" href="#so-what-even-are-secure-coding-practices" title="Link to this heading">#</a></h2>
-<p>Secure coding practices are methods, protocols, and decisions that you can use to minimize security vulnerabilities while building software. Think of all the different ways you can develop a program while still maintaining the same purpose. Secure coding practices guide you to develop the program in the most defensive manner possible at any given moment during the process. Let’s take a look at the some of the secure coding practices outlined by OWASP, an open-source nonprofit project dedicated to improving the security of software. These practices are a popular international standard.</p>
+<p>Secure coding practices are protocols that you can use to minimize security vulnerabilities while building software. Think of all the different ways you can develop a program while still maintaining the same purpose. Secure coding practices guide you to develop the program in the most defensive manner possible. Let’s take a look at the some of the secure coding practices outlined by OWASP, an open-source nonprofit project dedicated to improving the security of software. These practices are a popular international standard.</p>
 </section>
 <section id="security-by-design">
 <h2><span class="section-number">7.3. </span>Security By Design<a class="headerlink" href="#security-by-design" title="Link to this heading">#</a></h2>
-<p>This first one might seem obvious, or even like—uh oh—circular logic: “Secure your code by securing its design! Make good choices by choosing good choices! Boil water by boiling water!” But as noted before, prioritizing security throughout the entirety of the design process is integral to minimizing security vulnerabilities. This can look like a lot of things: thinking about edge cases in design or santizing inputs is part of secure coding! Though security is usually not the only priority for developers, because it may seem like short-term priorities like speed, efficiency, and scalability are sometimes at odds with security. However, time and time again, we see that “security by design” pays off in the long run with fewer risks of exploitation and damage by bad actors. So as you develop your software, analyze your source code and create proper security automation to detect cyberthreats.</p>
+<p>This first one might seem obvious, or even like—uh oh—circular logic: “Secure your code by securing its design! Make good choices by choosing good choices! Boil water by boiling water!” But as noted before, prioritizing security throughout the entirety of the design process is really important when minimizing security vulnerabilities. This can look like a lot of things: thinking about edge cases in design or santizing inputs are normal seeming practices that are apart of secure coding! Though security is usually not the only priority for developers, because it may seem like short-term priorities like speed, efficiency, and scalability are sometimes at odds with security. However, time and time again, we see that “security by design” pays off in the long run.</p>
 </section>
 <section id="input-validation-and-output-encoding">
 <h2><span class="section-number">7.4. </span>Input Validation and Output Encoding<a class="headerlink" href="#input-validation-and-output-encoding" title="Link to this heading">#</a></h2>
-<p>We’re combining these two practices, which basically say the same thing: know thy data. On a trusted system (this means server side), identify everything you can about the program’s input data and sources through a centralized process, and when in doubt, validate it! Classify all input sources as trusted or untrusted, and validate untrusted sources. Likewise, validate the range, length, and character sets (ex: UTF-8) of input data, and add additional security protocols and discrete checks for the suspicious stuff, a.k.a. unidentifiable data. Lastly, canonicalization can be a helpful tool for addressing obfuscation attacks.</p>
-<p>Now, for the output side. Once again, through a trusted system (server side), encode your output using standard, tested routines using specified character sets, and sanitize all untrusted data for queries and operating system commands.</p>
+<p>We’re combining these two practices, which basically say the same thing: know your data. On a trusted system (this means server side), identify everything you can about the program’s input data and sources through a centralized process, and when in doubt, validate it! Classify all input sources as trusted or untrusted, and validate untrusted sources. Likewise, validate the range, length, and character sets (ex: UTF-8) of input data, and add additional security protocols and discrete checks for the suspicious stuff, a.k.a. unidentifiable data.</p>
 </section>
 <section id="real-life-example">
 <h2><span class="section-number">7.5. </span>Real Life Example<a class="headerlink" href="#real-life-example" title="Link to this heading">#</a></h2>
@@ -513,7 +511,7 @@ document.write(`
 Passwords and authentication. We’ve all been there. You know, when you’re making an online account for something, and you have to create a password with at least eight characters, including a number, and a capital letter, and a special character, and the secret to the universe (the answer is 42). And then you have to re-enter the password to prove that you have dextrous thumbs and a better memory than a goldfish, so you have to erase and retype your password because you don’t know where you messed up because all you can see are asterisks or those weird dots… And this process feels like it takes forever, but you still can’t help but think: remember the good old days of passwords when ‘password’ would suffice? Or better yet, 1234?</p>
 <p>Ah, yes. Well. Security practices improve. Life goes on. C’est la vie.</p>
 <p>When in doubt, use a standardized and tested authentication protocol—like a password—for users to access a web page unless that page is meant to be fully accessible to the public, and develop that protocol on a trusted (read: server side) system.</p>
-<p>For passwords, set adequate standards of complexity and length (hint: 1234 isn’t good enough). Obscure the password for users as they type it, and, yes, have users confirm their password. Use proper hashing and cryptography—strong, one-way salted hashes—when storing password information server side, and make sure authentication information is securely stored. Moreover, don’t let users reuse the same password particularly if they are doing a password reset, and if they reset their password, alert the user of that reset. Also, set a standard threshold for the number of attempts a user can enter an incorrect password before disabling the account. Don’t let users change their password for at least one day after they create their account. And if you send new users temporary passwords, ensure the password has a short expiration time, and force users to change the password during their first login. If a user must perform a critical operation in their account, have them re-authenticate themselves by password or some other means. Lastly, passwords are not enough for highly sensitive or transactional accounts. Use multi-factor authentication for returning users.</p>
+<p>For passwords, set adequate standards of complexity and length (hint: 1234 isn’t good enough). Obscure the password for users as they type it, and, yes, have users confirm their password. Use proper hashing and cryptography—strong, one-way salted hashes—when storing password information server side, and make sure authentication information is securely stored. Another important thing to note is to not let users reuse the same password particularly if they are doing a password reset, and if they reset their password, alert the user of that reset. Also, set a standard threshold for the number of attempts a user can enter an incorrect password before disabling the account. Don’t let users change their password for at least one day after they create their account. And if you send new users temporary passwords, make sure the password has a short expiration time, and force users to change the password during their first login. If a user must perform a critical operation in their account, have them re-authenticate themselves by password. Lastly, passwords are not enough for highly sensitive or transactional accounts. Use multi-factor authentication!</p>
 <p>Here’s an example of a code snippet that salts a password in Python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,7 +542,7 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 <section id="session-management">
 <h2><span class="section-number">7.7. </span>Session Management<a class="headerlink" href="#session-management" title="Link to this heading">#</a></h2>
 <p>Any time a user logs into their account, they have begun a “session.” Developers must manage their software’s session controls, or it can get a little chaotic. Here are a few guidelines:</p>
-<p>Firstly, manage and identify these sessions on your own server or framework, and if a user tries to begin a session outside of that framework, treat their session as invalid. Use a randomized algorithm to control sessions and manage users. Establish at least one new session with each login, and maintain HTTPS connection (as opposed to HTTP) throughout the session. Do not allow the same user to log in concurrently. And when a user logs out, the session should completely end.</p>
+<p>Manage and identify these sessions on your own server or framework, and if a user tries to begin a session outside of that framework, treat their session as invalid. Try to establish at least one new session with each login, and maintain HTTPS connection (as opposed to HTTP) throughout the session. Do not allow the same user to log in concurrently. And when a user logs out, the session should completely end.</p>
 </section>
 <section id="access-control">
 <h2><span class="section-number">7.8. </span>Access Control<a class="headerlink" href="#access-control" title="Link to this heading">#</a></h2>
@@ -552,7 +550,7 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 </section>
 <section id="cryptographic-practices">
 <h2><span class="section-number">7.9. </span>Cryptographic Practices<a class="headerlink" href="#cryptographic-practices" title="Link to this heading">#</a></h2>
-<p>Cryptography, you know, the funky symbols you see when a hacker gets into the mainframe in any tv show/movie since THE 80s. Essentially, use cryptography to protect any sensitive information from users, and implement all cryptographic practice on a trusted system. Use cryptographically-based randomized number generators to generate random numbers and strings. And manage your cryptographic keys under a secure, standardized process and policies.</p>
+<p>Cryptography, you know, the funky symbols you see when a hacker gets into the mainframe in any tv show/movie since the 80s. Essentially, use cryptography to protect any sensitive information from users, and implement all cryptographic practice on a trusted system. Use cryptographically-based randomized number generators to generate random numbers and strings. And manage your cryptographic keys under a secure, standardized process and policies.</p>
 <p>This is an example of encryption in Python:</p>
 <p>Source: <a class="reference external" href="https://cryptography.io/en/latest/">https://cryptography.io/en/latest/</a></p>
 <div class="cell docutils container">
@@ -592,21 +590,15 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 <h2><span class="section-number">7.12. </span>Communication security<a class="headerlink" href="#communication-security" title="Link to this heading">#</a></h2>
 <p>Transmit all sensitive information via encryption, especially Transport Layer Security, or TLS. TLS acts as a protective layer for transported information and should protect information as such. Use TLS for all sensitive content and external system communications. If TLS fails, ensure the backup connection is also secure.</p>
 </section>
-<section id="file-management">
-<h2><span class="section-number">7.13. </span>File management<a class="headerlink" href="#file-management" title="Link to this heading">#</a></h2>
-<p>Sometimes, you’ll need files from users. When that happens, there are some ways to manage those files securely. Firstly, limit the amount of files necessary for upload, as well as the types of files allowed for upload (for example: PDF). Use file headers to validate those uploaded files. Turn off execution privileges in the directories where you store uploaded files, and never reveal the absolute file paths of those uploaded files to users. And of course, scan all uploaded files for viruses and malware.</p>
-<p><img alt="image.png" src="../../_images/file.png" /></p>
-<p>Source: <a class="reference external" href="https://www.nextlabs.com/blog-the-importance-of-file-security-explained/">https://www.nextlabs.com/blog-the-importance-of-file-security-explained/</a></p>
-</section>
 <section id="memory-management">
-<h2><span class="section-number">7.14. </span>Memory management<a class="headerlink" href="#memory-management" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.13. </span>Memory management<a class="headerlink" href="#memory-management" title="Link to this heading">#</a></h2>
 <p>Ah, memories! Well, memory in this case.</p>
-<p>Follow these tips and tricks to handle memory with care! Keep buffering controlled. Don’t use functions that are known to be vulnerable. Be sure to close all resources yourself—garbage collection is snazzy, but don’t rely on it for everything. Lastly, properly free all allocated memory, and overwrite any sensitive information that allocated memory may contain at all exit points in a given function.</p>
+<p>Follow these tips and tricks to handle memory with care! Keep buffering controlled. Don’t use functions that are known to be vulnerable. Be sure to close all resources yourself—garbage collection is easy to fall back on, but don’t rely on it for everything. Lastly, properly free all allocated memory, and overwrite any sensitive information that allocated memory may contain at all exit points in a given function.</p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">7.15. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>We’ve covered some secure coding practices to help you protect your software. While this is a start, there is still so much more to the wonderful world of secure coding practices! This article was based off of OWASP’s Secure Coding Checklist, which can give you more detailed information on these thirteen practices. Additionally, check out the OWASP Developer Guide for an even more complete look at security and coding.</p>
-<p><a class="reference external" href="https://owasp.org/www-project-developer-guide/draft/verification/guides/web_security_testing_guide/">https://owasp.org/www-project-developer-guide/draft/verification/guides/web_security_testing_guide/</a></p>
+<h2><span class="section-number">7.14. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>We’ve covered some secure coding practices to help you protect your software. While this is a start, there is still so much more to the wonderful world of secure coding practices! This was based off of OWASP’s Secure Coding Checklist, which can give you more detailed information on secure coding practices, check it out here:
+<a class="reference external" href="https://owasp.org/www-project-developer-guide/draft/verification/guides/web_security_testing_guide/">https://owasp.org/www-project-developer-guide/draft/verification/guides/web_security_testing_guide/</a></p>
 <p>Happy coding!</p>
 </section>
 </section>
@@ -687,9 +679,8 @@ Passwords and authentication. We’ve all been there. You know, when you’re ma
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling-and-logging">7.10. Error Handling and Logging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-protection">7.11. Data protection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#communication-security">7.12. Communication security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-management">7.13. File management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.14. Memory management</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.15. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-management">7.13. Memory management</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.14. Conclusion</a></li>
 </ul>
   </nav></div>
 
