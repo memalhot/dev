@@ -486,8 +486,8 @@ Here’s an example with how emails can be constructed with regex.</p>
 
 <span class="c1">#sample text with email addresses</span>
 <span class="n">sample_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">Hello, my email address is john.doe@example.com.</span>
-<span class="s2">You can also reach me at janelovescats@example.co.uk.</span>
+<span class="s2">Hello, my email address is john.doe@cats.com.</span>
+<span class="s2">You can also reach me at janelovescats@gmail.com.</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="c1">#find email addresses from the sample text</span>
@@ -500,8 +500,8 @@ Here’s an example with how emails can be constructed with regex.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>john.doe@example.com
-janelovescats@example.co.uk
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>john.doe@cats.com
+janelovescats@gmail.com
 </pre></div>
 </div>
 </div>
@@ -577,7 +577,7 @@ foreach my $email (@emails) {
 </li>
 </ol>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: Matches with zero or more occurrences of the preceding character or group.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code>: Matches with zero or more occurrences of the previous character or group</p></li>
 </ul>
 <p>An example would be:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  cof*ee could match with coffee, cofffee, coffffffffee
@@ -590,7 +590,7 @@ foreach my $email (@emails) {
 </ul>
 <hr class="docutils" />
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>: Matches one or more occurrences of the preceding character or group.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">+</span></code>: Matches one or more occurrences of the previous character or group</p></li>
 <li><p>An example would be:</p>
 <p><code class="docutils literal notranslate"><span class="pre">go+gle</span></code> could match with gogle, google, gooogle, goooogle</p>
 </li>
@@ -598,7 +598,7 @@ foreach my $email (@emails) {
 </ul>
 <hr class="docutils" />
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code>: Matches zero or one occurrence of the preceding character or group.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?</span></code>: Matches zero or one occurrence of the previous character or group</p></li>
 </ul>
 <p>An example would be:</p>
 <ul class="simple">
@@ -606,7 +606,7 @@ foreach my $email (@emails) {
 </ul>
 <hr class="docutils" />
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code>: Let’s the computer know that the match has to begin at the start of the line.</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code>: Let’s the computer know that the match has to begin at the start of the line</p>
 <p>An example would be:</p>
 </li>
 </ul>
@@ -616,7 +616,7 @@ foreach my $email (@emails) {
 </ul>
 <hr class="docutils" />
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code>: Let’s the computer know the match has to begin at the end of the line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$</span></code>: Let’s the computer know the match has to begin at the end of the line</p></li>
 </ul>
 <p>An example would be:</p>
 <ul class="simple">
@@ -624,7 +624,7 @@ foreach my $email (@emails) {
 </ul>
 <hr class="docutils" />
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>: Defines a character class, matching any single character within the brackets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>: Defines a character class, matching any single character within the brackets</p></li>
 </ul>
 <p>An example would be:</p>
 <ul class="simple">
@@ -632,7 +632,7 @@ foreach my $email (@emails) {
 </ul>
 <hr class="docutils" />
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code>: Acts as a logical OR, allowing alternatives within a pattern.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">|</span></code>: Acts as a logical OR, allowing alternatives within a pattern</p></li>
 </ul>
 <p>An example would be:</p>
 <ul class="simple">
@@ -658,20 +658,20 @@ foreach my $email (@emails) {
 <li><p>c{3,}	would match with {ccc, cccc, cccccc, …}</p></li>
 </ul>
 <ol class="arabic simple" start="6">
-<li><p><strong>Grouping and Capturing</strong>: Parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> are used to group characters or subpatterns together. Groups can be quantified as a whole and can be referred to later in the regular expression or during text replacement operations.</p></li>
+<li><p><strong>Grouping and Capturing</strong>: Parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> are used to group characters or subpatterns together. Groups can be quantified as a whole and can be referred to later in the regular expression or during text replacement operations
+An example would be:</p></li>
 </ol>
-<p>An example would be:</p>
 <ul class="simple">
-<li><p>(dog|cat)lover would match with doglover or catlover</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(dog|cat)lover</span></code> would match with doglover or catlover</p></li>
 </ul>
 <ol class="arabic simple" start="7">
-<li><p><strong>Escaping</strong>: Some characters have special meanings in regular expressions and need to be escaped if you want to match them literally. For example, if you want to match a literal dot <code class="docutils literal notranslate"><span class="pre">.</span></code>, you need to escape it as <code class="docutils literal notranslate"><span class="pre">\.</span></code>.</p></li>
+<li><p><strong>Escaping</strong>: Some characters have special meanings in regular expressions and need to be escaped if you want to match them literally. For example, if you want to match a literal dot <code class="docutils literal notranslate"><span class="pre">.</span></code>, you need to escape it as <code class="docutils literal notranslate"><span class="pre">\.</span></code></p></li>
 </ol>
 <p>An example would be:</p>
 <ul class="simple">
-<li><p>[A-Z]{3} [\d.,]+|[\d.,]+ [A-Z]{3}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[A-Z]{3}</span> <span class="pre">[\d.,]+|[\d.,]+</span> <span class="pre">[A-Z]{3}</span></code></p></li>
 </ul>
-<p>This uses escaping on the d to match a currency and an amount, like USD 800.23</p>
+<p>This uses escaping on the d to match a currency and an amount, like USD 4,800.23</p>
 </section>
 <section id="conclusion">
 <h2><span class="section-number">8.2. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
