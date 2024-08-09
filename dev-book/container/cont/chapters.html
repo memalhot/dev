@@ -501,9 +501,7 @@ document.write(`
 The first component we’ll cover is a docker image. You can think of docker images like a blueprint for the container. They are read-only templates that contain instructions for creating a container. The second component we can go over is the container itself, in formal terms they are docker images running as isolated processes. But you can think of them as literal containers filled with software that you can enter. Docker hub is a public registry where you can find and share Docker images, almost like Github, like being a public registry where you can find code. But there are lots of other places where you can find docker images, like Amazon ECR or Red Hat’s Quay.</p>
 <p>Let’s try running our first container!</p>
 <p>Once Docker is installed, you can run your first container. Open your terminal run the following command to run a simple container using the official <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
-</pre></div>
-</div>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code></p>
 <p>This command pulls the <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image from Docker Hub (if it’s not already downloaded) and runs it in a container. You should see a message confirming that Docker is installed and working correctly.</p>
 <p>Let’s create a docker image
 To build your own Docker images, you’ll use a Dockerfile—a text file with instructions on how to build an image. Here’s a simple example:</p>
