@@ -525,8 +525,7 @@ janelovescats@gmail.com
 
 <span class="o">//</span><span class="n">text</span> <span class="n">containing</span> <span class="n">email</span> <span class="n">addresses</span>
 <span class="n">var</span> <span class="n">sampleText</span> <span class="o">=</span> <span class="s2">&quot;Hello, my email address is john.doe@regex.com.</span>
-<span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">reach</span> <span class="n">me</span> <span class="n">at</span> <span class="n">janeregex</span><span class="nd">@textbook</span><span class="o">.</span><span class="n">com</span><span class="o">.</span>
-<span class="s2">&quot;;</span>
+<span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">reach</span> <span class="n">me</span> <span class="n">at</span> <span class="n">janeregex</span><span class="nd">@textbook</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="s2">&quot;;</span>
 
 <span class="o">//</span><span class="n">find</span> <span class="n">email</span> <span class="n">addresses</span>
 <span class="n">var</span> <span class="n">emails</span> <span class="o">=</span> <span class="n">extractEmails</span><span class="p">(</span><span class="n">sampleText</span><span class="p">);</span>
@@ -626,7 +625,7 @@ foreach my $email (@emails) {
 </ul>
 <p>An example would be:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">^\d{4}</span></code> will match with patterns like “7039” in “973-333-7039”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$\d{4}</span></code> will match with patterns like “7039” in “973-333-7039”</p></li>
 </ul>
 <hr class="docutils" />
 <ul class="simple">

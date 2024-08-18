@@ -463,8 +463,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-podman">9.5. Introducing Podman</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-tips">9.6. Container Tips</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.7. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podman-vs-docker">9.6. Podman vs Docker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-tips">9.7. Container Tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -478,22 +479,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="containers">
 <h1><span class="section-number">9. </span>Containers<a class="headerlink" href="#containers" title="Link to this heading">#</a></h1>
-<p>In recent years, containers have revolutionized the way we develop, deploy, and manage applications. Their popularity is no accident; they offer a level of efficiency and consistency that traditional virtual machines (VMs) and other deployment methods haven’t been able to compare to. In this chapter, we will go through the essentials of using containers effectively. We’ll also dive into an alternative to Docker: Podman.</p>
+<p>When you think of containers, you probably don’t think of software. You might think of tupperware, or boxes, or shipping containers, ways to package various things.But containers in software are also ways to package things, just packaging software rather than real life objects. Containers have revolutionized the way we develop, deploy, and manage applications. They offer a level of space efficiency and consistency that traditional virtual machines (VMs) and other deployment methods haven’t been able to compare to. In this chapter, we will go through the essentials of using containers effectively. We’ll also dive into an alternative to Docker: Podman.</p>
 <section id="what-are-containers">
 <h2><span class="section-number">9.1. </span>What Are Containers<a class="headerlink" href="#what-are-containers" title="Link to this heading">#</a></h2>
-<p>You can think of containers as little packages of software that are shared and deployed. Containers are a lightweight form of virtualization that package an application and its dependencies into a single, portable unit. Unlike VMs, which include an entire operating system, containers share the host OS’s kernel but maintain isolated user spaces. This means they are more efficient and faster to start up, making them way more scalable and accessible. They can also be started both locally, and in the cloud.</p>
+<p>You can think of containers as little packages of software which are deployed. They are a lightweight form of virtualization that package an application and its dependencies into a single, portable container. Unlike VMs, which are made up by an entire operating system, containers share the host OS’s kernel but maintain isolated user spaces. This means they are more efficient and faster to start up, making them way more scalable and accessible. They can also be started both locally, and in the cloud.</p>
 </section>
 <section id="why-use-containers">
 <h2><span class="section-number">9.2. </span>Why Use Containers?<a class="headerlink" href="#why-use-containers" title="Link to this heading">#</a></h2>
 <p>Why do we use containers? Well, have you ever had code run on your computer that doesn’t run on someone else’s? Or have you ever been caught in dependency hell, where you’re trying to upgrade and downgrade your packages, just so you can just run your code? Software is constantly being worked on, and the time when you download it or what version you decide to download has a lot to do with the functionality and features of that software. And someone else who might have downloaded that package may have a different level of functionality, or they may not have that package at all! So, to keep everything consistent for everyone using it, we use containers.</p>
 <p><img alt="containers vs vms" src="../../_images/cont.png" /></p>
-<p>Img src: <a class="reference external" href="https://www.altexsoft.com/blog/docker-pros-and-cons/">https://www.altexsoft.com/blog/docker-pros-and-cons/</a></p>
-<ol class="arabic simple">
-<li><p>Consistency Across Environments: Containers ensure that your application behaves the same way regardless of where it’s deployed. This eliminates the “works on my machine” problem by providing a consistent environment throughout the development process</p></li>
-<li><p>Isolation and Security: Containers run in isolated environments, which means different containers can run different applications or versions of an application without conflicts. This isolation also enhances security by limiting the scope of potential breaches.</p></li>
-<li><p>Resource Efficiency: Containers are lightweight compared to VMs because they share the host OS’s resources. This efficiency allows you to run more containers on the same hardware, making them super resource efficient!</p></li>
-<li><p>Portability: Containers can run on any system that supports container technology, making it easy to move applications between different environments, whether it’s from a developer’s laptop to a staging environment or from on-premises hardware to the cloud.</p></li>
-</ol>
+<p>Image Sourcw: <a class="reference external" href="https://www.altexsoft.com/blog/docker-pros-and-cons/">https://www.altexsoft.com/blog/docker-pros-and-cons/</a></p>
+<p>Consistency Across Environments: Containers ensure that your application behaves the same way regardless of where it’s deployed. This means that the “works on my machine” problem by providing a consistent environment throughout the development process</p>
+<p>Isolation and Security: Containers run in isolated environments, which means different containers can run different applications or versions of an application without conflicts. This isolation also enhances security by limiting the scope of potential breaches.</p>
+<p>Resource Efficiency: Containers are lightweight compared to VMs because they share the host OS’s resources. This efficiency allows you to run more containers on the same hardware, making them super resource efficient!</p>
+<p>Portability: Containers can run on any system that supports container technology, making it easy to move applications between different environments, whether it’s from a developer’s laptop to a staging environment or from on-premises hardware to the cloud.</p>
 </section>
 <section id="exercise-getting-started-with-containers">
 <h2><span class="section-number">9.3. </span>Exercise: Getting Started with Containers<a class="headerlink" href="#exercise-getting-started-with-containers" title="Link to this heading">#</a></h2>
@@ -511,11 +510,11 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code></p>
 <p>This command pulls the <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image from Docker Hub (if it’s not already downloaded) and runs it in a container. You will see a message confirming that Docker is installed and working correctly.</p>
 <p>Let’s create a docker image.</p>
-<p>To build your own Docker images, you’ll use a Dockerfile—a text file with instructions on how to build an image. Here’s a simple example:</p>
-<p>First make a folder called flask-app
-Flask is a popular package for developing websites
-Inside flask app create a file called <a class="reference external" href="http://app.py">app.py</a>
-In <a class="reference external" href="http://app.py">app.py</a>, include this code, for our flask web-app:</p>
+<p>To build your own Docker images, you’ll use a containerfile—a text file with instructions on how to build an image. Here’s a simple example:</p>
+<p>First make a folder called flask-app.
+Flask is a popular package for developing websites with a python backend.</p>
+<p>Inside flask-app create a file called <a class="reference external" href="http://flask-app.py">flask-app.py</a>
+In <a class="reference external" href="http://flask-app.py">flask-app.py</a>, include this code, for our flask web app:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
 
 <span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
@@ -528,7 +527,7 @@ In <a class="reference external" href="http://app.py">app.py</a>, include this c
     <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Then create a file called Dockerfile in the same folder, the comments contain instructions explaining Dockerfile commands</p>
+<p>Then create a file called container file in the same folder, the comments contain instructions explaining container files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#from gives us a base image to work with, it helps identify some of the underlying architecture we want to create our container with</span>
 <span class="c1">#you don&#39;t have to use from, but it&#39;s often easier for beginners to use a base image that exists</span>
 <span class="c1">#we also tend to use slimmed images for space efficiency, as you can see here</span>
@@ -545,13 +544,13 @@ In <a class="reference external" href="http://app.py">app.py</a>, include this c
 <span class="c1">#workdir sets our working directory</span>
 <span class="c1">#it&#39;s necessary for a lot of other commands like RUN, CMD, ENTRYPOINT</span>
 <span class="c1">#we&#39;ll learn about those later</span>
-<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">app</span>
+<span class="n">WORKDIR</span> <span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">app</span>
 
 <span class="c1">#copy takes in a source and destination, in that order</span>
 <span class="c1">#if you want to copy files from your local filesystem into the container</span>
 <span class="c1">#similar to the cp command in unix environments! </span>
 <span class="c1">#here we copy everything in our folder (.) into the app directory (/app)</span>
-<span class="n">COPY</span> <span class="o">.</span> <span class="o">/</span><span class="n">app</span>
+<span class="n">COPY</span> <span class="o">.</span> <span class="o">.</span>
 
 <span class="c1">#run runs commands inside your container</span>
 <span class="c1">#you can use commands you would use in the command line here!</span>
@@ -563,16 +562,16 @@ In <a class="reference external" href="http://app.py">app.py</a>, include this c
 <span class="c1">#expose a port to run it on locally, here we are running on port 80</span>
 <span class="n">EXPOSE</span> <span class="mi">8000</span>
 
-<span class="c1">#there can only be one cmd in a dockerfile</span>
+<span class="c1">#there can only be one cmd in a container file</span>
 <span class="c1">#cmd gives us the command to help run our container</span>
 <span class="c1">#an example would be CMD[&quot;executable&quot;, parameter1, parameter2]</span>
-<span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;app.py&quot;</span><span class="p">]</span>
+<span class="n">CMD</span> <span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;flask-app.py&quot;</span><span class="p">]</span>
 
 </pre></div>
 </div>
 <p><img alt="containers and image" src="../../_images/conti.png" /></p>
-<p>Img src: <a class="reference external" href="https://dev.to/paschalogu/how-i-deployed-my-website-as-a-container-3fje">https://dev.to/paschalogu/how-i-deployed-my-website-as-a-container-3fje</a></p>
-<p>To build an image from this Dockerfile, navigate to the flask-app directory and run this command:</p>
+<p>Image Source: <a class="reference external" href="https://dev.to/paschalogu/how-i-deployed-my-website-as-a-container-3fje">https://dev.to/paschalogu/how-i-deployed-my-website-as-a-container-3fje</a></p>
+<p>To build an image from this container file, navigate to the flask-app directory and run this command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">flask</span><span class="o">-</span><span class="n">app</span> <span class="o">.</span>
 </pre></div>
 </div>
@@ -587,7 +586,7 @@ You have to build to run an image!</p>
 <p>Docker provides some commands to help you manage containers, let’s go over some of them:</p>
 <ul class="simple">
 <li><p>List Containers: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> shows running containers. Use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span> <span class="pre">-a</span></code> to see all containers, including stopped ones.</p></li>
-<li><p>Stop a Container: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stop</span> <span class="pre">&lt;container_id&gt;</span></code> stops a running container</p></li>
+<li><p>Stopping a Container: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">stop</span> <span class="pre">&lt;container_id&gt;</span></code> stops a running container</p></li>
 <li><p>Remove a Container: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">rm</span> <span class="pre">&lt;container_id&gt;</span></code> removes a stopped container</p></li>
 <li><p>View Logs: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">&lt;container_id&gt;</span></code> displays the logs from a container</p></li>
 </ul>
@@ -620,7 +619,7 @@ You have to build to run an image!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">podman</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
 </pre></div>
 </div>
-<p>Podman also uses Dockerfiles for building images. To build and run a container, you can use similar commands:</p>
+<p>Podman also uses container files for building images. To build and run a container, you can use similar commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">podman</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="n">flask</span><span class="o">-</span><span class="n">app</span> <span class="o">.</span>
 <span class="n">podman</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">4000</span><span class="p">:</span><span class="mi">8000</span> <span class="n">flask</span><span class="o">-</span><span class="n">app</span>
 </pre></div>
@@ -637,19 +636,38 @@ You have to build to run an image!</p>
 </li>
 </ol>
 <p>Looks pretty similar, huh?</p>
+<p><img alt="containers and image" src="../../_images/podman.png" /></p>
+<p>Image Source: <a class="reference external" href="https://levelup.gitconnected.com/docker-vs-podman-a-new-era-in-secure-orchestration-957ea2123098?gi=e3546e23a3dd">https://levelup.gitconnected.com/docker-vs-podman-a-new-era-in-secure-orchestration-957ea2123098?gi=e3546e23a3dd</a></p>
+</section>
+<section id="podman-vs-docker">
+<h2><span class="section-number">9.6. </span>Podman vs Docker<a class="headerlink" href="#podman-vs-docker" title="Link to this heading">#</a></h2>
+<p>While Docker and Podman have the same 1:1 actions, there are some differences beyond the fact that Docker runs as root. Podman is more modular, which means there are bigger parts it’s broken up into.</p>
+<p>There’s:</p>
+<ol class="arabic simple">
+<li><p>Podman - a container image manger</p></li>
+<li><p>Buildah - a container builder (Fun fact: named buildah for the Boston accent of the creator!)</p></li>
+<li><p>Skopeo - an inspection manager for images</p></li>
+<li><p>runc - a tool for spawning and running container</p></li>
+<li><p>crun - an optional runtime, written in c, for container</p></li>
+</ol>
+<p>Podman takes a different approach to managing containers. True to its name, Podman can create “pods,” which are groups of containers that work together, similar to Kubernetes pods. This means you can manage multiple containers as a single unit under one name.</p>
+<p>A big plus of Podman is that it can run Kubernetes pods directly without needing extra tools like Docker Compose. This makes it easier for developers to share resources by putting different parts of an application—like the frontend, backend, and database—into separate containers within a pod. Plus, you can export these pod setups to Kubernetes-compatible YAML files, making it simpler to move containers from development to production.</p>
+<p><img alt="containers and image" src="../../_images/poddocker.png" /></p>
+<p>Image Source: <a class="reference external" href="https://novateus.com/blog/podman-vs-docker/">https://novateus.com/blog/podman-vs-docker/</a></p>
 </section>
 <section id="container-tips">
-<h2><span class="section-number">9.6. </span>Container Tips<a class="headerlink" href="#container-tips" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.7. </span>Container Tips<a class="headerlink" href="#container-tips" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Use Minimal Base Images: Start with the smallest base image, many docker images are made smaller and stripped so they’re more space efficient</p></li>
-<li><p>Keep Images Up-to-Date: Regularly update your images to include the latest security patches and improvements</p></li>
+<li><p>Condense Commands: Adding a new command like <code class="docutils literal notranslate"><span class="pre">RUN</span></code> or <code class="docutils literal notranslate"><span class="pre">COPY</span></code> can add extra layers yo an image and make them bigger, using at the end of commands <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span> <span class="pre">\</span></code> allows you to condense commands and make more efficent images</p></li>
+<li><p>Keep Images Up-to-Date: Be sure to regularly update your images to include the latest security patches and improvements</p></li>
 <li><p>Limit Container Privileges: Run containers with the least amount of privilege necessary to mitigate security risks</p></li>
 <li><p>Monitor and Log: Implement monitoring and logging solutions to keep track of container performance and troubleshoot issues</p></li>
 </ol>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">9.7. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>Containers, whether managed with Docker or Podman, have become essential to modern application development, giving engineers unmatched portability, efficiency, and consistency. By understanding the basics of these tools and how to manage containers effectively, you can make the stuff you build more accessible to a wider number of users, and never run into the, “well, it worked on my machine”, again!</p>
+<h2><span class="section-number">9.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Containers, whether managed with Docker or Podman, have become essential to modern application development, giving you unmatched portability, efficiency, and consistency. By understanding the basics of these tools and how to manage containers effectively, you can make the stuff you build more accessible to a wider number of users, and never run into the, “well, it worked on my machine”, again!</p>
 <p>Happy Containerizing!</p>
 </section>
 </section>
@@ -726,8 +744,9 @@ You have to build to run an image!</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-podman">9.5. Introducing Podman</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-tips">9.6. Container Tips</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.7. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podman-vs-docker">9.6. Podman vs Docker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-tips">9.7. Container Tips</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.8. Conclusion</a></li>
 </ul>
   </nav></div>
 

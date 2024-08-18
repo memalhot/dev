@@ -501,7 +501,7 @@ document.write(`
 <h2><span class="section-number">3.3. </span>Intro to Git<a class="headerlink" href="#intro-to-git" title="Link to this heading">#</a></h2>
 <p>So- then what actually is git? The man page of git describes itself as a “stupid content tracker”- in other words - it’s a source code management system. It allows for you to add and commit source code to a place where code is saved - a <em>repository</em>. Repositories are represented by trees - with one main branch, and many more smaller branches that are different versions of that main code that many different people can work on.</p>
 <p><img alt="image.png" src="../../_images/git1.png" /></p>
-<p>Source: <a class="reference external" href="https://www.nobledesktop.com/learn/git/git-branches">https://www.nobledesktop.com/learn/git/git-branches</a></p>
+<p>Image Source: <a class="reference external" href="https://www.nobledesktop.com/learn/git/git-branches">https://www.nobledesktop.com/learn/git/git-branches</a></p>
 <p>Why would you need something like branches? Well, sometimes you may want to work on a new feature or bug fix, but want to preserve the current stable version of your code. So, you create a new branch to further your project. And when you’re done with your branch, you can merge it into the main branch, or you can even merge it into another branch.</p>
 <p>In Git’s content tracker, there are four main types of objects that play crucial roles in managing project history:</p>
 <ol class="arabic simple">
@@ -513,7 +513,7 @@ document.write(`
 <p>Each object is uniquely identified by its hash (think back to that big blob of numbers and letters). Git also uses labels called refs to indicate the locations of commits, like branches, with the HEAD reference pointing to the current branch or commit being worked on, and tags for labeling important points in the project’s history.</p>
 <p>Understanding these objects and labels is essential for grasping Git’s version control system and its management of project history. If you wanna read more about Git’s object model, check out this link: <a class="reference external" href="https://shafiul.github.io/gitbook/1_the_git_object_model.html">https://shafiul.github.io/gitbook/1_the_git_object_model.html</a></p>
 <p><img alt="image.png" src="../../_images/git2.png" /></p>
-<p>Source: <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Internals-Git-References">https://git-scm.com/book/en/v2/Git-Internals-Git-References</a></p>
+<p>Image Source: <a class="reference external" href="https://git-scm.com/book/en/v2/Git-Internals-Git-References">https://git-scm.com/book/en/v2/Git-Internals-Git-References</a></p>
 <p>Let’s go over some common git commands and what they do:</p>
 <p>To initialze a repository in a folder:
 First make sure git is downloaded onto your device: <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">https://git-scm.com/book/en/v2/Getting-Started-Installing-Git</a></p>
@@ -527,12 +527,12 @@ First make sure git is downloaded onto your device: <a class="reference external
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">factorial.py</span> <span class="pre">cherry.c</span> <span class="pre">battery.md</span></code></p>
 <p>The period specifies everything in the folder, but if you want to only add a particular part files to what’s called the <em>staging area</em>, specify the file name</p>
 <p><img alt="image.png" src="../../_images/gitadd.png" /></p>
-<p>Source: <a class="reference external" href="https://davedodea.medium.com/git-commands-you-need-to-git-going-b98adc42182e">https://davedodea.medium.com/git-commands-you-need-to-git-going-b98adc42182e</a></p>
+<p>Image Source: <a class="reference external" href="https://davedodea.medium.com/git-commands-you-need-to-git-going-b98adc42182e">https://davedodea.medium.com/git-commands-you-need-to-git-going-b98adc42182e</a></p>
 <p>When you want to move out of the staging area and to the history of your repository, you will want to use git commit!</p>
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;this</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">comment&quot;</span></code></p>
 <p>Commit messages ues -m to attribute a commit message to each commit, a message that explains how you changed your code and why. These messages are important because they provide a lot of necessary context when looking at development history. Knowing what’s going on at different points of time in your code can be important if you need to revert back to different versions or if you’re collaborating and you want to understand what your team is doing. That’s why it’s important to right commit messages that are clear and descriptive. We will have a chapter on writing good commit messages in another chapter.</p>
 <p><img alt="image.png" src="../../_images/git3.png" /></p>
-<p>Source: <a class="reference external" href="https://cbea.ms/git-commit/">https://cbea.ms/git-commit/</a></p>
+<p>Image Source: <a class="reference external" href="https://cbea.ms/git-commit/">https://cbea.ms/git-commit/</a></p>
 <p>An example of what to avoid ;)
 image credit:</p>
 <p>And finally- when you want to move your source code to github, you use the command</p>
@@ -568,7 +568,7 @@ If you find a repository you want to work on on Github, you can use the code but
 <p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code></p>
 <p>git log is a command that gives you your commit history, it prints your commits with their respective hashes, the author of those commits, date of the commit, and the message associated with that commited.</p>
 <p><img alt="image.png" src="../../_images/git.png" /></p>
-<p>Source: <a class="reference external" href="https://www.linkedin.com/pulse/git-tutorials-commands-devopsuniversity-ex7pc">https://www.linkedin.com/pulse/git-tutorials-commands-devopsuniversity-ex7pc</a></p>
+<p>Image Source: <a class="reference external" href="https://www.linkedin.com/pulse/git-tutorials-commands-devopsuniversity-ex7pc">https://www.linkedin.com/pulse/git-tutorials-commands-devopsuniversity-ex7pc</a></p>
 <p>Well… now that we know what git is, what’s github?</p>
 </section>
 <section id="github">

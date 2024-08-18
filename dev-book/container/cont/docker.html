@@ -432,7 +432,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -448,6 +450,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-container-images">10.1. Layers in Container Images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.2. Conclusion</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -459,7 +470,84 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="container-command-breakdowns">
 <h1><span class="section-number">10. </span>Container Command Breakdowns<a class="headerlink" href="#container-command-breakdowns" title="Link to this heading">#</a></h1>
-<p>Here’s some content abt container commands!</p>
+<p>Now that we’ve seen some dockerfiles, and how/why they’re used, let’s go over how to make a container file. We will cover some basic container file commands and their syntax. These commands are run inside container file to help create your container image:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code>: Specifies the base image to start building the container image, think of this like using a baking mix instead of starting from scratch:
+FROM <base-image></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RUN</span></code>: Executes commands in the container at build time, like installing packages or shell commands. You can think of it as running commands inside your container as it’s being built:
+RUN <command></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COPY</span></code>: Copies files or directories from the host system into the container. It can move your local files into the container:
+COPY <source> <destination></p></li>
+</ol>
+<p><img alt="containers and image" src="../../_images/dockerfile.png" /></p>
+<p>Image Source: <a class="reference external" href="https://code.visualstudio.com/docs/containers/overview">https://code.visualstudio.com/docs/containers/overview</a></p>
+<ol class="arabic simple" start="4">
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>: Similar to <code class="docutils literal notranslate"><span class="pre">COPY</span></code>, but also supports extracting compressed files and fetching files from URLs:
+ADD <source> <destination></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORKDIR</span></code>: Sets the working directory for subsequent instructions. So, if you use the un command, it will be running in the working directory you have set:
+WORKDIR <path></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMD</span></code>: Specifies the default command to run when a container starts, but know that it can be overridden. If there are multiple CMD lines in a Dockerfile, it will only execute the last CMD command:
+CMD [”<executable>”, “<param1>”, “<param2>”]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENTRYPOINT</span></code>: Configures a container to run as an executable, with arguments passed to <code class="docutils literal notranslate"><span class="pre">CMD</span></code>. This command is different from CMD because it can’t be overridden:
+ENTRYPOINT [”<executable>”, “<param1>”]</p></li>
+</ol>
+<p>Let’s take a short break from commands to look at the difference between CMD and ENTRYPOINT. CMD commands are ignored by the background process, or dameon, that creates the container when there are parameters stated within the docker/podman run command. ENTRYPOINT instructions are not ignored, but instead, are appended as command-line parameters by treating those as arguments of the command.</p>
+<ol class="arabic simple" start="8">
+<li><p><code class="docutils literal notranslate"><span class="pre">ENV</span></code>: Sets environment variables in the container. We talked about environment variables in our .gitignore chapter, if you need a refresher of how environment variables are used!
+ENV <key>=<value></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPOSE</span></code>: Tells docker/podman that the container will listen on the specified network ports at runtime.
+EXPOSE <port></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VOLUME</span></code>: Creates a mount point for external storage or data persistence. A volume mount in a container file is a way to attach a directory or file from your host system to a directory inside the container. This allows data to persist between container runs or share data between containers. For example, using the VOLUME command in a container file creates a mount point that can be used to store and access data outside the container’s filesystem.
+VOLUME &lt;”/path/in/container”&gt;</p></li>
+</ol>
+<p>For an application that needs to store data persistently, you might define a volume:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#using mysql for base image</span>
+<span class="n">FROM</span> <span class="n">mysql</span><span class="p">:</span><span class="mf">8.0</span>
+
+<span class="c1">#environment variables</span>
+<span class="n">ENV</span> <span class="n">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="n">password</span>
+<span class="n">ENV</span> <span class="n">MYSQL_DATABASE</span><span class="o">=</span><span class="n">database</span>
+
+<span class="c1">#exposing the default MySQL port</span>
+<span class="n">EXPOSE</span> <span class="mi">3306</span>
+
+<span class="c1"># here we set a volume for the MySQL data</span>
+<span class="n">VOLUME</span> <span class="p">[</span><span class="s2">&quot;/var/lib/mysql&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
+<li><p><code class="docutils literal notranslate"><span class="pre">USER</span></code>: Specifies the user under which the container runs.
+USER [username | UID:GID]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LABEL</span></code>: Adds metadata to the image, such as version or maintainer information.
+LABEL <key>=<value></p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FROM</span> <span class="n">ubuntu</span><span class="p">:</span><span class="mf">21.01</span>
+
+<span class="c1">#using labels to create metadata about the image</span>
+<span class="n">LABEL</span> <span class="n">maintainer</span><span class="o">=</span><span class="s2">&quot;youremailname@gmail.com&quot;</span>
+<span class="n">LABEL</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;1.56789&quot;</span>
+<span class="n">LABEL</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Ubuntu image with additional software&quot;</span>
+
+</pre></div>
+</div>
+<ol class="arabic simple" start="13">
+<li><p><code class="docutils literal notranslate"><span class="pre">ARG</span></code>: Sets a variable that you can use during the image build process.
+ARG <key>=<value></p></li>
+</ol>
+<p><img alt="containers and image" src="../../_images/layers.png" /></p>
+<p>Image Source: <a class="reference external" href="https://docs.docker.com/build/guide/layers/">https://docs.docker.com/build/guide/layers/</a></p>
+<section id="layers-in-container-images">
+<h2><span class="section-number">10.1. </span>Layers in Container Images<a class="headerlink" href="#layers-in-container-images" title="Link to this heading">#</a></h2>
+<p>Container images are built from different layers, each representing a set of file changes or additions. These layers are stacked on top of each other to create the final image. Docker speeds up the build process by reusing layers that haven’t changed, which helps reduce build time and avoid unnecessary work. Every command in a Dockerfile adds a new layer, making up the image’s structure. This system keeps your builds efficient by minimizing the image size and build time, and it also helps manage layers effectively by sharing them between images to save space and avoid duplication. Knowing how Docker’s layers work is key to optimizing your image builds and managing them better.</p>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">10.2. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>These are not all the commands you can use in a container file, but an overview. A great place to start with containers is to take an existing project you’ve made, and try to containerize them- you don’t have to start from scratch! Try playing around with your own projects.</p>
+<p>If you want to get more context’s for different commands, check out these sites for documentation:
+<a class="reference external" href="https://docs.podman.io/en/latest/Commands.html">https://docs.podman.io/en/latest/Commands.html</a>
+<a class="reference external" href="https://docs.docker.com/reference/cli/docker/">https://docs.docker.com/reference/cli/docker/</a></p>
+<p>Happy containerizing!</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -517,7 +605,21 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-container-images">10.1. Layers in Container Images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.2. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
