@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Demystifying Regex &#8212; Beyond the Classroom</title>
+    <title>9. Demystifying Regex &#8212; Beyond the Classroom</title>
   
   
   
@@ -61,8 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'regular/regex/chapter';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="9. Containers" href="../../container/cont/chapters.html" />
-    <link rel="prev" title="7. Secure Coding Practices" href="../../secure/code/chapter.html" />
+    <link rel="next" title="10. Containers" href="../../container/cont/chapters.html" />
+    <link rel="prev" title="8. Secure Coding Practices" href="../../secure/code/chapter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,28 +190,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter1.html">3. Let’s Git Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter2.html">4. Using a .gitignore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter3.html">5. Writing Commit Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter4.html">6. Squashing Commits: Simplifying Your Git History</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">6. Writing Squeaky Clean Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">7. Writing Squeaky Clean Code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">7. Secure Coding Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">8. Secure Coding Practices</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Demystifying Regex</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Containers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapters.html">9. Containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../container/cont/docker.html">10. Container Command Breakdowns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapter2.html">11. An Interview with Sally O’Malley, Container Expert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapters.html">10. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/docker.html">11. Container Command Breakdowns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapter2.html">12. An Interview with Sally O’Malley, Container Expert</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">12. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">13. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -455,8 +456,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">8.1. Code Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.2. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">9.1. Code Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.2. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -469,13 +470,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="demystifying-regex">
-<h1><span class="section-number">8. </span>Demystifying Regex<a class="headerlink" href="#demystifying-regex" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Demystifying Regex<a class="headerlink" href="#demystifying-regex" title="Link to this heading">#</a></h1>
 <p>Regular expressions, often also refered to as regex or regexp, are tools many progrmmers use for pattern matching and text manipulation. They provide a concise and flexible syntax for describing complex patterns within strings of text. They can be scary to look at first, but once you understand them, they can be a powerful tool. They’re often used for things like email validation or to search for particular things with tools like grep.
 Here’s an example with how emails can be constructed with regex.</p>
 <p><img alt="image.png" src="../../_images/regex.png" /></p>
 <p>Source: <a class="reference external" href="https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/">https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/</a></p>
 <section id="code-examples">
-<h2><span class="section-number">8.1. </span>Code Examples<a class="headerlink" href="#code-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Code Examples<a class="headerlink" href="#code-examples" title="Link to this heading">#</a></h2>
 <p>Here’s how that would look in python after importing the built-in package, re:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -679,7 +680,7 @@ An example would be:</p></li>
 <p>This uses escaping on the d to match a currency and an amount, like USD 4,800.23</p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">8.2. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Regex’s versatility ranges from validating input to extracting specific data from large datasets, which can be hugely important in computing, which is a science that is always dealing with data! Here are a couple of sites that you can use to help strengthen your understanding and use of regex!</p>
 <p>Want some more example regexes? Check these out:
 <a class="reference external" href="https://support.google.com/a/answer/1371417?hl=en">https://support.google.com/a/answer/1371417?hl=en</a>
@@ -727,7 +728,7 @@ An example would be:</p></li>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Secure Coding Practices</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Secure Coding Practices</p>
       </div>
     </a>
     <a class="right-next"
@@ -735,7 +736,7 @@ An example would be:</p></li>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Containers</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Containers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -755,8 +756,8 @@ An example would be:</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">8.1. Code Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8.2. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-examples">9.1. Code Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.2. Conclusion</a></li>
 </ul>
   </nav></div>
 

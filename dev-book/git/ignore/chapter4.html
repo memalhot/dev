@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>5. Writing Commit Messages &#8212; Beyond the Classroom</title>
+    <title>6. Squashing Commits: Simplifying Your Git History &#8212; Beyond the Classroom</title>
   
   
   
@@ -58,11 +58,11 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'git/ignore/chapter3';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'git/ignore/chapter4';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="6. Squashing Commits: Simplifying Your Git History" href="chapter4.html" />
-    <link rel="prev" title="4. Using a .gitignore" href="chapter2.html" />
+    <link rel="next" title="7. Writing Squeaky Clean Code" href="../../clean/code/chapter.html" />
+    <link rel="prev" title="5. Writing Commit Messages" href="chapter3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,8 +189,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">3. Let’s Git Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter2.html">4. Using a .gitignore</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Writing Commit Messages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter4.html">6. Squashing Commits: Simplifying Your Git History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter3.html">5. Writing Commit Messages</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Squashing Commits: Simplifying Your Git History</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="nav bd-sidenav">
@@ -267,7 +267,7 @@
       
       
       
-      <li><a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/meeram/welcome&urlpath=lab/tree/welcome/content/git/ignore/chapter3.ipynb&branch=main" target="_blank"
+      <li><a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/meeram/welcome&urlpath=lab/tree/welcome/content/git/ignore/chapter4.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onJupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -315,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/meeram/welcome/edit/main/content/git/ignore/chapter3.ipynb" target="_blank"
+      <li><a href="https://github.com/meeram/welcome/edit/main/content/git/ignore/chapter4.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -332,7 +332,7 @@
       
       
       
-      <li><a href="https://github.com/meeram/welcome/issues/new?title=Issue%20on%20page%20%2Fgit/ignore/chapter3.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/meeram/welcome/issues/new?title=Issue%20on%20page%20%2Fgit/ignore/chapter4.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -362,7 +362,7 @@
       
       
       
-      <li><a href="../../_sources/git/ignore/chapter3.ipynb" target="_blank"
+      <li><a href="../../_sources/git/ignore/chapter4.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -446,7 +446,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Writing Commit Messages</h1>
+    <h1>Squashing Commits: Simplifying Your Git History</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -456,14 +456,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-commit-messages-matter">5.1. Why Commit Messages Matter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-it-brief-but-informative">5.2. Keep It Brief but Informative</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-imperative-mood">5.3. Use the Imperative Mood</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explain-why-not-just-what">5.4. Explain Why, Not Just What</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-the-summary-and-details">5.5. Separate the Summary and Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-consistent">5.6. Be Consistent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proofread">5.7. Proofread</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-commit-squashing-and-why-do-we-do-it">6.1. What is Commit Squashing? And Why Do We Do It?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-squash-commits">6.2. How to Squash Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.3. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -475,43 +470,57 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="writing-commit-messages">
-<h1><span class="section-number">5. </span>Writing Commit Messages<a class="headerlink" href="#writing-commit-messages" title="Link to this heading">#</a></h1>
-<p>Okay, so you’ve written some code, and now you want to commit what you’ve done, and it comes time to write that -m message. In a rush, you just write “doing stuff” or leave another cryptic remark. Why do commit messages matter anyway?</p>
-<section id="why-commit-messages-matter">
-<h2><span class="section-number">5.1. </span>Why Commit Messages Matter<a class="headerlink" href="#why-commit-messages-matter" title="Link to this heading">#</a></h2>
-<p>When you’re working on a project, whether it’s a personal project or part of a larger team effort, writing good commit messages might not be the first thing on your mind. But trust me, investing a bit of time into crafting clear, concise commit messages pays off big time. Commit messages help you understand the story of your code, and can make debugging or reverting back to a certain version, much easier. They help you understand what might have caused your code to break and offer other people insights to your code bases development processes. Writing good commit messages, like many of the other parts of git we’ve seen, are really important to working in collaborative spaces. So, how do you write a good commit message?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="squashing-commits-simplifying-your-git-history">
+<h1><span class="section-number">6. </span>Squashing Commits: Simplifying Your Git History<a class="headerlink" href="#squashing-commits-simplifying-your-git-history" title="Link to this heading">#</a></h1>
+<p>Git is a version control system, used to explain and tell the story of your project’s development history. Sometimes, to avoid getting caught up in details, or to fix some bad commit history, we squash commits into one commit. Squashing commits is a technique used to simplify and clean up your commit history. This chapter will go through what it means to squash a commit, how to do it, and why it can be beneficial for your projects.</p>
+<section id="what-is-commit-squashing-and-why-do-we-do-it">
+<h2><span class="section-number">6.1. </span>What is Commit Squashing? And Why Do We Do It?<a class="headerlink" href="#what-is-commit-squashing-and-why-do-we-do-it" title="Link to this heading">#</a></h2>
+<p>To put in simple terms, commit squashing is the process of combining multiple commits into a single, cohesive commit.This comes in handy, and is often used, for cleaning up your commit history before merging a feature branch into a main branch.</p>
+<p>By squashing commits, you can create a more streamlined and understandable history, which is easier to read and manage. The main branch just needs to know the point of the branch that is being merged into, not every detail of the development of that branch. Squashing commits is how we convey that one clear message.</p>
+<p>So, why do we do this process? Don’t we want to know every detail of our commit history? In history class, we learn by learning about big events, not learning the granularity of experience that every single person who went through that event went through. By only focusing on big events, we can focus on a clearer history that is easier to break down and understand. We squash commits for the same reason.</p>
+<p>Squashing commits makes the commit history more readable, speeds up review times, and the debugging processes. It also creates the logical grouping of related changes into a single commit, which gives the commit clearer context and purpose, rather than presenting incremental updates that are hard to follow. Another pro of squashing commits is that eliminating minor commits reduces noise in the history, focusing attention on significant changes and making the commit log more meaningful and navigable. And, for collaborative teams, squashing commits makes the development process smoother by preventing issues during branch merges and ensuring a more coherent history for easier collaboration.</p>
 </section>
-<section id="keep-it-brief-but-informative">
-<h2><span class="section-number">5.2. </span>Keep It Brief but Informative<a class="headerlink" href="#keep-it-brief-but-informative" title="Link to this heading">#</a></h2>
-<p>Your commit message should be like a well-chosen tweet: brief yet informative. Start with what you fixed, and aim for a single line summary of what your commit does. Think of it as a headline for a news article—make sure it’s engaging and to the point. For example, instead of “Fix stuff,” try “Fix login error on user profile page.”</p>
-</section>
-<section id="use-the-imperative-mood">
-<h2><span class="section-number">5.3. </span>Use the Imperative Mood<a class="headerlink" href="#use-the-imperative-mood" title="Link to this heading">#</a></h2>
-<p>Write your commit messages as if you’re issuing a command. This might feel a bit weird at first, but it’s a convention that helps maintain consistency. Instead of “Fixed the bug in user login,” write “Fix bug in user login.” It’s like you’re telling the code what to do: “Add feature” or “Update documentation.”</p>
-<p><img alt="image.png" src="../../_images/commit.png" /></p>
-<p>Image Source: <a class="reference external" href="https://www.alchemists.io/articles/git_commit_anatomy">https://www.alchemists.io/articles/git_commit_anatomy</a></p>
-</section>
-<section id="explain-why-not-just-what">
-<h2><span class="section-number">5.4. </span>Explain Why, Not Just What<a class="headerlink" href="#explain-why-not-just-what" title="Link to this heading">#</a></h2>
-<p>Sometimes, it’s not just about what changes were made, but why they were necessary. If a commit addresses a bug, explain how it was fixed or why it was important. For example, “Fix null pointer exception when user data is missing in profile view” is more useful than “Fix null pointer”</p>
-</section>
-<section id="separate-the-summary-and-details">
-<h2><span class="section-number">5.5. </span>Separate the Summary and Details<a class="headerlink" href="#separate-the-summary-and-details" title="Link to this heading">#</a></h2>
-<p>If you need to provide more context, separate the summary from the details. Start with a short summary (under 50 characters) followed by a blank line and then a more detailed explanation if necessary.</p>
-</section>
-<section id="be-consistent">
-<h2><span class="section-number">5.6. </span>Be Consistent<a class="headerlink" href="#be-consistent" title="Link to this heading">#</a></h2>
-<p>Consistency is key to good commit messages. Follow the same structure and style throughout your project. If everyone on your team adheres to the same conventions, it makes it easier to understand the history of changes.</p>
-</section>
-<section id="proofread">
-<h2><span class="section-number">5.7. </span>Proofread<a class="headerlink" href="#proofread" title="Link to this heading">#</a></h2>
-<p>Before hitting that commit button, take a moment to review your message. Typos and unclear language can make it harder for others (or even future you) to understand the purpose of the commit. A little proofreading goes a long way.</p>
+<section id="how-to-squash-commits">
+<h2><span class="section-number">6.2. </span>How to Squash Commits<a class="headerlink" href="#how-to-squash-commits" title="Link to this heading">#</a></h2>
+<p>As we’ve seen with Git, and with computer science in general, there are multiple approaches to do the same thing. We will go over two ways to squash commits! One with an interactive rebase, and the other with git reset.</p>
+<p>Here’s how to do an interactive rebase:
+Identify the Commits to Squash: First, determine which commits you want to combine. Typically, this involves commits on a feature branch that you’ve been working on and want to clean up before merging.</p>
+<p>Use An Interactive Rebase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="n">HEAD</span><span class="o">~</span><span class="n">number_of_commits</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">number_of_commits</span></code> with the number of commits you want to review. For example, if you want to squash the last 5 commits, use <code class="docutils literal notranslate"><span class="pre">HEAD~5</span></code>. Or you can use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="mi">1</span><span class="n">ff9460</span><span class="o">~</span>
+</pre></div>
+</div>
+<p>You can use the commit sha from the git log to pick the commit up to where you want to squash, and the ~ after the commit hash tells the editor you’re using to include that commit as well as the history.</p>
+<p>Choose the Commits to You Want to Squash: An editor will open showing a list of your commits. The commits are listed in chronological order, with the most recent commit at the bottom. Change the word <code class="docutils literal notranslate"><span class="pre">pick</span></code> to <code class="docutils literal notranslate"><span class="pre">squash</span></code> (or <code class="docutils literal notranslate"><span class="pre">s</span></code>) for all but the first commit you want to combine. Leave the top commit as <code class="docutils literal notranslate"><span class="pre">pick</span></code>.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pick</span> <span class="n">e1a2b3c</span> <span class="n">Initial</span> <span class="n">commit</span>
+<span class="n">squash</span> <span class="n">d4e5f6g</span> <span class="n">Added</span> <span class="n">cool</span> <span class="n">new</span> <span class="n">feature</span> <span class="n">X</span>
+<span class="n">squash</span> <span class="n">h7i8j9k</span> <span class="n">Fixed</span> <span class="n">annoying</span> <span class="n">bug</span> <span class="n">X</span>
+</pre></div>
+</div>
+<p>Write a Commit Message: After saving and closing the editor, Git will combine the selected commits. Another editor window will open to let you write a commit message for the squashed commit. You can edit the message to give the intention of the branch, or the intention of the squashed commits. You can look at our commit messages chapter to see some ways to write good commit messages!</p>
+<p>Complete the Rebase: Save and close the editor. Git will complete the rebase process, and squash the selected commits into a single commit!</p>
+<p>Force Push Changes: If you’re working with a remote repository, you’ll need to force-push your changes because squashing rewrites commit history:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">lease</span>
+</pre></div>
+</div>
+<p>If you don’t feel comfortable using editors, here is another approach that doesn’t require an editor, without interactive rebase. Here’s how to do it with git reset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">soft</span> <span class="n">HEAD</span><span class="o">~</span><span class="n">number_of_commits_here</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;new commit message&quot;</span> 
+<span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">lease</span>
+</pre></div>
+</div>
+<p>In the same way we can replace the number of commits in interactive rebases, or use the commit SHA, like we did in the earlier rebase. And in both cases, we use force with lease in both approaches, keeps your history and doesn’t overwrite anything, unlike git push -f.</p>
+<p>When to Avoid Squashing Commits</p>
+<p>While squashing commits is useful, there are situations where it might not be what you or what your team needs for the project you’re working on. When you need to keep a detailed record of changes, like for debugging or tracking updates, avoid squashing commits. Also, don’t squash commits on branches that others are working on, as it can mess up the history and create conflicts for your team.</p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">5.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>Great commit messages aren’t just for show—they’re a vital part of project documentation that can save time and reduce confusion. By keeping your messages brief, using the imperative mood, explaining the why, separating summary from details, being consistent, and proofreading, you’ll make your commits more useful for everyone involved.</p>
-<p>Happy coding!</p>
+<h2><span class="section-number">6.3. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Squashing commits is an essential part of using git to tell a more coherent story of your project history, and it’s important for collaborative teams to have a clear history to work together! This chapter was focused on using git on the command line, but if you want more information on using it on github desktop, check it out here: <a class="reference external" href="https://docs.github.com/en/desktop/managing-commits/squashing-commits-in-github-desktop">https://docs.github.com/en/desktop/managing-commits/squashing-commits-in-github-desktop</a>.</p>
+<p>Happy Coding!</p>
 </section>
 </section>
 
@@ -546,20 +555,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="chapter2.html"
+       href="chapter3.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Using a .gitignore</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Writing Commit Messages</p>
       </div>
     </a>
     <a class="right-next"
-       href="chapter4.html"
+       href="../../clean/code/chapter.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Squashing Commits: Simplifying Your Git History</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Writing Squeaky Clean Code</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -579,14 +588,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-commit-messages-matter">5.1. Why Commit Messages Matter</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keep-it-brief-but-informative">5.2. Keep It Brief but Informative</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-imperative-mood">5.3. Use the Imperative Mood</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explain-why-not-just-what">5.4. Explain Why, Not Just What</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separate-the-summary-and-details">5.5. Separate the Summary and Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#be-consistent">5.6. Be Consistent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proofread">5.7. Proofread</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-commit-squashing-and-why-do-we-do-it">6.1. What is Commit Squashing? And Why Do We Do It?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-squash-commits">6.2. How to Squash Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.3. Conclusion</a></li>
 </ul>
   </nav></div>
 

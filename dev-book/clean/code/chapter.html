@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>6. Writing Squeaky Clean Code &#8212; Beyond the Classroom</title>
+    <title>7. Writing Squeaky Clean Code &#8212; Beyond the Classroom</title>
   
   
   
@@ -61,8 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'clean/code/chapter';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="7. Secure Coding Practices" href="../../secure/code/chapter.html" />
-    <link rel="prev" title="5. Writing Commit Messages" href="../../git/ignore/chapter3.html" />
+    <link rel="next" title="8. Secure Coding Practices" href="../../secure/code/chapter.html" />
+    <link rel="prev" title="6. Squashing Commits: Simplifying Your Git History" href="../../git/ignore/chapter4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,28 +190,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter1.html">3. Let’s Git Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter2.html">4. Using a .gitignore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter3.html">5. Writing Commit Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter4.html">6. Squashing Commits: Simplifying Your Git History</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Writing Squeaky Clean Code</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Writing Squeaky Clean Code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">7. Secure Coding Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">8. Secure Coding Practices</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">8. Demystifying Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">9. Demystifying Regex</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Containers</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapters.html">9. Containers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../container/cont/docker.html">10. Container Command Breakdowns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapter2.html">11. An Interview with Sally O’Malley, Container Expert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapters.html">10. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/docker.html">11. Container Command Breakdowns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapter2.html">12. An Interview with Sally O’Malley, Container Expert</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">12. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">13. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -455,17 +456,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions-aka-the-art-of-naming">6.2. Naming Conventions aka The Art of Naming</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-design">6.3. Function Design</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-design">6.4. Class Design</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-documentation">6.5. Comments and Documentation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">6.5.1. Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions-aka-the-art-of-naming">7.2. Naming Conventions aka The Art of Naming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-design">7.3. Function Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-design">7.4. Class Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-documentation">7.5. Comments and Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">7.5.1. Documentation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-consistency-and-style">6.6. Code Consistency and Style</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">6.7. Importance of Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-consistency-and-style">7.6. Code Consistency and Style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">7.7. Importance of Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -478,29 +479,29 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="writing-squeaky-clean-code">
-<h1><span class="section-number">6. </span>Writing Squeaky Clean Code<a class="headerlink" href="#writing-squeaky-clean-code" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>Writing Squeaky Clean Code<a class="headerlink" href="#writing-squeaky-clean-code" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2><span class="section-number">6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Welcome to the essential guide to clean coding standards. Writing clean code is not just about making your code work; it’s about making it understandable, maintainable, and efficient. This chapter will cover the core principles and practices that will help you write clean and professional code. New programmers are often exposed to the new skill of reading and debugging code that isn’t their own, and writing cleaner code helps developers work better together.</p>
 <p>In school, you often write singular functions, avoiding many functions that work together or definining functions yourself. It is important that before you start writing code, to make sure you sit down and plan out how to break down the problems you’re dealing with into smaller problems that can be defined as functions. But once you’re done planning, here are some good rules to follow while writing code in a proffessional or open source setting.</p>
 </section>
 <section id="naming-conventions-aka-the-art-of-naming">
-<h2><span class="section-number">6.2. </span>Naming Conventions aka The Art of Naming<a class="headerlink" href="#naming-conventions-aka-the-art-of-naming" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>Naming Conventions aka The Art of Naming<a class="headerlink" href="#naming-conventions-aka-the-art-of-naming" title="Link to this heading">#</a></h2>
 <p>Variables should be named in a way that clearly describes their purpose. Avoid vague or generic names. For example, use <code class="docutils literal notranslate"><span class="pre">totalAmount</span></code> instead of <code class="docutils literal notranslate"><span class="pre">t</span></code> or <code class="docutils literal notranslate"><span class="pre">temp</span></code>. Descriptive names enhance readability and make your code easier to understand. Try to step out of yourself and see if a stranger could understand what your variables mean!</p>
 <p>Function names should clearly convey their purpose. A function named <code class="docutils literal notranslate"><span class="pre">calculateTotalAmount()</span></code> is much more informative than one named <code class="docutils literal notranslate"><span class="pre">doTask()</span></code>. Functions should perform a single, well-defined action. (Pro tip: single and well defined is a good rule of thumb when planning your code). This not only makes them easier to test but also simplifies debugging and maintenance.</p>
 <p><img alt="cleancode" src="../../_images/clean.png" /></p>
 <p>Source:  <a class="reference external" href="https://medium.com/geekculture/principles-mindset-of-clean-code-be-a-better-programmer-a700d64abee1">https://medium.com/geekculture/principles-mindset-of-clean-code-be-a-better-programmer-a700d64abee1</a></p>
 </section>
 <section id="function-design">
-<h2><span class="section-number">6.3. </span>Function Design<a class="headerlink" href="#function-design" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Function Design<a class="headerlink" href="#function-design" title="Link to this heading">#</a></h2>
 <p>A function should do one thing and do it well. If a function is doing too much, consider breaking it down into smaller, more focused functions. This makes your code more modular and easier to test. And think about lengh when writing your functions- keep ‘em short! Long functions can be difficult for other people to understand and maintain. Try to keep functions within a screen’s length so that they can be viewed without scrolling.</p>
 </section>
 <section id="class-design">
-<h2><span class="section-number">6.4. </span>Class Design<a class="headerlink" href="#class-design" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Class Design<a class="headerlink" href="#class-design" title="Link to this heading">#</a></h2>
 <p>Just like functions, classes should have a single responsibility. They should encapsulate related data and methods that operate on that data. Avoid turning a class into a “god object” that does everything. Are you sensing a pattern about single responsibility, yet? And, in the same vein, try to ensure that all parts of a class are related to the funcion’s purpose. Cohesion within a class means that its methods and variables are closely related, making the class easier to understand and maintain.</p>
 </section>
 <section id="comments-and-documentation">
-<h2><span class="section-number">6.5. </span>Comments and Documentation<a class="headerlink" href="#comments-and-documentation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Comments and Documentation<a class="headerlink" href="#comments-and-documentation" title="Link to this heading">#</a></h2>
 <p>Use comments to explain why something is done, not what is done. Don’t restate the obvious, focus more on the intention rather than the purpose of certain syntax. Well-written code should be self-explanatory, but comments can provide context or rationale behind complex logic. You can also use comments to remind or share with your collaborators that something may not be fully implemented.</p>
 <p>An example of a reduntant comments would be:</p>
 <div class="cell docutils container">
@@ -563,12 +564,12 @@ document.write(`
 </div>
 <p>These comment do a better job of expressing the purpose of the code, rather than reduntantly explaining code sytax.</p>
 <section id="documentation">
-<h3><span class="section-number">6.5.1. </span>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">7.5.1. </span>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h3>
 <p>Maintain clear and concise documentation for your codebase. This includes inline comments, function and class descriptions, and external documentation. Good documentation helps others (and your future self!) understand and use your code effectively.</p>
 </section>
 </section>
 <section id="code-consistency-and-style">
-<h2><span class="section-number">6.6. </span>Code Consistency and Style<a class="headerlink" href="#code-consistency-and-style" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>Code Consistency and Style<a class="headerlink" href="#code-consistency-and-style" title="Link to this heading">#</a></h2>
 <p>Adhere to a consistent style guide throughout your codebase. That means making sure your naming conventions, indentation, spacing, and other formatting rules are consistent throughout your code base, sometimes this means adapting to someone else’s coding style. Consistency makes your code more predictable and easier to read.</p>
 <p>One way to do this is to use linting. Linters help to enforce coding standards and catch potential issues early. They do this by automatically checking if you’re adhering to style guides, and they highlight common errors (we all miss semicolons, brackets, and commas sometimes), and doing this improves overall code quality. They can also increase turn-around in code review time, making sure when your code review is focused on logic and not silly errors like misspellings or forgotten parenthesis.</p>
 <p>Another thing to look out for is code duplication! You can avoid code duplication by refactoring common logic into functions or classes. Duplicated code increases the risk of bugs and makes maintenance harder. It also makes your life easier, and code more readable! Save yourself the time and effort. A good rule of thumb is not to write the same code twice.</p>
@@ -578,7 +579,7 @@ document.write(`
 <p>Source: <a class="reference external" href="https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/">https://stackoverflow.blog/2021/12/23/best-practices-for-writing-code-comments/</a></p>
 </section>
 <section id="importance-of-testing">
-<h2><span class="section-number">6.7. </span>Importance of Testing<a class="headerlink" href="#importance-of-testing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Importance of Testing<a class="headerlink" href="#importance-of-testing" title="Link to this heading">#</a></h2>
 <p>Testing is crucial for ensuring code reliability. Write unit tests to verify individual functions and integration tests to ensure that different parts of your system work together correctly. Automated tests can catch errors early, reducing the risk of bugs in production.</p>
 <p>Some things to focus on when testing could be checking if the data is empty or null, if there are invalid inputs or outputs, checking if data is too large to handle, or too small to take in. Pay attention to special characters as well. Try thinking like a user who often makes mistakes! Does double clicking on a button duplicate an entry in a database? If you change your workflow on your product and use commands in the order they’re not usually done, does it change the outcome? Try to break your code when you test!</p>
 <p>Aim for high test coverage, but prioritize critical paths and core functionalities. Comprehensive testing increases confidence in your code and simplifies future changes and refactoring.</p>
@@ -623,7 +624,7 @@ document.write(`
 <p>Unit tests can also serve as documentation in some ways, looking at unit tests can help you understand what code someone else is doing, and should evolve with your code!</p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">6.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Clean code is the foundation of effective software development. By following these best practices and standards, you can write code that is not only functional but also readable, maintainable, and robust. Embrace these principles to improve your coding skills, and contribute to higher-quality software projects.</p>
 <p>Happy Coding!</p>
 </section>
@@ -660,12 +661,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../../git/ignore/chapter3.html"
+       href="../../git/ignore/chapter4.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Writing Commit Messages</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Squashing Commits: Simplifying Your Git History</p>
       </div>
     </a>
     <a class="right-next"
@@ -673,7 +674,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Secure Coding Practices</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Secure Coding Practices</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -693,17 +694,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">6.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions-aka-the-art-of-naming">6.2. Naming Conventions aka The Art of Naming</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-design">6.3. Function Design</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-design">6.4. Class Design</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-documentation">6.5. Comments and Documentation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">6.5.1. Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions-aka-the-art-of-naming">7.2. Naming Conventions aka The Art of Naming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-design">7.3. Function Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-design">7.4. Class Design</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-documentation">7.5. Comments and Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">7.5.1. Documentation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-consistency-and-style">6.6. Code Consistency and Style</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">6.7. Importance of Testing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-consistency-and-style">7.6. Code Consistency and Style</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-testing">7.7. Importance of Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.8. Conclusion</a></li>
 </ul>
   </nav></div>
 
