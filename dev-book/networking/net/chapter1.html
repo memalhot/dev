@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>14. Networking Fundamentals &#8212; Beyond the Classroom</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'networking/net/chapter1';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="15. Client-Server Architecture" href="chapter2.html" />
+    <link rel="prev" title="13. An Interview with Sally O’Malley, Container Expert" href="../../container/cont/chapter2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../dev-book_intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Beyond the Classroom - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Beyond the Classroom - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../dev-book_intro.html">
+                    Beyond the Classroom: A Practical Guide to Software Engineering
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/intro/chapter.html">1. Beyond the Classroom: An Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using the Command Line</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cmd/line/chapter1.html">2. Adventures in the Command Line</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">A Guide to Git</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter1.html">3. Let’s Git Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter2.html">4. Using a .gitignore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter3.html">5. Writing Commit Messages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../git/ignore/chapter4.html">6. Squashing Commits</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Clean Coding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../clean/code/chapter.html">7. Writing Squeaky Clean Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Secure Coding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../secure/code/chapter.html">8. Secure Coding Practices</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">9. Demystifying Regex</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Containers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapters.html">11. Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/docker.html">12. Container Command Breakdowns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../container/cont/chapter2.html">13. An Interview with Sally O’Malley, Container Expert</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Containers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Networking Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">15. Client-Server Architecture</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">16. Reading the Man Pages</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/hub/user-redirect/git-pull?repo=https%3A//github.com/meeram/welcome&urlpath=lab/tree/welcome/content/networking/net/chapter1.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome/edit/main/content/networking/net/chapter1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/meeram/welcome/issues/new?title=Issue%20on%20page%20%2Fnetworking/net/chapter1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/networking/net/chapter1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Networking Fundamentals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">14.1. Networking Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">14.2. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">14.3. Network Address Translation (NAT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">14.4. TCP and UDP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">14.5. Domain Name System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">14.6. SSL Certificates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-throughput-and-link-speeds">14.7. Network Throughput and Link Speeds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">14.8. OSI Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">14.9. Network Architectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">14.10. Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="networking-fundamentals">
+<h1><span class="section-number">14. </span>Networking Fundamentals<a class="headerlink" href="#networking-fundamentals" title="Link to this heading">#</a></h1>
+<p>Networking is important to computer science, and big enough to be its own focus and focus of study. Networking forms the backbone of modern computing, allowing for communication between devices and systems across the globe. You want to get an HTTP response for an API? That’s networking. You want to connect to a server, or dealing with ports? Networking. You want to work on the same shared doc on GoogleDocs? Guess what, that works because of networking. It’s the basis of how interconnected computing devices can share data and resources with each other- which is super important for how we share  on the internet! These networked devices use a system of rules, called communications protocols, to transmit information over physical or wireless technologies. In this chapter, we will cover some networking fundamentals.</p>
+<section id="networking-components">
+<h2><span class="section-number">14.1. </span>Networking Components<a class="headerlink" href="#networking-components" title="Link to this heading">#</a></h2>
+<p>INSERT SOME STUFF HERE</p>
+</section>
+<section id="dealing-with-ip-addresses-mac-addresses-and-subnets">
+<h2><span class="section-number">14.2. </span>Dealing with IP Addresses, MAC Addresses, and Subnets<a class="headerlink" href="#dealing-with-ip-addresses-mac-addresses-and-subnets" title="Link to this heading">#</a></h2>
+<p>An IP address (Internet Protocol address) is a unique identifier assigned to each device connected to a network. It facilitates the routing of data packets (data packets are a small unit of information that is sent over a network, like the internet, from one device to another) between different devices over the internet. IP addresses come in two versions: IPv4 (this looks like: <code class="docutils literal notranslate"><span class="pre">192.168.1.1</span></code>) and IPv6 (and this looks like: <code class="docutils literal notranslate"><span class="pre">2001:0db8:85a3:0000:0000:8a2e:0370:7334</span></code>). IPv4 addresses are 32-bit, while IPv6 addresses are 128-bit, which gives you a much larger address space!</p>
+<p><img alt="image.png" src="../../_images/ip.png" /></p>
+<p>Image Source: <a class="reference external" href="https://www.zenarmor.com/docs/network-basics/what-is-ip-address">https://www.zenarmor.com/docs/network-basics/what-is-ip-address</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#python has a built in socket library</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="c1">#we will get the host name of the local computer</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostname</span><span class="p">()</span>
+
+<span class="c1">#we will get the IP address using the host name</span>
+<span class="n">ip_address</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hostname: </span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#this would print my IP address!</span>
+<span class="c1">#but let&#39;s not do that (for security reasons)</span>
+<span class="c1">#try out this code locally and uncomment it if you want to see yours :)</span>
+
+<span class="c1">#print(f&quot;IP Address: {ip_address}&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hostname: memalhot-thinkpadp1gen3.rmtusnj.csb
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or, if you don’t want to run that code snippet, you can check out this site:
+<a class="reference external" href="https://whatismyipaddress.com/">https://whatismyipaddress.com/</a></p>
+<p>Now that we know about IP addresses, let’s look at MAC addresses. A MAC address (Media Access Control address) is a unique code given to every network device, like your laptop or phone. It helps identify each device on a local network and is written in a format like this: <code class="docutils literal notranslate"><span class="pre">00:1A:2B:3C:4D:5E</span></code>. It’s written in 12 character alphanumeric address, as you have now seen! It’s often used in technology like bluetooth, ethernet, or wifi. Unlike IP addresses, which can change, MAC addresses always stay the same. They’re also often referred to as physical addresses or burned in addresses because are assigned by the manufacturer of the device.</p>
+<p>A subnet, or subnetwork, is a way to divide a larger network into smaller sections. Imagine a big office building with separate rooms for different teams; each room is a subnet within the building. Subnets use something called a subnet mask to decide how big each section is and how many IP addresses it can have. This division helps make the network work better and keeps it more secure by reducing traffic and controlling where messages are sent. Continuining with our office analogy, you wouldn’t want to send every message about a company to the CEO. The CEO would be overwhelmed and wouldn’t necessarily give you the best response. Whereas if you reach out to a smaller office in the company, the response will be faster and better.</p>
+<p><img alt="image.png" src="../../_images/subnet.png" /></p>
+<p>Image Source: <a class="reference external" href="https://medium.com/unicorn-ultra/what-is-subnet-from-simple-partitions-to-complex-chains-359ebccf520d">https://medium.com/unicorn-ultra/what-is-subnet-from-simple-partitions-to-complex-chains-359ebccf520d</a></p>
+</section>
+<section id="network-address-translation-nat">
+<h2><span class="section-number">14.3. </span>Network Address Translation (NAT)<a class="headerlink" href="#network-address-translation-nat" title="Link to this heading">#</a></h2>
+<p>Network Address Translation is a technique used to modify network address information in IP packet headers while in transit across a routing device. NAT is commonly used to map a single public IP address to multiple private IP addresses within a local network. This allows multiple devices to share a single public IP address, conserving the limited number of available IPv4 addresses. NAT also provides a layer of security by masking internal IP addresses from external networks.</p>
+</section>
+<section id="tcp-and-udp">
+<h2><span class="section-number">14.4. </span>TCP and UDP<a class="headerlink" href="#tcp-and-udp" title="Link to this heading">#</a></h2>
+<p>Just like ships passing into ports to drop off different goods or packages, a port in software is a place to take in certain information between two points. We can define a port as an operating system abstraction, a point in software, where network connections can receive responses or information. Ports are managed by your operating system, and It’s tied to a location in memory which is running code, which is “listening” for data packets to come into the port. You can communicate over ports with TCP or UDP.</p>
+<p>TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two key protocols used for sending data over the internet, each serving different needs. TCP is known for its reliability; it ensures that data sent from one computer to another arrives accurately and in the correct order. It does this by establishing a connection between sender and receiver before transmitting data, checking for errors, and re-sending any lost or corrupted information. This makes TCP ideal for tasks where accuracy is crucial, such as loading websites, streaming videos, or sending emails.</p>
+<p>In contrast, UDP (User Datagram Protocol) focuses on speed and efficiency rather than reliability. It sends data packets quickly without establishing a connection or checking if the data arrives correctly. This makes UDP faster but less reliable, as it doesn’t guarantee that data will arrive intact or in the correct order. UDP is commonly used in scenarios where speed is more important than accuracy, such as online gaming, live video streaming, or VoIP calls, where occasional data loss is acceptable in exchange for maintaining smooth and fast communication.</p>
+<p>You can check out some well known ports, and what they tend to be used for here: <a class="reference external" href="https://www.geeksforgeeks.org/50-common-ports-you-should-know/">https://www.geeksforgeeks.org/50-common-ports-you-should-know/</a></p>
+</section>
+<section id="domain-name-system">
+<h2><span class="section-number">14.5. </span>Domain Name System<a class="headerlink" href="#domain-name-system" title="Link to this heading">#</a></h2>
+<p>The Domain Name System (DNS) translates human-readable domain names (e.g., <a class="reference external" href="http://www.thisisafakewebsite.com">www.thisisafakewebsite.com</a>) into IP addresses that computers can understand and use to identify each other devices on the network.</p>
+<p>Some public DNS are managed by organizations like Google or Cloudflare, public DNS servers provide domain resolution services for general internet use. They handle high query volumes and offer features like caching to improve speed and performance.</p>
+<ul class="simple">
+<li><p><strong>Internal DNS:</strong> Used within private networks to resolve domain names to internal IP addresses. It helps manage internal resources and can provide more control over network traffic.</p></li>
+</ul>
+<p><strong>Record Types:</strong> DNS records include:</p>
+<ul class="simple">
+<li><p><strong>A Record:</strong> Maps a domain to an IPv4 address.</p></li>
+<li><p><strong>AAAA Record:</strong> Maps a domain to an IPv6 address.</p></li>
+<li><p><strong>CNAME Record:</strong> Alias for another domain name.</p></li>
+<li><p><strong>MX Record:</strong> Specifies mail servers for the domain.</p></li>
+<li><p><strong>TXT Record:</strong> Holds text information for various purposes, including verification.</p></li>
+</ul>
+<p><strong>TTL (Time to Live):</strong> TTL indicates how long a DNS record is cached by DNS resolvers before being refreshed. A shorter TTL can provide quicker updates, while a longer TTL can reduce DNS lookup times but may delay changes.</p>
+</section>
+<section id="ssl-certificates">
+<h2><span class="section-number">14.6. </span>SSL Certificates<a class="headerlink" href="#ssl-certificates" title="Link to this heading">#</a></h2>
+<p>Secure Sockets Layer (SSL) certificates encrypt data exchanged between a user’s browser and a web server. This ensures secure communication, protecting sensitive information from interception. SSL certificates are issued by Certificate Authorities (CAs) which include important details like the domain name, the certificate authority, and a public key. They are very important to renew (and can take down production if you don’t…). They ensure that the website you’re working with is trustworthy- like making sure a site uses https instead of http. Having an SSL ensures that people will trust your site, and your site isn’t the result of some hacker trying to steal information.</p>
+</section>
+<section id="network-throughput-and-link-speeds">
+<h2><span class="section-number">14.7. </span>Network Throughput and Link Speeds<a class="headerlink" href="#network-throughput-and-link-speeds" title="Link to this heading">#</a></h2>
+<p>Network Throughput is measured in megabits per second (Mbps), network throughput represents the rate at which data is successfully transmitted over a network. It’s a crucial metric for assessing network performance and ensuring sufficient bandwidth for applications.</p>
+<p>Link speeds refers to the maximum data transfer rate of a network connection, typically measured in Mbps or gigabits per second (Gbps). It is determined by the network card’s capabilities and the network environment. For instance, a 1 Gbps network card can handle faster speeds than a 100 Mbps card.</p>
+</section>
+<section id="osi-model">
+<h2><span class="section-number">14.8. </span>OSI Model<a class="headerlink" href="#osi-model" title="Link to this heading">#</a></h2>
+<p>The Open Systems Interconnection (OSI) model is a conceptual framework used to understand network interactions in seven layers. Let’s put some of what we’ve gone through together and go through the seven layers.</p>
+<ol class="arabic simple">
+<li><p><strong>Physical Layer:</strong> Handles physical connection and transmission of raw data</p></li>
+<li><p><strong>Data Link Layer:</strong> Manages node-to-node data transfer and error detection</p></li>
+<li><p><strong>Network Layer:</strong> Manages logical addressing and routing (such as: IP addresses (remember them?))</p></li>
+<li><p><strong>Transport Layer:</strong> Ensures end-to-end communication, including reliability (such as: TCP)</p></li>
+<li><p><strong>Session Layer:</strong> Manages sessions and controls dialogues between applications</p></li>
+<li><p><strong>Presentation Layer:</strong> Translates data formats and encryption (such as: SSL/TLS)</p></li>
+<li><p><strong>Application Layer:</strong> Provides network services directly to applications (such as: HTTP, FTP)</p></li>
+</ol>
+<p>Most people who build software are focused on layers 5-7, because they are important to application-level interactions, like session management, data presentation, and application protocols.</p>
+<p>Understanding these fundamental networking concepts is crucial for developers and IT professionals, ensuring effective communication and security within and across networks.</p>
+</section>
+<section id="network-architectures">
+<h2><span class="section-number">14.9. </span>Network Architectures<a class="headerlink" href="#network-architectures" title="Link to this heading">#</a></h2>
+<p>There are three main types of network arcitecture. INSERT THEM HERE</p>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">14.10. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Networking is hugely important to understanding how different devices interact with each other and how they share data. Understanding how networking works helps you create software that is integrated into larger networks, and gives your application the power to interact with other devices- which is what makes the internet so cool! It can also help you understand how to structure your projects, which we will go over in the next chapter of our networking section.</p>
+<p>Happy Coding!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./networking/net"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../container/cont/chapter2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>An Interview with Sally O’Malley, Container Expert</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="chapter2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Client-Server Architecture</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">14.1. Networking Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">14.2. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">14.3. Network Address Translation (NAT)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">14.4. TCP and UDP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">14.5. Domain Name System</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">14.6. SSL Certificates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-throughput-and-link-speeds">14.7. Network Throughput and Link Speeds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">14.8. OSI Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">14.9. Network Architectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">14.10. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Meera Malhotra
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
