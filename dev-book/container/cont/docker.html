@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Container Command Breakdowns &#8212; Beyond the Classroom</title>
+    <title>12. Container Command Breakdowns &#8212; Beyond the Classroom</title>
   
   
   
@@ -61,8 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'container/cont/docker';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. An Interview with Sally O’Malley, Container Expert" href="chapter2.html" />
-    <link rel="prev" title="10. Containers" href="chapters.html" />
+    <link rel="next" title="13. An Interview with Sally O’Malley, Container Expert" href="chapter2.html" />
+    <link rel="prev" title="11. Containers" href="chapters.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,16 +203,17 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Demystifying Regex</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../regular/regex/chapter.html">9. Demystifying Regex</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Containers</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="chapters.html">10. Containers</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Container Command Breakdowns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chapter2.html">12. An Interview with Sally O’Malley, Container Expert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters.html">11. Containers</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Container Command Breakdowns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter2.html">13. An Interview with Sally O’Malley, Container Expert</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">13. Reading the Man Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../man/page/read.html">14. Reading the Man Pages</a></li>
 </ul>
 
     </div>
@@ -456,8 +457,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-container-images">11.1. Layers in Container Images</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.2. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-container-images">12.1. Layers in Container Images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.2. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -470,7 +471,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="container-command-breakdowns">
-<h1><span class="section-number">11. </span>Container Command Breakdowns<a class="headerlink" href="#container-command-breakdowns" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Container Command Breakdowns<a class="headerlink" href="#container-command-breakdowns" title="Link to this heading">#</a></h1>
 <p>Now that we’ve seen some dockerfiles, and how/why they’re used, let’s go over how to make a container file. We will cover some basic container file commands and their syntax. These commands are run inside container file to help create your container image:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">FROM</span></code>: Specifies the base image to start building the container image, think of this like using a baking mix instead of starting from scratch:
@@ -536,13 +537,13 @@ document.write(`
 <code class="docutils literal notranslate"><span class="pre">ARG</span> <span class="pre">key=value</span></code></p></li>
 </ol>
 <section id="layers-in-container-images">
-<h2><span class="section-number">11.1. </span>Layers in Container Images<a class="headerlink" href="#layers-in-container-images" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Layers in Container Images<a class="headerlink" href="#layers-in-container-images" title="Link to this heading">#</a></h2>
 <p>Container images are built from different layers, each representing a set of file changes or additions. These layers are stacked on top of each other to create the final image. Docker speeds up the build process by reusing layers that haven’t changed, which helps reduce build time and avoid unnecessary work. Every command in a Dockerfile adds a new layer, making up the image’s structure. This system keeps your builds efficient by minimizing the image size and build time, and it also helps manage layers effectively by sharing them between images to save space and avoid duplication. Knowing how Docker’s layers work is key to optimizing your image builds and managing them better.</p>
 <p><img alt="layers" src="../../_images/layers.png" /></p>
 <p>Image Source: <a class="reference external" href="https://docs.docker.com/build/guide/layers/">https://docs.docker.com/build/guide/layers/</a></p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">11.2. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>These are not all the commands you can use in a container file, but an overview. A great place to start with containers is to take an existing project you’ve made, and try to containerize them- you don’t have to start from scratch! Try playing around with your own projects.</p>
 <p>If you want to get more context’s for different commands, check out these sites for documentation:
 <a class="reference external" href="https://docs.podman.io/en/latest/Commands.html">https://docs.podman.io/en/latest/Commands.html</a>
@@ -587,7 +588,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Containers</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Containers</p>
       </div>
     </a>
     <a class="right-next"
@@ -595,7 +596,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>An Interview with Sally O’Malley, Container Expert</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>An Interview with Sally O’Malley, Container Expert</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -615,8 +616,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-container-images">11.1. Layers in Container Images</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.2. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layers-in-container-images">12.1. Layers in Container Images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.2. Conclusion</a></li>
 </ul>
   </nav></div>
 
