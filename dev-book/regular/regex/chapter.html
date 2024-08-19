@@ -474,7 +474,7 @@ document.write(`
 <p>Regular expressions, often also refered to as regex or regexp, are tools many progrmmers use for pattern matching and text manipulation. They provide a concise and flexible syntax for describing complex patterns within strings of text. They can be scary to look at first, but once you understand them, they can be a powerful tool. They’re often used for things like email validation or to search for particular things with tools like grep.
 Here’s an example with how emails can be constructed with regex.</p>
 <p><img alt="image.png" src="../../_images/regex.png" /></p>
-<p>Source: <a class="reference external" href="https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/">https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/</a></p>
+<p>Image Source: <a class="reference external" href="https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/">https://paulvanderlaken.com/2017/10/03/regular-expressions-in-r-part-1-introduction-and-base-r-functions/</a></p>
 <section id="code-examples">
 <h2><span class="section-number">9.1. </span>Code Examples<a class="headerlink" href="#code-examples" title="Link to this heading">#</a></h2>
 <p>Here’s how that would look in python after importing the built-in package, re:</p>
@@ -663,14 +663,14 @@ foreach my $email (@emails) {
 <li><p>z{3,6} would match with {zzz, zzzz, zzzzz, zzzzzz}</p></li>
 <li><p>c{3,}	would match with {ccc, cccc, cccccc, …}</p></li>
 </ul>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="4">
 <li><p><strong>Grouping and Capturing</strong>: Parentheses <code class="docutils literal notranslate"><span class="pre">()</span></code> are used to group characters or subpatterns together. Groups can be quantified as a whole and can be referred to later in the regular expression or during text replacement operations
 An example would be:</p></li>
 </ol>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">(dog|cat)lover</span></code> would match with doglover or catlover</p></li>
 </ul>
-<ol class="arabic simple" start="7">
+<ol class="arabic simple" start="5">
 <li><p><strong>Escaping</strong>: Some characters have special meanings in regular expressions and need to be escaped if you want to match them literally. For example, if you want to match a literal dot <code class="docutils literal notranslate"><span class="pre">.</span></code>, you need to escape it as <code class="docutils literal notranslate"><span class="pre">\.</span></code></p></li>
 </ol>
 <p>An example would be:</p>
