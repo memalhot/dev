@@ -497,10 +497,12 @@ document.write(`
 <p>Why do we use containers? Well, have you ever had code run on your computer that doesn’t run on someone else’s? Or have you ever been caught in dependency hell, where you’re trying to upgrade and downgrade your packages, just so you can just run your code? Software is constantly being worked on, and the time when you download it or what version you decide to download has a lot to do with the functionality and features of that software. And someone else who might have downloaded that package may have a different level of functionality, or they may not have that package at all! So, to keep everything consistent for everyone using it, we use containers.</p>
 <p><img alt="containers vs vms" src="../../_images/cont.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.altexsoft.com/blog/docker-pros-and-cons/">https://www.altexsoft.com/blog/docker-pros-and-cons/</a></p>
-<p>Consistency Across Environments: Containers ensure that your application behaves the same way regardless of where it’s deployed. This means that the “works on my machine” problem by providing a consistent environment throughout the development process</p>
-<p>Isolation and Security: Containers run in isolated environments, which means different containers can run different applications or versions of an application without conflicts. This isolation also enhances security by limiting the scope of potential breaches.</p>
-<p>Resource Efficiency: Containers are lightweight compared to VMs because they share the host OS’s resources. This efficiency allows you to run more containers on the same hardware, making them super resource efficient!</p>
-<p>Portability: Containers can run on any system that supports container technology, making it easy to move applications between different environments, whether it’s from a developer’s laptop to a staging environment or from on-premises hardware to the cloud.</p>
+<p>We use containers for many reasons. The first is to create a consistent envionment. One benefit of containers is that they ensure that your application behavesthe same way regardless of where it’s deployed. So, if it’s locally, on your friend’s computer who has a bunch of different versions of software ownloaded, it works the same- and in the same environment. This means that the “works on my machine” problem is solved by providing a consistent environment1</p>
+<p>Another important pro of using containers is the isolation and security they offer. As you may know from the four pillars of object oriented programming, encapsulation is really important. We don’t want most of our users to directly interact with out code, for many reasons. Because containers run in isolated environments, this offers us isolation and security that does encapsulation for us.This isolation also enhances security by limiting the scope of potential <a class="reference external" href="http://breaches.It">breaches.It</a> also means that different containers can run different applications or versions of an application without conflicts.</p>
+<p>Containers are also often called “lightweight” because they are very resource efficient. People consider containers to be lightweight compared to VMs because they share the host OS’s resources. This efficiency allows you to run more containers on the same hardware, making them take up way less computing power!</p>
+<p>Another benefit of containers are their portability, their ability to work in different environments. Containers can run on any system that supports container technology, making it easy to move applications between different environments, whether it’s from a developer’s laptop to a staging environment or from on-premises hardware to the cloud.</p>
+<p><img alt="containers vs vms" src="../../_images/meme.png" /></p>
+<p>Image Source: <a class="reference external" href="https://www.reddit.com/r/ProgrammerHumor/comments/y8qylu/docker_is_born/">https://www.reddit.com/r/ProgrammerHumor/comments/y8qylu/docker_is_born/</a></p>
 </section>
 <section id="exercise-getting-started-with-containers">
 <h2><span class="section-number">12.3. </span>Exercise: Getting Started with Containers<a class="headerlink" href="#exercise-getting-started-with-containers" title="Link to this heading">#</a></h2>
@@ -557,7 +559,8 @@ In <a class="reference external" href="http://flask-app.py">flask-app.py</a>, in
 <span class="c1">#copy takes in a source and destination, in that order</span>
 <span class="c1">#if you want to copy files from your local filesystem into the container</span>
 <span class="c1">#similar to the cp command in unix environments! </span>
-<span class="c1">#here we copy everything in our folder (.) into the app directory (/app)</span>
+<span class="c1">#here we copy everything in our folder (.) into the app directory (/flask-app)</span>
+<span class="c1">#we can use a period for his because we are set our workdir</span>
 <span class="n">COPY</span> <span class="o">.</span> <span class="o">.</span>
 
 <span class="c1">#run runs commands inside your container</span>
@@ -617,9 +620,9 @@ You have to build to run an image!</p>
 <ol class="arabic" start="2">
 <li><p>Podman vs. Docker</p>
 <ul class="simple">
-<li><p>Daemonless Architecture: Unlike Docker, which relies on a long-running daemon, Podman runs as a single binary and uses a client-server architecture. This makes it more compatible with systemd and enhances security.</p></li>
+<li><p>Daemonless Architecture: Unlike Docker, which relies on a long-running daemon, Podman runs as a single binary and uses a client-server architecture. This makes it more compatible with systemd (and Kubernetes). This also enhances security, since you aren’t always running as root.</p></li>
 <li><p>Rootless Containers: Podman supports rootless containers, which can run without requiring root privileges, thus improving security and reducing risks.</p></li>
-<li><p>Docker Compatibility: Podman aims to be compatible with Docker CLI commands, which means you can often use Podman as a drop-in replacement for Docker commands. So, <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">run</span></code> works similarly to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code>.</p></li>
+<li><p>Docker Compatibility: Podman is very compatible with Docker CLI commands, which means you can often use Podman as a drop-in replacement for Docker commands. So, <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">run</span></code> works similarly to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code>.</p></li>
 </ul>
 </li>
 <li><p>Running Containers with Podman</p>

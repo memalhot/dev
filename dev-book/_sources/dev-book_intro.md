@@ -3,7 +3,7 @@
 
 Welcome to Beyond the Classroom: A Practical Guide to Software Engineering. 
 
-This is an online open source textbook using a tool started by the *Open Education project* (OPE), a collaboration between Boston University and Red Hat Research. The intention of this book is to help people adjust from academia to professional software development environments. Think of it as a missing semester of your college education. The ideal audience of this book are graduates and students or anyone with a programming background, aiming to bridge the gap between academic theory understanding and the demands of professional practice. This textbook also aims to share insights from engineers, focusing on skill gaps and dealing with imposter syndrome as a young engineer.
+This is an online open source textbook using a tool started by the *Open Education Project* (OPE), a collaboration between Boston University and Red Hat Research. Think of it as the semester of your college education you never knew you needed. The ideal audience for this book is recent graduates and current students, or anyone with a programming background. This book aims to help people adjust from academia to professional software development environments by bridging the gap between academic theory and the demands of professional practice. It also shares insights from actual engineers, with a focus on skill gaps and imposter syndrome, a familiar feeling for many young engineers.
 
 ![image.png](images/cat.png)
 
