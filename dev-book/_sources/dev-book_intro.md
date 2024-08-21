@@ -10,8 +10,7 @@ This is an online open source textbook using a tool started by the Open Educatio
 If you'd like to read more about open sourcing education, share your own knowledge, author your own textbook, please check out the OPE CLI tool:
 https://github.com/OPEFFORT/tools
 
-![image.png](images/rh.png)
-
+![image.png](images/logo.png)
 
 Part of what makes this project so exciting is that anyone can take part in it. If you would like to add/remove/suggest an edit for this book, and help contribute to open sourcing education, feel free to open a pull request on my book here: https://github.com/memalhot/dev/tree/gh-pages
 
