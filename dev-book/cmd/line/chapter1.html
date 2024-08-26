@@ -463,13 +463,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-ides">2.1. An Introduction to IDEs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">2.1.1. Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-ides">2.1. An Introduction to IDEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-terminals">2.2. An Introduction to Terminals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">2.2.1. Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-command-basics">2.2. Shell Command Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potpourri-of-shell-command-info">2.3. Potpourri of Shell Command Info</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.4. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-command-basics">2.3. Shell Command Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes-a-very-brief-and-shallow-introduction">2.4. Processes (A Very Brief and Shallow Introduction)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.5. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -490,21 +491,22 @@ document.write(`
 <p>Here’s an example of an IDE, VSCode:</p>
 <p><img alt="vscodepicture" src="../../_images/vscode.png" /></p>
 <p>Image Source: <a class="reference external" href="https://code.visualstudio.com/updates/v1_58">https://code.visualstudio.com/updates/v1_58</a></p>
-<p>The command line, or terminal, or shell (I will be using these terms interchangably in this chapter) is a way to interact with your computer. It’s often called a command-line interface (CLI) or shell. Let’s go through a break</p>
-<p>Text Interface: Unlike graphical user interfaces (GUIs), which use windows, icons, and menus, terminals operate purely through text input and output. You can interact with the system by typing commands and reading text responses.</p>
-<p>Shell: The shell is a program that interprets commands entered by the user and executes them. Popular shells include Bash (Bourne Again Shell), Zsh (Z Shell) which is used on more modern Macs (Mac used bash before macOS Catalina), and PowerShell which is used on Windows.</p>
-<p>Commands: YOu can type commands into the terminal to perform various tasks such as navigating the file system, managing files, running programs, and configuring system settings.</p>
-<p>File System Navigation: You can navigate through directories and manipulate files using commands like <code class="docutils literal notranslate"><span class="pre">cd</span></code> (change directory), <code class="docutils literal notranslate"><span class="pre">ls</span></code> (list directory contents), <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> (make directory), <code class="docutils literal notranslate"><span class="pre">rm</span></code> (remove files or directories), etc. You don’t need to open up things manually with your command line, you can just navigate through typing - no need for your mouse! Many experienced programmers pride themselves on their ability to navigate their development environments without having to lift their fingers for aything but typing, increasing their programming efficiency.</p>
-<p>Scripting and Automation: Terminals are powerful tools for automation and scripting tasks. You can write scripts (sequences of commands) to perform repetitive tasks, manage system configurations, or automate software deployment. You can customize your system, especially with operating systems like Linux, to make your computer system work for you!</p>
-<p>Remote Access: Terminals are commonly used for remote access to servers and computers. Secure Shell (SSH) is a protocol that allows you to log in to a remote system securely via a terminal. This can also be useful when you want to access other code bases, (when we get into our git chapter, we can look at how to access other people’s code bases with ssh). This is important for the collaboration needed in large scale projects!</p>
-<p>System Administration: System administrators use terminals for managing servers and performing administrative tasks, especially in headless (no graphical interface) server environments.</p>
-<p>Customization: You can customize their terminal environment with different colors, fonts, and shortcuts to enhance usability and productivity. Or just make things pretty :wink:</p>
+</section>
+<section id="an-introduction-to-terminals">
+<h2><span class="section-number">2.2. </span>An Introduction to Terminals<a class="headerlink" href="#an-introduction-to-terminals" title="Link to this heading">#</a></h2>
+<p>The command line, or terminal, or shell (I will be using these terms interchangably in this chapter) is a way to interact with your computer. It’s often called a command-line interface (CLI) or shell. Let’s go through some shell fundamentals.</p>
+<p>Terminals use a text interface. Unlike graphical user interfaces (GUIs), which use windows, icons, and menus, terminals operate using text. You can interact with the system by typing commands and reading text responses- hence the name command line. The shell is a program that interprets commands entered by the user and executes them. Popular shells include Bash (Bourne Again Shell), Zsh (Z Shell) which is used on more modern Macs (Mac used bash before macOS Catalina), and PowerShell which is used on Windows. Once you get comfortable using the shell, you can use it to interpret things different ways, but we’ll go into that later.</p>
+<p>But usually, in most shells, you can type a standard set of commands into the terminal to perform various tasks such as navigating the file system, managing files, running programs, and configuring system settings. A lot of the entry level commands you can use deal with going through your file system. You can navigate through directories and manipulate files using commands like <code class="docutils literal notranslate"><span class="pre">cd</span></code> (change directory), <code class="docutils literal notranslate"><span class="pre">ls</span></code> (list directory contents), <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> (make directory), <code class="docutils literal notranslate"><span class="pre">rm</span></code> (remove files or directories), etc. You don’t need to open up things manually with your command line, you can just navigate through typing - no need for your mouse! Many experienced programmers pride themselves on their ability to navigate their development environments without having to lift their fingers for aything but typing, increasing their programming efficiency.</p>
+<p>Another important use of terminals is their ability to automate, especially with shell scripting. You can write scripts (sequences of commands) to perform repetitive tasks, manage system configurations, or automate software deployment. You can customize your system, especially with operating systems like Linux, to make your computer system work for you! This customization is often done with bashrc files, which help your system understand your settings. You can read more about customizing your system here: <a class="reference external" href="https://www.marquette.edu/high-performance-computing/bashrc.php">https://www.marquette.edu/high-performance-computing/bashrc.php</a></p>
+<p>You can also do some more fun customizations with your terminal environment by changing the basics to different colors, fonts, and shortcuts to enhance usability and productivity. Or just make things pretty :wink:</p>
+<p>Another use for terminals are for remote access to servers and computers. Secure Shell (SSH) is a protocol that allows you to log in to a remote system securely via a terminal. This can also be useful when you want to access other code bases, (when we get into our git chapter, we can look at how to access other people’s code bases with ssh). This is important for the collaboration needed in large scale projects!</p>
+<p>The last use we will look at for terminals (note: this list is not comprehensive, and there are many more uses for the terminal! We are just going through the basics). System administrators (often called Sys Admins) use terminals for managing servers and performing administrative tasks, especially in headless (no graphical interface) server environments.</p>
 <p>Terminals provide a really flexible and powerful way to interact with a computer system, especially for tasks that require precise control or automation. So let’s go through some of the ways you can interact with your terminal!</p>
 <p>Here’s a stylized version of a terminal:</p>
 <p><img alt="image.png" src="../../_images/redhatterminal.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.unixsysadmin.com/rhel-9-resources/">https://www.unixsysadmin.com/rhel-9-resources/</a></p>
 <section id="exercise">
-<h3><span class="section-number">2.1.1. </span>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1. </span>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
 <p>First open up a terminal. This is done differently on different computer systems, but most have an app to access your terminal! Once you’re in your terminal, you can type <code class="docutils literal notranslate"><span class="pre">ls</span></code> to print out the files in your computer. The ls command stands for list, a way to list out everything in a folder, or directory. It’s important to understand, most of your computer is a file system of programs. The terminal helps you navigate that file system.</p>
 <p>Let’s try an exercise in how to navigate using the command line:</p>
 <p>First type <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">project</span></code> in your terminal and press enter. The <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> command stands for make directory, so it creates a folder in which to hold your files.
@@ -528,7 +530,7 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 </section>
 </section>
 <section id="shell-command-basics">
-<h2><span class="section-number">2.2. </span>Shell Command Basics<a class="headerlink" href="#shell-command-basics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>Shell Command Basics<a class="headerlink" href="#shell-command-basics" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>ls</strong></p>
 <ul class="simple">
@@ -636,12 +638,12 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
 </ol>
 <p>These redirection operators are powerful tools for manipulating input and output streams in shell scripts and commands. They allow you to capture output, suppress output, and manage errors effectively.</p>
 </section>
-<section id="potpourri-of-shell-command-info">
-<h2><span class="section-number">2.3. </span>Potpourri of Shell Command Info<a class="headerlink" href="#potpourri-of-shell-command-info" title="Link to this heading">#</a></h2>
-<p>One interesting thing about a terminal</p>
+<section id="processes-a-very-brief-and-shallow-introduction">
+<h2><span class="section-number">2.4. </span>Processes (A Very Brief and Shallow Introduction)<a class="headerlink" href="#processes-a-very-brief-and-shallow-introduction" title="Link to this heading">#</a></h2>
+<p>One interesting about the shell is that you can run multiple shells at a time, each isolated from each other with no idea of the behavior and actions of the other shell. So, your history in one shell is not necessarily known to the other shell. This can be useful when we deal with processes, which is often defined as an instance of a program being executed. To list the processes happening on your terminal, you can type <code class="docutils literal notranslate"><span class="pre">ps</span></code>. You will probably see the shell you’re running as a process, because even though it has a text interface, at the end of the day, the shell is a program running on your system. I won’t go hugely into processes in this chapter, but they’re really useful for threading and concurrency in computing, which basically means you can help control the flow of execution of your programs, and help your computer multi-task. The shell is very useful tool to help work with processes and calls to the operating system (syscalls). Becuase this chapter is focused more on getting used to using the command line, I won’t go too much into the nitty gritty of processes. But if you want more information on processes, this is a great place to get started: <a class="reference external" href="https://aaltoscicomp.github.io/linux-shell/processes/">https://aaltoscicomp.github.io/linux-shell/processes/</a></p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">2.4. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Now that you have an overview of the how to use the commmand line, try it out yourself! Try exploring your file system, and navigating your computer by just typing some commands! If you need any help- remember, you can always check out the man pages.</p>
 <p>If you want to read more about the shell and what you can do with it: check out this chapter in another Open Education textbook: <a class="reference external" href="https://jappavoo.github.io/UndertheCovers/textbook/unix/shellintro.html">https://jappavoo.github.io/UndertheCovers/textbook/unix/shellintro.html</a></p>
 <p>Happy Exploring!</p>
@@ -712,13 +714,14 @@ But, the <code class="docutils literal notranslate"><span class="pre">mkdir</spa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-ides">2.1. An Introduction to IDEs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">2.1.1. Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-ides">2.1. An Introduction to IDEs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-introduction-to-terminals">2.2. An Introduction to Terminals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">2.2.1. Exercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-command-basics">2.2. Shell Command Basics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potpourri-of-shell-command-info">2.3. Potpourri of Shell Command Info</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.4. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shell-command-basics">2.3. Shell Command Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#processes-a-very-brief-and-shallow-introduction">2.4. Processes (A Very Brief and Shallow Introduction)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.5. Conclusion</a></li>
 </ul>
   </nav></div>
 

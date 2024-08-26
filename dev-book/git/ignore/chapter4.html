@@ -464,7 +464,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-commit-squashing-and-why-do-we-do-it">6.1. What is Commit Squashing? And Why Do We Do It?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-squash-commits">6.2. How to Squash Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-squash-commits">6.2. How to Squash Commits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-rebase">6.2.1. Interactive Rebase:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-reset">6.2.2. Git Reset</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-avoid-squashing-commits">6.3. When to Avoid Squashing Commits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.4. Conclusion</a></li>
 </ul>
@@ -495,9 +499,10 @@ document.write(`
 <section id="how-to-squash-commits">
 <h2><span class="section-number">6.2. </span>How to Squash Commits<a class="headerlink" href="#how-to-squash-commits" title="Link to this heading">#</a></h2>
 <p>As we’ve seen with Git, and with computer science in general, there are multiple approaches to do the same thing. We will go over two ways to squash commits! One with an interactive rebase, and the other with git reset.</p>
-<p>Here’s how to do an interactive rebase:
-Identify the Commits to Squash: First, determine which commits you want to combine. Typically, this involves commits on a feature branch that you’ve been working on and want to clean up before merging.</p>
-<p>Use An Interactive Rebase:</p>
+<section id="interactive-rebase">
+<h3><span class="section-number">6.2.1. </span>Interactive Rebase:<a class="headerlink" href="#interactive-rebase" title="Link to this heading">#</a></h3>
+<p>To interactive rebase, we first have to figure out the commits we want to squash. In most cases, this will be commits on a feature branch that you’ve been working on and want to clean up before merging.</p>
+<p>Now, let’s</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="o">-</span><span class="n">i</span> <span class="n">HEAD</span><span class="o">~</span><span class="n">number_of_commits</span>
 </pre></div>
 </div>
@@ -506,26 +511,29 @@ Identify the Commits to Squash: First, determine which commits you want to combi
 </pre></div>
 </div>
 <p>You can use the commit sha from the git log to pick the commit up to where you want to squash, and the ~ after the commit hash tells the editor you’re using to include that commit as well as the history.</p>
-<p>Choose the Commits to You Want to Squash: An editor will open showing a list of your commits. The commits are listed in chronological order, with the most recent commit at the bottom. Change the word <code class="docutils literal notranslate"><span class="pre">pick</span></code> to <code class="docutils literal notranslate"><span class="pre">squash</span></code> (or <code class="docutils literal notranslate"><span class="pre">s</span></code>) for all but the first commit you want to combine. Leave the top commit as <code class="docutils literal notranslate"><span class="pre">pick</span></code>.</p>
-<p>Example:</p>
+<p>Let’s clean up our history. An editor will pop up, showing a list of commits. The commits are listed in chronological order, with the most recent commit at the bottom. Change the word <code class="docutils literal notranslate"><span class="pre">pick</span></code> to <code class="docutils literal notranslate"><span class="pre">squash</span></code> (or <code class="docutils literal notranslate"><span class="pre">s</span></code>) for all but the first commit you want to combine. Leave the top commit as <code class="docutils literal notranslate"><span class="pre">pick</span></code>.</p>
+<p>Here’s what that might look like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pick</span> <span class="n">e1a2b3c</span> <span class="n">Initial</span> <span class="n">commit</span>
 <span class="n">squash</span> <span class="n">d4e5f6g</span> <span class="n">Added</span> <span class="n">cool</span> <span class="n">new</span> <span class="n">feature</span> <span class="n">X</span>
 <span class="n">squash</span> <span class="n">h7i8j9k</span> <span class="n">Fixed</span> <span class="n">annoying</span> <span class="n">bug</span> <span class="n">X</span>
 </pre></div>
 </div>
-<p>Write a Commit Message: After saving and closing the editor, Git will combine the selected commits. Another editor window will open to let you write a commit message for the squashed commit. You can edit the message to give the intention of the branch, or the intention of the squashed commits. You can look at our commit messages chapter to see some ways to write good commit messages!</p>
-<p>Complete the Rebase: Save and close the editor. Git will complete the rebase process, and squash the selected commits into a single commit!</p>
-<p>Force Push Changes: If you’re working with a remote repository, you’ll need to force-push your changes because squashing rewrites commit history:</p>
+<p>Now that we’ve cleaned up, let’s rewrite our history a little bit. After saving and closing the editor, Git will combine the selected commits. Another editor window will open to let you write a commit message for the squashed commit. You can edit the message to give the intention of the branch, or the intention of the squashed commits. You can look at our commit messages chapter to see some ways to write good commit messages!</p>
+<p>To complete the rebase, save and close the editor. Git will complete the rebase process, and squash the selected commits into a single commit!, and if you’re working on a remote repository, you’ll need to force-push your changes because squashing rewrites commit history:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">lease</span>
 </pre></div>
 </div>
+</section>
+<section id="git-reset">
+<h3><span class="section-number">6.2.2. </span>Git Reset<a class="headerlink" href="#git-reset" title="Link to this heading">#</a></h3>
 <p>If you don’t feel comfortable using editors, here is another approach that doesn’t require an editor, without interactive rebase. Here’s how to do it with git reset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">reset</span> <span class="o">--</span><span class="n">soft</span> <span class="n">HEAD</span><span class="o">~</span><span class="n">number_of_commits_here</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;new commit message&quot;</span> 
 <span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">force</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">lease</span>
 </pre></div>
 </div>
-<p>In the same way we can replace the number of commits in interactive rebases, or use the commit SHA, like we did in the earlier rebase. And in both cases, we use force with lease in both approaches, keeps your history and doesn’t overwrite anything, unlike git push -f.</p>
+<p>In the same way we can replace the number of commits in interactive rebases, or use the commit SHA, like we did in the earlier rebase. And in both cases, we use force with lease in both approaches, keeps your history and doesn’t overwrite anything, unlike git push -f. This gives you less control over the specific commits you want to squash, but can still be very effective, in most cases!</p>
+</section>
 </section>
 <section id="when-to-avoid-squashing-commits">
 <h2><span class="section-number">6.3. </span>When to Avoid Squashing Commits<a class="headerlink" href="#when-to-avoid-squashing-commits" title="Link to this heading">#</a></h2>
@@ -603,7 +611,11 @@ Identify the Commits to Squash: First, determine which commits you want to combi
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-commit-squashing-and-why-do-we-do-it">6.1. What is Commit Squashing? And Why Do We Do It?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-squash-commits">6.2. How to Squash Commits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-squash-commits">6.2. How to Squash Commits</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-rebase">6.2.1. Interactive Rebase:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-reset">6.2.2. Git Reset</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-avoid-squashing-commits">6.3. When to Avoid Squashing Commits</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.4. Conclusion</a></li>
 </ul>
