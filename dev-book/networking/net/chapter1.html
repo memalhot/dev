@@ -465,16 +465,19 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">15.1. Networking Components</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">15.1.1. OSI Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-ip-model">15.1.2. TCP/IP Model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">15.2. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.3. Network Address Translation (NAT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.4. TCP and UDP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.5. Domain Name System</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.6. SSL Certificates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-throughput-and-link-speeds">15.7. Network Throughput and Link Speeds</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.8. Network Architectures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.9. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-potpourri">15.2. Networking Potpourri</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">15.2.1. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.2.2. Network Address Translation (NAT)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.2.3. TCP and UDP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.2.4. Domain Name System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.2.5. SSL Certificates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.3. Network Architectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.4. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -496,11 +499,20 @@ document.write(`
 <p>Networking has many levels, some of which are how different types of software interact with each other, and some of how software interacts with hardware. The Open Systems Interconnection model or OSI provides us with a framework of how to handle network communication in layers. We will be looking at the layers from the server side.</p>
 <p><img alt="image.png" src="../../_images/os.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.cloudflare.com/it-it/learning/ddos/glossary/open-systems-interconnection-model-osi/">https://www.cloudflare.com/it-it/learning/ddos/glossary/open-systems-interconnection-model-osi/</a></p>
-<ol class="arabic simple">
-<li><p><strong>Physical Layer:</strong> Handles physical connection and transmission of raw data</p></li>
-<li><p><strong>Data Link Layer:</strong> Manages node-to-node data transfer and error detection</p></li>
-<li><p><strong>Network Layer:</strong> Manages logical addressing and routing (such as: IP addresses (remember them?))</p></li>
-<li><p><strong>Transport Layer:</strong> Ensures end-to-end communication, including reliability (such as: TCP)</p></li>
+<p><strong>Physical Layer:</strong></p>
+<ul class="simple">
+<li><p>The physical layer focuses on (surprise) the physical layer between two devices. It transfers raw data using bits (think 0s and 1s). It also handles a lot of the management of those bits in different ways. One way is bit synchronization, where a clock synchronizes the sending of bits between the sender and the reciever, as well as the  transmission rate, the number of bits per second.</p></li>
+</ul>
+<p><strong>Data Link Layer:</strong></p>
+<ul class="simple">
+<li><p>The data link layer has two main parts. The first part is the “medium access control,” which uses the MAC addresses (which we explain more in depth later in this chapter) from the network devices to transmit data between them. The second part is the “logical link layer,” which manages flow control, and does error checking on data transmission. This is often referred to as node-to-node data transfer.</p></li>
+</ul>
+<p><strong>Network Layer:</strong></p>
+<ul class="simple">
+<li><p>Handles the routing and sending of data between different networks. The most important protocols at this layer are IP and ICMP.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p><strong>Transport Layer:</strong> Ensures end-to-end communication, including reliability (such as: TCP and UDP)</p></li>
 <li><p><strong>Session Layer:</strong> Manages sessions and controls dialogues between applications</p></li>
 <li><p><strong>Presentation Layer:</strong> Translates data formats and encryption (such as: SSL/TLS)</p></li>
 <li><p><strong>Application Layer:</strong> Provides network services directly to applications (such as: HTTP, FTP)</p></li>
@@ -510,9 +522,15 @@ document.write(`
 <p><img alt="image.png" src="../../_images/osi.png" /></p>
 <p>Image Source: <a class="reference external" href="https://anamul-haque.medium.com/what-is-the-osi-model-66758c44c896">https://anamul-haque.medium.com/what-is-the-osi-model-66758c44c896</a></p>
 </section>
+<section id="tcp-ip-model">
+<h3><span class="section-number">15.1.2. </span>TCP/IP Model<a class="headerlink" href="#tcp-ip-model" title="Link to this heading">#</a></h3>
 </section>
+</section>
+<section id="networking-potpourri">
+<h2><span class="section-number">15.2. </span>Networking Potpourri<a class="headerlink" href="#networking-potpourri" title="Link to this heading">#</a></h2>
+<p>Let’s go through some important concepts in networking.</p>
 <section id="dealing-with-ip-addresses-mac-addresses-and-subnets">
-<h2><span class="section-number">15.2. </span>Dealing with IP Addresses, MAC Addresses, and Subnets<a class="headerlink" href="#dealing-with-ip-addresses-mac-addresses-and-subnets" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">15.2.1. </span>Dealing with IP Addresses, MAC Addresses, and Subnets<a class="headerlink" href="#dealing-with-ip-addresses-mac-addresses-and-subnets" title="Link to this heading">#</a></h3>
 <p>An IP address (Internet Protocol address) is a unique identifier assigned to each device connected to a network. It facilitates the routing of data packets (data packets are a small unit of information that is sent over a network, like the internet, from one device to another) between different devices over the internet. IP addresses come in two versions: IPv4 (this looks like: <code class="docutils literal notranslate"><span class="pre">192.168.1.1</span></code>) and IPv6 (and this looks like: <code class="docutils literal notranslate"><span class="pre">2001:0db8:85a3:0000:0000:8a2e:0370:7334</span></code>). IPv4 addresses are 32-bit, while IPv6 addresses are 128-bit, which gives you a much larger address space!</p>
 <p><img alt="image.png" src="../../_images/ip.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.zenarmor.com/docs/network-basics/what-is-ip-address">https://www.zenarmor.com/docs/network-basics/what-is-ip-address</a></p>
@@ -551,18 +569,18 @@ document.write(`
 <p>Image Source: <a class="reference external" href="https://medium.com/unicorn-ultra/what-is-subnet-from-simple-partitions-to-complex-chains-359ebccf520d">https://medium.com/unicorn-ultra/what-is-subnet-from-simple-partitions-to-complex-chains-359ebccf520d</a></p>
 </section>
 <section id="network-address-translation-nat">
-<h2><span class="section-number">15.3. </span>Network Address Translation (NAT)<a class="headerlink" href="#network-address-translation-nat" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">15.2.2. </span>Network Address Translation (NAT)<a class="headerlink" href="#network-address-translation-nat" title="Link to this heading">#</a></h3>
 <p>Network Address Translation is a technique used to modify network address information in IP packet headers while in transit across a routing device. NAT is commonly used to map a single public IP address to multiple private IP addresses within a local network. This allows multiple devices to share a single public IP address, conserving the limited number of available IPv4 addresses. NAT also provides a layer of security by masking internal IP addresses from external networks.</p>
 </section>
 <section id="tcp-and-udp">
-<h2><span class="section-number">15.4. </span>TCP and UDP<a class="headerlink" href="#tcp-and-udp" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">15.2.3. </span>TCP and UDP<a class="headerlink" href="#tcp-and-udp" title="Link to this heading">#</a></h3>
 <p>Just like ships passing into ports to drop off different goods or packages, a port in software is a place to take in certain information between two points. We can define a port as an operating system abstraction, a point in software, where network connections can receive responses or information. Ports are managed by your operating system, and It’s tied to a location in memory which is running code, which is “listening” for data packets to come into the port. You can communicate over ports with TCP or UDP.</p>
 <p>TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are two key protocols used for sending data over the internet, each serving different needs. TCP is known for its reliability; it ensures that data sent from one computer to another arrives accurately and in the correct order. It does this by establishing a connection between sender and receiver before transmitting data, checking for errors, and re-sending any lost or corrupted information. This makes TCP ideal for tasks where accuracy is crucial, such as loading websites, streaming videos, or sending emails.</p>
 <p>In contrast, UDP (User Datagram Protocol) focuses on speed and efficiency rather than reliability. It sends data packets quickly without establishing a connection or checking if the data arrives correctly. This makes UDP faster but less reliable, as it doesn’t guarantee that data will arrive intact or in the correct order. UDP is commonly used in scenarios where speed is more important than accuracy, such as online gaming, live video streaming, or VoIP calls, where occasional data loss is acceptable in exchange for maintaining smooth and fast communication.</p>
 <p>You can check out some well known ports, and what they tend to be used for here: <a class="reference external" href="https://www.geeksforgeeks.org/50-common-ports-you-should-know/">https://www.geeksforgeeks.org/50-common-ports-you-should-know/</a></p>
 </section>
 <section id="domain-name-system">
-<h2><span class="section-number">15.5. </span>Domain Name System<a class="headerlink" href="#domain-name-system" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">15.2.4. </span>Domain Name System<a class="headerlink" href="#domain-name-system" title="Link to this heading">#</a></h3>
 <p>The Domain Name System (DNS) translates human-readable domain names (e.g., <a class="reference external" href="http://www.thisisafakewebsite.com">www.thisisafakewebsite.com</a>) into IP addresses that computers can understand and use to identify each other devices on the network.</p>
 <p>Some public DNS are managed by organizations like Google or Cloudflare, public DNS servers provide domain resolution services for general internet use. They handle high query volumes and offer features like caching to improve speed and performance.</p>
 <ul class="simple">
@@ -579,20 +597,16 @@ document.write(`
 <p><strong>TTL (Time to Live):</strong> TTL indicates how long a DNS record is cached by DNS resolvers before being refreshed. A shorter TTL can provide quicker updates, while a longer TTL can reduce DNS lookup times but may delay changes.</p>
 </section>
 <section id="ssl-certificates">
-<h2><span class="section-number">15.6. </span>SSL Certificates<a class="headerlink" href="#ssl-certificates" title="Link to this heading">#</a></h2>
+<h3><span class="section-number">15.2.5. </span>SSL Certificates<a class="headerlink" href="#ssl-certificates" title="Link to this heading">#</a></h3>
 <p>Secure Sockets Layer (SSL) certificates encrypt data exchanged between a user’s browser and a web server. This ensures secure communication, protecting sensitive information from interception. SSL certificates are issued by Certificate Authorities (CAs) which include important details like the domain name, the certificate authority, and a public key. They are very important to renew (and can take down production if you don’t…). They ensure that the website you’re working with is trustworthy- like making sure a site uses https instead of http. Having an SSL ensures that people will trust your site, and your site isn’t the result of some hacker trying to steal information.</p>
 </section>
-<section id="network-throughput-and-link-speeds">
-<h2><span class="section-number">15.7. </span>Network Throughput and Link Speeds<a class="headerlink" href="#network-throughput-and-link-speeds" title="Link to this heading">#</a></h2>
-<p>Network Throughput is measured in megabits per second (Mbps), network throughput represents the rate at which data is successfully transmitted over a network. It’s a crucial metric for assessing network performance and ensuring sufficient bandwidth for applications.</p>
-<p>Link speeds refers to the maximum data transfer rate of a network connection, typically measured in Mbps or gigabits per second (Gbps). It is determined by the network card’s capabilities and the network environment. For instance, a 1 Gbps network card can handle faster speeds than a 100 Mbps card.</p>
 </section>
 <section id="network-architectures">
-<h2><span class="section-number">15.8. </span>Network Architectures<a class="headerlink" href="#network-architectures" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.3. </span>Network Architectures<a class="headerlink" href="#network-architectures" title="Link to this heading">#</a></h2>
 <p>There are three main types of network arcitecture. INSERT THEM HERE</p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">15.9. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.4. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Networking is hugely important to understanding how different devices interact with each other and how they share data. Understanding how networking works helps you create software that is integrated into larger networks, and gives your application the power to interact with other devices- which is what makes the internet so cool! It can also help you understand how to structure your projects, which we will go over in the next chapter of our networking section.</p>
 <p>Happy Coding!</p>
 </section>
@@ -664,16 +678,19 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">15.1. Networking Components</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">15.1.1. OSI Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-ip-model">15.1.2. TCP/IP Model</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">15.2. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.3. Network Address Translation (NAT)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.4. TCP and UDP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.5. Domain Name System</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.6. SSL Certificates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-throughput-and-link-speeds">15.7. Network Throughput and Link Speeds</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.8. Network Architectures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.9. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-potpourri">15.2. Networking Potpourri</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">15.2.1. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.2.2. Network Address Translation (NAT)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.2.3. TCP and UDP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.2.4. Domain Name System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.2.5. SSL Certificates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.3. Network Architectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.4. Conclusion</a></li>
 </ul>
   </nav></div>
 
