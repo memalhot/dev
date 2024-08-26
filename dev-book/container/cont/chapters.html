@@ -466,10 +466,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-containers">12.1. What Are Containers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-containers">12.2. Why Use Containers?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-getting-started-with-containers">12.3. Exercise: Getting Started with Containers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker">12.4. Using Docker</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-docker">12.4.1. Installing Docker</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker">12.4. Using Docker</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-podman">12.5. Introducing Podman</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podman-vs-docker">12.6. Podman vs Docker</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-tips">12.7. Container Tips</a></li>
@@ -487,7 +484,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="containers">
 <h1><span class="section-number">12. </span>Containers<a class="headerlink" href="#containers" title="Link to this heading">#</a></h1>
-<p>When you think of containers, you probably don’t think of software. You might think of tupperware, or boxes, or shipping containers, ways to package various things.But containers in software are also ways to package things, just packaging software rather than real life objects. Containers have revolutionized the way we develop, deploy, and manage applications. They offer a level of space efficiency and consistency that traditional virtual machines (VMs) and other deployment methods haven’t been able to compare to. In this chapter, we will go through the essentials of using containers effectively. We’ll also dive into an alternative to Docker: Podman.</p>
+<p>When you think of containers, you probably don’t think of software. You might think of tupperware, or boxes, or shipping containers, ways to package various things.But containers in software are also ways to package things, just packaging software rather than real life objects. Containers have revolutionized the way we develop, deploy, and manage applications. They offer a level of space efficiency and consistency that traditional virtual machines (VMs) and other deployment methods haven’t been able to compare to. In this chapter, we will go through the essentials of using containers effectively and hpw to build container images with tools like Docker and Podman.</p>
+<p><img alt="containers" src="../../_images/conta.png" /></p>
+<p>Image Source: <a class="reference external" href="https://faun.pub/what-is-a-container-78f08ef884a8">https://faun.pub/what-is-a-container-78f08ef884a8</a></p>
 <section id="what-are-containers">
 <h2><span class="section-number">12.1. </span>What Are Containers<a class="headerlink" href="#what-are-containers" title="Link to this heading">#</a></h2>
 <p>You can think of containers as little packages of software which are deployed. They are a lightweight form of virtualization that package an application and its dependencies into a single, portable container. Unlike VMs, which are made up by an entire operating system, containers share the host OS’s kernel but maintain isolated user spaces. This means they are more efficient and faster to start up, making them way more scalable and accessible. They can also be started both locally, and in the cloud.</p>
@@ -500,21 +499,17 @@ document.write(`
 <p>We use containers for many reasons. The first is to create a consistent envionment. One benefit of containers is that they ensure that your application behavesthe same way regardless of where it’s deployed. So, if it’s locally, on your friend’s computer who has a bunch of different versions of software ownloaded, it works the same- and in the same environment. This means that the “works on my machine” problem is solved by providing a consistent environment1</p>
 <p>Another important pro of using containers is the isolation and security they offer. As you may know from the four pillars of object oriented programming, encapsulation is really important. We don’t want most of our users to directly interact with out code, for many reasons. Because containers run in isolated environments, this offers us isolation and security that does encapsulation for us.This isolation also enhances security by limiting the scope of potential <a class="reference external" href="http://breaches.It">breaches.It</a> also means that different containers can run different applications or versions of an application without conflicts.</p>
 <p>Containers are also often called “lightweight” because they are very resource efficient. People consider containers to be lightweight compared to VMs because they share the host OS’s resources. This efficiency allows you to run more containers on the same hardware, making them take up way less computing power!</p>
-<p>Another benefit of containers are their portability, their ability to work in different environments. Containers can run on any system that supports container technology, making it easy to move applications between different environments, whether it’s from a developer’s laptop to a staging environment or from on-premises hardware to the cloud.</p>
+<p>Another benefit of containers are their portability, AKA their ability to work in different environments. Containers can run on any system that supports container technology, making it easy to move applications between different environments, whether it’s from a developer’s laptop to a staging environment or from on-premises hardware to the cloud.</p>
 <p><img alt="containers vs vms" src="../../_images/meme.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.reddit.com/r/ProgrammerHumor/comments/y8qylu/docker_is_born/">https://www.reddit.com/r/ProgrammerHumor/comments/y8qylu/docker_is_born/</a></p>
 </section>
 <section id="exercise-getting-started-with-containers">
 <h2><span class="section-number">12.3. </span>Exercise: Getting Started with Containers<a class="headerlink" href="#exercise-getting-started-with-containers" title="Link to this heading">#</a></h2>
-<p>To get started with containers, you’ll need to familiarize yourself with some key tools and concepts. The most widely used container technology is Docker, though there are other options like Podman. Here’s a basic guide to using Docker and Podman.</p>
+<p>To get started with containers, you’ll need to familiarize yourself with some key tools like Docker and Podman. These tools use container files to build images, which you can think of as a snapshot of an environment. The container file gives the instructions needed to build that snapshot for your application to run in. Another way to think of container files is as a blueprint for the container, a read-only template that contain instructions. Now let’s go into actually building a container. The container itself, in formal terms, are container images running as isolated processes. But you can think of them as literal containers filled with software that create an environment for your software to run in. Container images are saved in repositories in the same way you save code in a repository. Docker Hub, Amazon ECR, or Red Hat’s Quay are public registries where you can find and share Docker images, almost like Github. But these aren’t the only places you can find container images, there are many different repos to check out.</p>
 </section>
 <section id="using-docker">
 <h2><span class="section-number">12.4. </span>Using Docker<a class="headerlink" href="#using-docker" title="Link to this heading">#</a></h2>
-<section id="installing-docker">
-<h3><span class="section-number">12.4.1. </span>Installing Docker<a class="headerlink" href="#installing-docker" title="Link to this heading">#</a></h3>
-<p>Download and install Docker from <a class="reference external" href="https://www.docker.com/get-started">Docker’s website</a>. This link can help you get setup for based on your operating system, like Windows, macOS, and Linux.</p>
-<p>Understanding Docker Components</p>
-<p>The first component we’ll cover is a docker image. You can think of docker images like a blueprint for the container. They are read-only templates that contain instructions for creating a container. The second component we can go over is the container itself, in formal terms they are docker images running as isolated processes. But you can think of them as literal containers filled with software that you can enter. Docker hub is a public registry where you can find and share Docker images, almost like Github, like being a public registry where you can find code. But there are lots of other places where you can find docker images, like Amazon ECR or Red Hat’s Quay.</p>
+<p>Download and install Docker from Docker’s website: <a class="reference external" href="https://www.docker.com/get-started">https://www.docker.com/get-started</a>. This link can help you get setup for based on your operating system, like Windows, macOS, and Linux.</p>
 <p>Let’s try running our first container!</p>
 <p>Once Docker is installed, you can run your first container. Open your terminal run the following command to run a simple container using the official <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image:</p>
 <p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">hello-world</span></code></p>
@@ -561,7 +556,7 @@ In <a class="reference external" href="http://flask-app.py">flask-app.py</a>, in
 <span class="c1">#similar to the cp command in unix environments! </span>
 <span class="c1">#here we copy everything in our folder (.) into the app directory (/flask-app)</span>
 <span class="c1">#we can use a period for his because we are set our workdir</span>
-<span class="n">COPY</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">COPY</span> <span class="o">.</span> <span class="o">/</span><span class="n">flask</span><span class="o">-</span><span class="n">app</span>
 
 <span class="c1">#run runs commands inside your container</span>
 <span class="c1">#you can use commands you would use in the command line here!</span>
@@ -604,27 +599,19 @@ You have to build to run an image!</p>
 </li>
 </ol>
 </section>
-</section>
 <section id="introducing-podman">
 <h2><span class="section-number">12.5. </span>Introducing Podman<a class="headerlink" href="#introducing-podman" title="Link to this heading">#</a></h2>
 <p>Podman is an open-source container management tool that provides a Docker-compatible experience while offering additional features and capabilities. It is often praised for its focus on security and its daemonless architecture. Here’s how Podman compares to Docker and how you can get started with it.</p>
 <ol class="arabic simple">
 <li><p>Installing Podman</p></li>
 </ol>
-<p>Podman can be installed on various Linux distributions and is available for Windows and macOS. Installation instructions for different platforms can be found on the <a class="reference external" href="https://podman.io/getting-started/installation">Podman installation page</a>.</p>
+<p>Podman can be installed on various Linux distributions and is available for Windows and macOS. Installation instructions for different operating systems can be found on the <a class="reference external" href="https://podman.io/getting-started/installation">Podman installation page</a>.</p>
 <p>For example, on Ubuntu, you can install Podman with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">podman</span>
 </pre></div>
 </div>
 <ol class="arabic" start="2">
-<li><p>Podman vs. Docker</p>
-<ul class="simple">
-<li><p>Daemonless Architecture: Unlike Docker, which relies on a long-running daemon, Podman runs as a single binary and uses a client-server architecture. This makes it more compatible with systemd (and Kubernetes). This also enhances security, since you aren’t always running as root.</p></li>
-<li><p>Rootless Containers: Podman supports rootless containers, which can run without requiring root privileges, thus improving security and reducing risks.</p></li>
-<li><p>Docker Compatibility: Podman is very compatible with Docker CLI commands, which means you can often use Podman as a drop-in replacement for Docker commands. So, <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">run</span></code> works similarly to <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code>.</p></li>
-</ul>
-</li>
 <li><p>Running Containers with Podman</p>
 <p>Here’s how you can run a container using Podman, starting with the <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> image:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">podman</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
@@ -668,13 +655,13 @@ You have to build to run an image!</p>
 </section>
 <section id="container-tips">
 <h2><span class="section-number">12.7. </span>Container Tips<a class="headerlink" href="#container-tips" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
+<ul class="simple">
 <li><p>Use Minimal Base Images: Start with the smallest base image, many docker images are made smaller and stripped so they’re more space efficient</p></li>
 <li><p>Condense Commands: Adding a new command like <code class="docutils literal notranslate"><span class="pre">RUN</span></code> or <code class="docutils literal notranslate"><span class="pre">COPY</span></code> can add extra layers yo an image and make them bigger, using at the end of commands <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span> <span class="pre">\</span></code> allows you to condense commands and make more efficent images</p></li>
-<li><p>Keep Images Up-to-Date: Be sure to regularly update your images to include the latest security patches and improvements</p></li>
-<li><p>Limit Container Privileges: Run containers with the least amount of privilege necessary to mitigate security risks</p></li>
+<li><p>Keep Images Up-to-Date: Be sure to regularly update your images to include the latest security patches and improvements to ensure that you’re working with secured, maintained software</p></li>
+<li><p>Limit Container Privileges: Run containers with the least amount of privilege necessary to mitigate security risks (it doesn’t always make sense to run as root)</p></li>
 <li><p>Monitor and Log: Implement monitoring and logging solutions to keep track of container performance and troubleshoot issues</p></li>
-</ol>
+</ul>
 </section>
 <section id="conclusion">
 <h2><span class="section-number">12.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
@@ -750,10 +737,7 @@ You have to build to run an image!</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-containers">12.1. What Are Containers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-containers">12.2. Why Use Containers?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-getting-started-with-containers">12.3. Exercise: Getting Started with Containers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker">12.4. Using Docker</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-docker">12.4.1. Installing Docker</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-docker">12.4. Using Docker</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-podman">12.5. Introducing Podman</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#podman-vs-docker">12.6. Podman vs Docker</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-tips">12.7. Container Tips</a></li>
