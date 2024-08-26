@@ -463,16 +463,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">15.1. Networking Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">15.1. Networking Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">15.1.1. OSI Model</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">15.2. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.3. Network Address Translation (NAT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.4. TCP and UDP</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.5. Domain Name System</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.6. SSL Certificates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-throughput-and-link-speeds">15.7. Network Throughput and Link Speeds</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">15.8. OSI Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.9. Network Architectures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.10. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.8. Network Architectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.9. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -489,7 +491,25 @@ document.write(`
 <p>Networking is important to computer science, and big enough to be its own focus and focus of study. Networking forms the backbone of modern computing, allowing for communication between devices and systems across the globe. You want to get an HTTP response for an API? That’s networking. You want to connect to a server, or dealing with ports? Networking. You want to work on the same shared doc on GoogleDocs? Guess what, that works because of networking. It’s the basis of how interconnected computing devices can share data and resources with each other- which is super important for how we share  on the internet! These networked devices use a system of rules, called communications protocols, to transmit information over physical or wireless technologies. In this chapter, we will cover some networking fundamentals.</p>
 <section id="networking-components">
 <h2><span class="section-number">15.1. </span>Networking Components<a class="headerlink" href="#networking-components" title="Link to this heading">#</a></h2>
-<p>INSERT SOME STUFF HERE</p>
+<section id="osi-model">
+<h3><span class="section-number">15.1.1. </span>OSI Model<a class="headerlink" href="#osi-model" title="Link to this heading">#</a></h3>
+<p>Networking has many levels, some of which are how different types of software interact with each other, and some of how software interacts with hardware. The Open Systems Interconnection model or OSI provides us with a framework of how to handle network communication in layers. We will be looking at the layers from the server side.</p>
+<p><img alt="image.png" src="../../_images/os.png" /></p>
+<p>Image Source: <a class="reference external" href="https://www.cloudflare.com/it-it/learning/ddos/glossary/open-systems-interconnection-model-osi/">https://www.cloudflare.com/it-it/learning/ddos/glossary/open-systems-interconnection-model-osi/</a></p>
+<ol class="arabic simple">
+<li><p><strong>Physical Layer:</strong> Handles physical connection and transmission of raw data</p></li>
+<li><p><strong>Data Link Layer:</strong> Manages node-to-node data transfer and error detection</p></li>
+<li><p><strong>Network Layer:</strong> Manages logical addressing and routing (such as: IP addresses (remember them?))</p></li>
+<li><p><strong>Transport Layer:</strong> Ensures end-to-end communication, including reliability (such as: TCP)</p></li>
+<li><p><strong>Session Layer:</strong> Manages sessions and controls dialogues between applications</p></li>
+<li><p><strong>Presentation Layer:</strong> Translates data formats and encryption (such as: SSL/TLS)</p></li>
+<li><p><strong>Application Layer:</strong> Provides network services directly to applications (such as: HTTP, FTP)</p></li>
+</ol>
+<p>Most people who build software are focused on layers 5-7, because they are important to application-level interactions, like session management, data presentation, and application protocols.</p>
+<p>Understanding these fundamental networking concepts is crucial for developers and IT professionals, ensuring effective communication and security within and across networks.</p>
+<p><img alt="image.png" src="../../_images/osi.png" /></p>
+<p>Image Source: <a class="reference external" href="https://anamul-haque.medium.com/what-is-the-osi-model-66758c44c896">https://anamul-haque.medium.com/what-is-the-osi-model-66758c44c896</a></p>
+</section>
 </section>
 <section id="dealing-with-ip-addresses-mac-addresses-and-subnets">
 <h2><span class="section-number">15.2. </span>Dealing with IP Addresses, MAC Addresses, and Subnets<a class="headerlink" href="#dealing-with-ip-addresses-mac-addresses-and-subnets" title="Link to this heading">#</a></h2>
@@ -567,27 +587,12 @@ document.write(`
 <p>Network Throughput is measured in megabits per second (Mbps), network throughput represents the rate at which data is successfully transmitted over a network. It’s a crucial metric for assessing network performance and ensuring sufficient bandwidth for applications.</p>
 <p>Link speeds refers to the maximum data transfer rate of a network connection, typically measured in Mbps or gigabits per second (Gbps). It is determined by the network card’s capabilities and the network environment. For instance, a 1 Gbps network card can handle faster speeds than a 100 Mbps card.</p>
 </section>
-<section id="osi-model">
-<h2><span class="section-number">15.8. </span>OSI Model<a class="headerlink" href="#osi-model" title="Link to this heading">#</a></h2>
-<p>The Open Systems Interconnection (OSI) model is a conceptual framework used to understand network interactions in seven layers. Let’s put some of what we’ve gone through together and go through the seven layers.</p>
-<ol class="arabic simple">
-<li><p><strong>Physical Layer:</strong> Handles physical connection and transmission of raw data</p></li>
-<li><p><strong>Data Link Layer:</strong> Manages node-to-node data transfer and error detection</p></li>
-<li><p><strong>Network Layer:</strong> Manages logical addressing and routing (such as: IP addresses (remember them?))</p></li>
-<li><p><strong>Transport Layer:</strong> Ensures end-to-end communication, including reliability (such as: TCP)</p></li>
-<li><p><strong>Session Layer:</strong> Manages sessions and controls dialogues between applications</p></li>
-<li><p><strong>Presentation Layer:</strong> Translates data formats and encryption (such as: SSL/TLS)</p></li>
-<li><p><strong>Application Layer:</strong> Provides network services directly to applications (such as: HTTP, FTP)</p></li>
-</ol>
-<p>Most people who build software are focused on layers 5-7, because they are important to application-level interactions, like session management, data presentation, and application protocols.</p>
-<p>Understanding these fundamental networking concepts is crucial for developers and IT professionals, ensuring effective communication and security within and across networks.</p>
-</section>
 <section id="network-architectures">
-<h2><span class="section-number">15.9. </span>Network Architectures<a class="headerlink" href="#network-architectures" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.8. </span>Network Architectures<a class="headerlink" href="#network-architectures" title="Link to this heading">#</a></h2>
 <p>There are three main types of network arcitecture. INSERT THEM HERE</p>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">15.10. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.9. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Networking is hugely important to understanding how different devices interact with each other and how they share data. Understanding how networking works helps you create software that is integrated into larger networks, and gives your application the power to interact with other devices- which is what makes the internet so cool! It can also help you understand how to structure your projects, which we will go over in the next chapter of our networking section.</p>
 <p>Happy Coding!</p>
 </section>
@@ -657,16 +662,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">15.1. Networking Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#networking-components">15.1. Networking Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">15.1.1. OSI Model</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-ip-addresses-mac-addresses-and-subnets">15.2. Dealing with IP Addresses, MAC Addresses, and Subnets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.3. Network Address Translation (NAT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.4. TCP and UDP</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.5. Domain Name System</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.6. SSL Certificates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-throughput-and-link-speeds">15.7. Network Throughput and Link Speeds</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model">15.8. OSI Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.9. Network Architectures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.10. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.8. Network Architectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">15.9. Conclusion</a></li>
 </ul>
   </nav></div>
 
