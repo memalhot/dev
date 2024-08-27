@@ -509,10 +509,10 @@ document.write(`
 </ul>
 <p><strong>Network Layer:</strong></p>
 <ul class="simple">
-<li><p>Handles the routing and sending of data between different networks. The most important protocols at this layer are IP and ICMP.</p></li>
+<li><p>This layer primarily focuses on three things: packetizing, routing, and forwarding. Packetizing does what it sounds like, it packs data into packets that make it transmittable. Routing works like a navigation service, finding the most efficient path for the data packets to move. The last step is forwarding, moving the packets down the path allotted. In shorter terms, it moves the data down a physical path.</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p><strong>Transport Layer:</strong> Ensures end-to-end communication, including reliability (such as: TCP and UDP)</p></li>
+<li><p><strong>Transport Layer:</strong> The transport layer manages network traffic between clients and receivers to ensure complete data transfers, as it deals with error correction. Transport-layer protocols such as TCP and UDP (we will talk about these protocols later in the chapter) are used to manage the volume of data through load balancing, where the traffic is sent, and at what rate at which it is sent at.</p></li>
 <li><p><strong>Session Layer:</strong> Manages sessions and controls dialogues between applications</p></li>
 <li><p><strong>Presentation Layer:</strong> Translates data formats and encryption (such as: SSL/TLS)</p></li>
 <li><p><strong>Application Layer:</strong> Provides network services directly to applications (such as: HTTP, FTP)</p></li>
