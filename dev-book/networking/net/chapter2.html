@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>16. Client-Server Architecture &#8212; Beyond the Classroom</title>
+    <title>16. Network Architecture &#8212; Beyond the Classroom</title>
   
   
   
@@ -215,7 +215,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Networking</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="chapter1.html">15. Networking Fundamentals</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Client-Server Architecture</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. Network Architecture</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reading the Man Pages</span></p>
 <ul class="nav bd-sidenav">
@@ -440,9 +440,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -453,27 +451,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Client-Server Architecture</h1>
+    <h1>Network Architecture</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">16.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-communication">16.2. Client Server Communication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-servers">16.3. Web Servers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databse-servers">16.4. Databse Servers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectures-within-server-side">16.5. Architectures within Server-Side</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability">16.6. Scalability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security">16.7. Security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">16.8. Performance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-and-disadvantages-of-client-server-architecture">16.9. Advantages and Disadvantages of Client-Server Architecture</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -483,51 +465,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="client-server-architecture">
-<h1><span class="section-number">16. </span>Client-Server Architecture<a class="headerlink" href="#client-server-architecture" title="Link to this heading">#</a></h1>
-<section id="introduction">
-<h2><span class="section-number">16.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Client-server architecture, also often called the network computing model,</p>
-<p>You probably interact with client server architecture everyday. When you browse the internet, you use web servers, when you send an email, you use an email server.
-File Servers
-Domain Name Server (DNS)
-Server-side architecture encompasses the design and organization of components responsible for processing and managing logic on the server side of an application. This typically includes essential elements such as the web server, application server, database server, and middleware.</p>
-<p>In the client-server model, tasks or workloads are divided between servers, which provide computing resources or services, and clients, which request these services. While clients and servers usually interact over a computer network on different hardware, they can also exist on the same system. A server host operates one or more server programs, sharing its resources with clients.</p>
-<p>It’s much easier to visualize!</p>
-<p><img alt="client" src="../../_images/clientserv.png" /></p>
-<p>Image Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model">https://en.wikipedia.org/wiki/Client–server_model</a></p>
-</section>
-<section id="client-server-communication">
-<h2><span class="section-number">16.2. </span>Client Server Communication<a class="headerlink" href="#client-server-communication" title="Link to this heading">#</a></h2>
-<p>The client software can also communicate with server software within the same computer. Communication between servers, such as to synchronize data, is sometimes called inter-server or server-to-server communication.</p>
-</section>
-<section id="web-servers">
-<h2><span class="section-number">16.3. </span>Web Servers<a class="headerlink" href="#web-servers" title="Link to this heading">#</a></h2>
-<p>The web server, such as Apache or Nginx, manages incoming requests from clients and handles HTTP requests and responses, serving static files like HTML, CSS, and JavaScript. The application server, including options like Node.js or Django, executes application logic and generates dynamic content. It processes business logic, interacts with databases, and performs necessary computations.</p>
-</section>
-<section id="databse-servers">
-<h2><span class="section-number">16.4. </span>Databse Servers<a class="headerlink" href="#databse-servers" title="Link to this heading">#</a></h2>
-<p>The database server, such as MySQL, Firebase, or MongoDB, is responsible for storing, retrieving, and managing data, ensuring data integrity, and supporting queries and transactions. Middleware facilitates communication between the web server and application server and can handle tasks such as authentication, logging, and session management.</p>
-</section>
-<section id="architectures-within-server-side">
-<h2><span class="section-number">16.5. </span>Architectures within Server-Side<a class="headerlink" href="#architectures-within-server-side" title="Link to this heading">#</a></h2>
-<p>There are several common architectures used in server-side development. In a monolithic architecture, the application is built as a single unit, integrating all components—web server, application server, and database—into one system. While this approach can simplify development, it may become unwieldy as the application grows. Microservices architecture, on the other hand, breaks the application into smaller, independent services that communicate over a network. Each service handles a specific function and can be developed, deployed, and scaled independently. Serverless architecture involves splitting application logic into functions or services executed in response to events, with the cloud provider managing infrastructure, scaling, and maintenance, allowing developers to focus on code.</p>
-</section>
-<section id="scalability">
-<h2><span class="section-number">16.6. </span>Scalability<a class="headerlink" href="#scalability" title="Link to this heading">#</a></h2>
-<p>Scalability and load balancing are crucial for managing increased load on server-side applications. Vertical scaling involves adding more resources, such as CPU or RAM, to a single server to handle higher demand. Horizontal scaling involves adding more servers to distribute the load, with load balancers used to distribute incoming requests across multiple servers to ensure even distribution and fault tolerance.</p>
-</section>
-<section id="security">
-<h2><span class="section-number">16.7. </span>Security<a class="headerlink" href="#security" title="Link to this heading">#</a></h2>
-<p>Security considerations are vital for protecting server-side applications. Authentication and authorization ensure that users are correctly identified and have permission to access specific resources. Data encryption protects data during transmission and while stored. Firewalls and intrusion detection systems monitor and control incoming and outgoing network traffic based on security rules.</p>
-</section>
-<section id="performance">
-<h2><span class="section-number">16.8. </span>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h2>
-<p>Performance optimization techniques also play a significant role. Caching involves storing frequently accessed data to reduce load times and server strain, while content delivery networks (CDNs) distribute static content across multiple servers worldwide to improve load times and reduce latency. Understanding these components and strategies helps in designing robust, scalable, and efficient server-side solutions.</p>
-</section>
-<section id="advantages-and-disadvantages-of-client-server-architecture">
-<h2><span class="section-number">16.9. </span>Advantages and Disadvantages of Client-Server Architecture<a class="headerlink" href="#advantages-and-disadvantages-of-client-server-architecture" title="Link to this heading">#</a></h2>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="network-architecture">
+<h1><span class="section-number">16. </span>Network Architecture<a class="headerlink" href="#network-architecture" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -585,28 +524,7 @@ Server-side architecture encompasses the design and organization of components r
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">16.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#client-server-communication">16.2. Client Server Communication</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-servers">16.3. Web Servers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#databse-servers">16.4. Databse Servers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architectures-within-server-side">16.5. Architectures within Server-Side</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalability">16.6. Scalability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#security">16.7. Security</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">16.8. Performance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-and-disadvantages-of-client-server-architecture">16.9. Advantages and Disadvantages of Client-Server Architecture</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
