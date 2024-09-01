@@ -473,7 +473,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.2.2. Network Address Translation (NAT)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.2.3. TCP and UDP</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.2.4. Domain Name System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.2.5. SSL Certificates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-tls">15.2.5. SSL/TLS</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.2.5.1. SSL Certificates</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.3. Network Architectures</a></li>
@@ -511,19 +514,44 @@ document.write(`
 <ul class="simple">
 <li><p>This layer primarily focuses on three things: packetizing, routing, and forwarding. Packetizing does what it sounds like, it packs data into packets that make it transmittable. Routing works like a navigation service, finding the most efficient path for the data packets to move. The last step is forwarding, moving the packets down the path allotted. In shorter terms, it moves the data down a physical path.</p></li>
 </ul>
-<ol class="arabic simple" start="4">
-<li><p><strong>Transport Layer:</strong> The transport layer manages network traffic between clients and receivers to ensure complete data transfers, as it deals with error correction. Transport-layer protocols such as TCP and UDP (we will talk about these protocols later in the chapter) are used to manage the volume of data through load balancing, where the traffic is sent, and at what rate at which it is sent at.</p></li>
-<li><p><strong>Session Layer:</strong> Manages sessions and controls dialogues between applications</p></li>
-<li><p><strong>Presentation Layer:</strong> Translates data formats and encryption (such as: SSL/TLS)</p></li>
-<li><p><strong>Application Layer:</strong> Provides network services directly to applications (such as: HTTP, FTP)</p></li>
-</ol>
+<p><strong>Transport Layer:</strong></p>
+<ul class="simple">
+<li><p>The transport layer manages network traffic between clients and receivers to ensure complete data transfers, as it deals with error correction. Transport-layer protocols such as TCP and UDP (we will talk about these protocols later in the chapter) are used to manage the volume of data through load balancing, where the traffic is sent, and at what rate at which it is sent at.</p></li>
+</ul>
+<p><strong>Session Layer:</strong></p>
+<ul class="simple">
+<li><p>The Session Layer manages and controls the sessions or dialogues, between two communicating devices or applications. It’s responsible for establishing, maintaining, and terminating connections between different sources. It also deals with synchronizing data from different sources.</p></li>
+</ul>
+<p><strong>Presentation Layer:</strong></p>
+<ul class="simple">
+<li><p>The Presentation Layer, A.K.A the syntax layer. This often paired closely with the Session Layer, is focused on translating data. It helps format and encrypt data for the network. For encryption and decryption it uses protocols like SSL/TLS (which we will talk about later in this chapter) to ensure secure transmission. This layer also manages data compression, reducing the number of bits that need to be transmitted and decompressing the data at the receiving end.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Repeat after me... The application layer is not the same as an application!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Repeat after me... The application layer is not the same as an application!
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Application Layer:</strong></p>
+<ul class="simple">
+<li><p>The Application Layer deals with data exchange between different applications, ensuring that the correct data is delivered to the appropriate application. It allows users to interact with the network through various protocols such as (Hypertext Transfer Protocol) HTTP for web browsing, file transfer protocol (FTP) for file transfers, and simple mail transfer protocol (SMTP) for email.</p></li>
+</ul>
 <p>Most people who build software are focused on layers 5-7, because they are important to application-level interactions, like session management, data presentation, and application protocols.</p>
-<p>Understanding these fundamental networking concepts is crucial for developers and IT professionals, ensuring effective communication and security within and across networks.</p>
+<p>If you want to improve your understanding of the OSI model, this site: <a class="reference external" href="https://osi-model.com/">https://osi-model.com/</a> is a great place to visualize and explain the layers of the model.</p>
 <p><img alt="image.png" src="../../_images/osi.png" /></p>
 <p>Image Source: <a class="reference external" href="https://anamul-haque.medium.com/what-is-the-osi-model-66758c44c896">https://anamul-haque.medium.com/what-is-the-osi-model-66758c44c896</a></p>
 </section>
 <section id="tcp-ip-model">
 <h3><span class="section-number">15.1.2. </span>TCP/IP Model<a class="headerlink" href="#tcp-ip-model" title="Link to this heading">#</a></h3>
+<p><img alt="image.png" src="../../_images/ositcp.png" /></p>
+<p>Image Source: <a class="reference external" href="https://www.shiksha.com/online-courses/articles/osi-vs-tcp-ip-model-whats-the-difference/">https://www.shiksha.com/online-courses/articles/osi-vs-tcp-ip-model-whats-the-difference/</a></p>
+<p>The TCP/IP model, or Transmission Control Protocol/Internet Protocol model, is a framework like the OSI model that deals with the movement of data across different devices. Like the OSI model, it is organized by layers, but the organization itself is different from the OSI model’s organization. We will go through TCP/IP’s four layers, and their functions here:</p>
 </section>
 </section>
 <section id="networking-potpourri">
@@ -583,27 +611,20 @@ document.write(`
 <h3><span class="section-number">15.2.4. </span>Domain Name System<a class="headerlink" href="#domain-name-system" title="Link to this heading">#</a></h3>
 <p>The Domain Name System (DNS) translates human-readable domain names (e.g., <a class="reference external" href="http://www.thisisafakewebsite.com">www.thisisafakewebsite.com</a>) into IP addresses that computers can understand and use to identify each other devices on the network.</p>
 <p>Some public DNS are managed by organizations like Google or Cloudflare, public DNS servers provide domain resolution services for general internet use. They handle high query volumes and offer features like caching to improve speed and performance.</p>
-<ul class="simple">
-<li><p><strong>Internal DNS:</strong> Used within private networks to resolve domain names to internal IP addresses. It helps manage internal resources and can provide more control over network traffic.</p></li>
-</ul>
-<p><strong>Record Types:</strong> DNS records include:</p>
-<ul class="simple">
-<li><p><strong>A Record:</strong> Maps a domain to an IPv4 address.</p></li>
-<li><p><strong>AAAA Record:</strong> Maps a domain to an IPv6 address.</p></li>
-<li><p><strong>CNAME Record:</strong> Alias for another domain name.</p></li>
-<li><p><strong>MX Record:</strong> Specifies mail servers for the domain.</p></li>
-<li><p><strong>TXT Record:</strong> Holds text information for various purposes, including verification.</p></li>
-</ul>
 <p><strong>TTL (Time to Live):</strong> TTL indicates how long a DNS record is cached by DNS resolvers before being refreshed. A shorter TTL can provide quicker updates, while a longer TTL can reduce DNS lookup times but may delay changes.</p>
 </section>
+<section id="ssl-tls">
+<h3><span class="section-number">15.2.5. </span>SSL/TLS<a class="headerlink" href="#ssl-tls" title="Link to this heading">#</a></h3>
+<p>SSL (Secure Sockets Layer) was an early protocol designed to secure internet communications by establishing a secure channel between web browsers and servers. Operating at the transport layer of the OSI model, SSL ensured privacy, integrity, and authentication. However, due to security flaws, it has been replaced by TLS (Transport Layer Security), which offers enhanced encryption and authentication mechanisms. TLS operates at both the transport and session layers, securing various network communications like HTTPS for web browsing and email which makes it a modern standard for secure data transfer. When you build applications, you will probably be building using TLS due to its improved security measures, but even though you’re using TLS, SSL and TLS are referred to interchangeably. So you can say you’re using SSL when you’re really using TLS!</p>
 <section id="ssl-certificates">
-<h3><span class="section-number">15.2.5. </span>SSL Certificates<a class="headerlink" href="#ssl-certificates" title="Link to this heading">#</a></h3>
+<h4><span class="section-number">15.2.5.1. </span>SSL Certificates<a class="headerlink" href="#ssl-certificates" title="Link to this heading">#</a></h4>
 <p>Secure Sockets Layer (SSL) certificates encrypt data exchanged between a user’s browser and a web server. This ensures secure communication, protecting sensitive information from interception. SSL certificates are issued by Certificate Authorities (CAs) which include important details like the domain name, the certificate authority, and a public key. They are very important to renew (and can take down production if you don’t…). They ensure that the website you’re working with is trustworthy- like making sure a site uses https instead of http. Having an SSL ensures that people will trust your site, and your site isn’t the result of some hacker trying to steal information.</p>
+</section>
 </section>
 </section>
 <section id="network-architectures">
 <h2><span class="section-number">15.3. </span>Network Architectures<a class="headerlink" href="#network-architectures" title="Link to this heading">#</a></h2>
-<p>There are three main types of network arcitecture. INSERT THEM HERE</p>
+<p>Networking architectures are important for structuring data transmission and reception across a network. You can use them when you’re thinking about designing different applications. These architectures decide how network components interact to create reliable communication between devices. This helps applications become more scalable, which helps them handle growing traffic or additional devices. It also helps them set up systems to provide reliability for users. Network architectures can also help you improve the performance of your application, because they help you manage network resources and connections. To deal with the needs of large scale applications, which tend to be the production grade software you work with in professional settings, you can use a network architecture to make your application better at supporting larger amounts of people- and supporting people is the goal of software! Another important aspect is security and encapsulation, as network architectures implement measures to protect data. You wouldn’t want anyone to have access to your emails, right? Network architectures help keep data separate from the applications they work with, keeping your data safe. Some of the most popular network architectures include peer to peer, client-server, hybrid, and cloud based, which we will go over in the next chapter.</p>
 </section>
 <section id="conclusion">
 <h2><span class="section-number">15.4. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
@@ -686,7 +707,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-address-translation-nat">15.2.2. Network Address Translation (NAT)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcp-and-udp">15.2.3. TCP and UDP</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-name-system">15.2.4. Domain Name System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.2.5. SSL Certificates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-tls">15.2.5. SSL/TLS</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-certificates">15.2.5.1. SSL Certificates</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures">15.3. Network Architectures</a></li>
