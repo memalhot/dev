@@ -552,21 +552,21 @@ document.write(`
 <p><img alt="image.png" src="../../_images/ositcp.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.shiksha.com/online-courses/articles/osi-vs-tcp-ip-model-whats-the-difference/">https://www.shiksha.com/online-courses/articles/osi-vs-tcp-ip-model-whats-the-difference/</a></p>
 <p>The TCP/IP model, or Transmission Control Protocol/Internet Protocol model, is a framework like the OSI model that deals with the movement of data across different devices. Like the OSI model, it is organized by layers, but the organization itself is different from the OSI model’s organization. We will go through TCP/IP’s four layers, and their functions here:</p>
-<p><strong>Application Layer</strong>:</p>
+<p><strong>Network Access Layer</strong>:</p>
 <ul class="simple">
-<li><p>The link layer is responsible for the physical transmission of data over a network. It includes hardware components such as network interface cards and the protocols for data framing, error detection, and access to the physical medium. W of link layer technologies are Ethernet and Wi-Fi.</p></li>
+<li><p>This layer provides the same functionality as the data link layer and physical layer in the OSI model. It allows for two systems in the same network to communicate with each other.</p></li>
+</ul>
+<p><strong>Internet Layer</strong> AKA <strong>Network Layer</strong>:</p>
+<ul class="simple">
+<li><p>This layer manages end-to-end communication between devices. It ensures that data is transferred reliably and in the correct order. The two main protocols at this layer are the Transmission Control Protocol (TCP), which provides reliable, connection-oriented communication, and the User Datagram Protocol (UDP), which offers a simpler, connectionless communication method with no guarantees of reliability.</p></li>
 </ul>
 <p><strong>Transport Layer</strong>:</p>
 <ul class="simple">
 <li><p>The primary function of the Internet layer is to route packets across different networks. It uses the Internet Protocol (IP) to address and forward packets from the source to the destination across potentially multiple networks. Key protocols at this layer include IP, as well as its variants IPv4 and IPv6.</p></li>
 </ul>
-<p><strong>Internet Layer</strong>:</p>
+<p><strong>Application Layer</strong>:</p>
 <ul class="simple">
-<li><p>This layer manages end-to-end communication between devices. It ensures that data is transferred reliably and in the correct order. The two main protocols at this layer are the Transmission Control Protocol (TCP), which provides reliable, connection-oriented communication, and the User Datagram Protocol (UDP), which offers a simpler, connectionless communication method with no guarantees of reliability.</p></li>
-</ul>
-<p><strong>Network Access Layer</strong>:</p>
-<ul class="simple">
-<li><p>The top layer of the TCP/IP model interacts directly with end-user applications. It provides protocols and services for applications to communicate over the network. Common protocols at this layer include Hypertext Transfer Protocol (HTTP) for web browsing, File Transfer Protocol (FTP) for file transfers, and Simple Mail Transfer Protocol (SMTP) for email.</p></li>
+<li><p>The link layer is responsible for the physical transmission of data over a network. It includes hardware components such as network interface cards and the protocols for data framing, error detection, and access to the physical medium. W of link layer technologies are Ethernet and Wi-Fi.</p></li>
 </ul>
 <p><img alt="image.png" src="../../_images/lay.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.parthshandilya.com/networking-tcp-ip-model">https://www.parthshandilya.com/networking-tcp-ip-model</a></p>

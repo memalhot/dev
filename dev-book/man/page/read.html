@@ -462,7 +462,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-about-documentation">17.1. Learning about Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-documentation-documentation">17.1. Documentation, Documentation, Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#man-oh-man-dissecting-the-man-command">17.2. Man, oh man! (Dissecting the man command)</a></li>
 </ul>
             </nav>
         </div>
@@ -478,13 +479,52 @@ document.write(`
 <h1><span class="section-number">17. </span>Reading the Man Pages<a class="headerlink" href="#reading-the-man-pages" title="Link to this heading">#</a></h1>
 <p>Warning - this page is under construction and not complete!</p>
 <p>There’s an old joke that goes the only command you need to know in linux is man, and hopefully by the end of this chapter you’ll understand why.</p>
-<section id="learning-about-documentation">
-<h2><span class="section-number">17.1. </span>Learning about Documentation<a class="headerlink" href="#learning-about-documentation" title="Link to this heading">#</a></h2>
 <p>What are man pages? What is documentation?</p>
+<section id="documentation-documentation-documentation">
+<h2><span class="section-number">17.1. </span>Documentation, Documentation, Documentation<a class="headerlink" href="#documentation-documentation-documentation" title="Link to this heading">#</a></h2>
+<p>Remember when we said writing good documentation is essential to developing durable, usable software? No? Well, writing good documentation is essential to developing durable, usable software. Want proof? Look no further than the linux man pages.</p>
+<p>Linux man pages are a type of documentation, written content that can explain how software or a technology works. Documentation can be written for all aspects of a technology’s life from its usage, to its development, to its maintenance. In this case, the man pages are written as user-oriented documentation—a manual, if you will—and its users are not necessarily consumers, but software developers themselves.</p>
+<p>It’s important to consider man pages within the broader context of software documentation.</p>
 <p>Documentation is written content that helps explain how some code or technology should be used. Linux has it’s own built in documentation, called the man pages (man being short for manual).</p>
 <p><img alt="image.png" src="../../_images/man2.png" /></p>
-<p>You can usually get to the manpages by using man [ name of the command ]</p>
+<p>Image Source: <a class="reference external" href="https://wiki.gentoo.org/wiki/Man_page">https://wiki.gentoo.org/wiki/Man_page</a></p>
+</section>
+<section id="man-oh-man-dissecting-the-man-command">
+<h2><span class="section-number">17.2. </span>Man, oh man! (Dissecting the man command)<a class="headerlink" href="#man-oh-man-dissecting-the-man-command" title="Link to this heading">#</a></h2>
+<p>So how do we get there? They only show up if you ask for them. And they work just like the tools we learned in our command line chapter.</p>
+<p>By using <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">[</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">command</span> <span class="pre">]</span></code>
+So, if you wanted to look at <code class="docutils literal notranslate"><span class="pre">ls</span></code>’s man page, you would type
+<code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ls</span></code></p>
+<p>There are 281,555 (non-unique) man pages floating around in the Unix &amp; Linux commands man pages set. This means Unix has basically has a built in manual, that you can use at any time, explaining the use of each command, and ways to manipulate that command’s behavior through options.</p>
 <p>The man pages are a great resource for understanding linux commands. But if you are new to reading them, they can be confusing. Let’s break it down.</p>
+<p>Every man page is broken up into at least six distinct parts:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>NAME</p></td>
+<td><p>A given command’s name and short description</p></td>
+</tr>
+<tr class="row-odd"><td><p>SYNOPSIS</p></td>
+<td><p>A given command’s proper syntax</p></td>
+</tr>
+<tr class="row-even"><td><p>DESCRIPTION</p></td>
+<td><p>A full explanation of how a given command works</p></td>
+</tr>
+<tr class="row-odd"><td><p>OPTIONS</p></td>
+<td><p>Optional parameters for a given command and their descriptions</p></td>
+</tr>
+<tr class="row-even"><td><p>EXAMPLES</p></td>
+<td><p>Command line and script examples of the given command</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEE ALSO</p></td>
+<td><p>Related man pages to the given command</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -543,7 +583,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-about-documentation">17.1. Learning about Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-documentation-documentation">17.1. Documentation, Documentation, Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#man-oh-man-dissecting-the-man-command">17.2. Man, oh man! (Dissecting the man command)</a></li>
 </ul>
   </nav></div>
 
