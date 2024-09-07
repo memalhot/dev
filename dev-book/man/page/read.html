@@ -549,22 +549,22 @@ Let’s break it down.</p>
 </section>
 <section id="syntax-to-know">
 <h2><span class="section-number">7.5. </span>Syntax to Know<a class="headerlink" href="#syntax-to-know" title="Link to this heading">#</a></h2>
-<p><strong>Optional Arguments</strong><br />
-When an argument is optional, it’s usually enclosed in square brackets. And sometimes there might be multiple optional arguments, and each will have their own set of square brackets.</p>
+<p><strong>Optional Arguments</strong></p>
+<p>When an argument is optional, it’s usually enclosed in square brackets. And sometimes there might be multiple optional arguments, and each will have their own set of square brackets.</p>
 <p>Let’s look at an example, using the command ping, that tests the reachability of a host:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ping</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span> <span class="n">count</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="n">ttl</span><span class="p">]</span> <span class="n">host</span>
 </pre></div>
 </div>
 <p>As we can see here, <code class="docutils literal notranslate"><span class="pre">host</span></code> is required, while <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">ttl</span></code> are optional!</p>
-<p><strong>Mutually Exclusive Arguments</strong>
-Some argument’s can’t operate at the same time. You have to choose one option, rather than both. This means that they are mutually exclusive.</p>
+<p><strong>Mutually Exclusive Arguments</strong></p>
+<p>Some argument’s can’t operate at the same time. You have to choose one option, rather than both. This means that they are mutually exclusive.</p>
 <p>Curly braces show that the arguments are mutually exclusive. Multiple mutually exclusive options can be separated by a pipe (|).</p>
 <p>Let’s look at an example, you can choose either <code class="docutils literal notranslate"><span class="pre">--silent</span></code> or <code class="docutils literal notranslate"><span class="pre">--verbose</span></code>, because the two options are conflicting:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">--</span><span class="n">silent</span><span class="o">|--</span><span class="n">verbose</span><span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>Arguments That Can Repeat</strong><br />
-Use three dots (…) without spaces (an ellipsis) to indicate that an argument can be repeated multiple times.</p>
+<p><strong>Arguments That Can Repeat</strong></p>
+<p>Use three dots (…) without spaces (an ellipsis) to indicate that an argument can be repeated multiple times.</p>
 <p>Let’s look at another example, looking at the man page for ln, which links files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">ln</span> <span class="p">[</span><span class="n">OPTION</span><span class="p">]</span><span class="o">...</span> <span class="n">TARGET</span>
 </pre></div>
@@ -574,18 +574,18 @@ Use three dots (…) without spaces (an ellipsis) to indicate that an argument c
 </pre></div>
 </div>
 <p>Because the <code class="docutils literal notranslate"><span class="pre">...</span></code> tells us we can have multiple arguments.</p>
-<p><strong>Uppercase vs Lowercase</strong>
-A reminder that options are case sensitive!</p>
-<p><strong>Short Options vs Long Options</strong>
-Single-letter options that are preceded by a minus sign (-). The case of the letter is important, as different options have different effects. For example, -e and -E are different options. These are referred to as short options. Long options are made up of two hyphens followed by one or more lowercase alphanumeric words. Hyphens separate the words. So, rather than dealing with letters which can get cryptic and confusing, you have the option to have a longer but more clear option.</p>
+<p><strong>Uppercase vs Lowercase</strong></p>
+<p>A reminder that options are case sensitive!</p>
+<p><strong>Short Options vs Long Options</strong></p>
+<p>Single-letter options that are preceded by a minus sign (-). The case of the letter is important, as different options have different effects. For example, -e and -E are different options. These are referred to as short options. Long options are made up of two hyphens followed by one or more lowercase alphanumeric words. Hyphens separate the words. So, rather than dealing with letters which can get cryptic and confusing, you have the option to have a longer but more clear option.</p>
 <p>For instance: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">-a</span></code> vs <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">--all</span></code></p>
-<p><strong>Flags vs Options</strong>
-A Stackoverflow user defines the difference between them here:
+<p><strong>Flags vs Options</strong></p>
+<p>A Stackoverflow user defines the difference between them here:
 “A flag is a type of option, an option of boolean type, and is always false by default (e.g. –verbose, –quiet, –all, –long, etc).</p>
 <p>An option tells the function how to act (e.g. -a, -l, –verbose, –output , -name , -c , etc), whist an arguments tells the function what to act on/from (e.g. *, file1, hostname, database).”</p>
 <p>Source: <a class="reference external" href="https://unix.stackexchange.com/questions/285575/whats-the-difference-between-a-flag-an-option-and-an-argument">https://unix.stackexchange.com/questions/285575/whats-the-difference-between-a-flag-an-option-and-an-argument</a></p>
-<p><strong>Inverse flags</strong>
-These are flags with the opposite behaviour, that are mutually exclusive. Often based off the behaviour if other flags because they are inverse. They begin with –no-. For example, –sort and –no-sort.</p>
+<p><strong>Inverse flags</strong></p>
+<p>These are flags with the opposite behaviour, that are mutually exclusive. Often based off the behaviour if other flags because they are inverse. They begin with –no-. For example, –sort and –no-sort.</p>
 <p><img alt="ls manpage" src="../../_images/sl.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.zdnet.com/article/what-are-man-pages-and-why-are-they-important-to-your-linux-education/">https://www.zdnet.com/article/what-are-man-pages-and-why-are-they-important-to-your-linux-education/</a></p>
 </section>
