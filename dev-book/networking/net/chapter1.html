@@ -558,15 +558,15 @@ document.write(`
 </ul>
 <p><strong>Internet Layer</strong> AKA <strong>Network Layer</strong>:</p>
 <ul class="simple">
-<li><p>This layer manages end-to-end communication between devices. It ensures that data is transferred reliably and in the correct order. The two main protocols at this layer are the Transmission Control Protocol (TCP), which provides reliable, connection-oriented communication, and the User Datagram Protocol (UDP), which offers a simpler, connectionless communication method with no guarantees of reliability.</p></li>
+<li><p>This layer is focused on Internet Protocol or (IP). The Layer routes packets of data from one device to another across a network. It uses IP address, which we will dicuss later in this chapter, to focus on which IP address to go there and how to get there. It defines the map that the data needs to be routed to.</p></li>
 </ul>
 <p><strong>Transport Layer</strong>:</p>
 <ul class="simple">
-<li><p>The primary function of the Internet layer is to route packets across different networks. It uses the Internet Protocol (IP) to address and forward packets from the source to the destination across potentially multiple networks. Key protocols at this layer include IP, as well as its variants IPv4 and IPv6.</p></li>
+<li><p>The transport layer uses the information determined by the internet layer to move packets of data over the map decided by the internet layer. If the internet layer, the trasport layer is the car that gets you from point A to point B.</p></li>
 </ul>
 <p><strong>Application Layer</strong>:</p>
 <ul class="simple">
-<li><p>The link layer is responsible for the physical transmission of data over a network. It includes hardware components such as network interface cards and the protocols for data framing, error detection, and access to the physical medium. W of link layer technologies are Ethernet and Wi-Fi.</p></li>
+<li><p>This layer is not physical at all, and focuses on the communicatin between different hosts, and if it oftens HHTPS between the two hosts.</p></li>
 </ul>
 <p><img alt="image.png" src="../../_images/lay.png" /></p>
 <p>Image Source: <a class="reference external" href="https://www.parthshandilya.com/networking-tcp-ip-model">https://www.parthshandilya.com/networking-tcp-ip-model</a></p>
